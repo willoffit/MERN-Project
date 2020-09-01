@@ -25,9 +25,9 @@ class NavBar extends React.Component {
       );
     } else {
       return (
-        <div>
-          <Link to={"/signup"}>Signup</Link>
-          <Link to={"/login"}>Login</Link>
+        <div className="signup-login-buttons">
+          <Link to={"/signup"} className="signup-button">Signup</Link>
+          <Link to={"/login"} className="login-button">Login</Link>
         </div>
       );
     }
@@ -35,9 +35,18 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Trivia</h1>
-        {this.getLinks()}
+      <div className="splash-page">
+        <h1 className="splash-page-header">WILK TRIVIA</h1>
+        <div className="splash-page-body">{this.getLinks()}</div>
+        <div>
+          <footer className="splash-page-footer">Copyright &copy; 2020 WILK Trivia</footer>
+          <div className="splash-page-team">
+            <div>Leah de la Pena</div>
+            <div>Israel Gonzalez</div>
+            <div>Will Offit</div>
+            <div>Kevin Besenio</div>
+          </div>
+        </div>
       </div>
     );
   }

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"; 
 
 // We've been using this method in previos steps
 export const setAuthToken = (token) => {

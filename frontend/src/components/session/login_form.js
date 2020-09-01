@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import './form.css';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class LoginForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.handleDemoUser = this.handleDemoUser.bind(this);
   }
 
   // Once the user has been authenticated, redirect to the Tweets page
@@ -48,7 +50,7 @@ class LoginForm extends React.Component {
   // Render the session errors if there are any
   renderErrors() {
     return (
-      <ul>
+      <ul className="errors">
         {Object.keys(this.state.errors).map((error, i) => (
           <li key={`error-${i}`}>{this.state.errors[error]}</li>
         ))}
@@ -56,27 +58,54 @@ class LoginForm extends React.Component {
     );
   }
 
+  handleDemoUser() {
+    this.props.login({
+      email: 'user@user.com',
+      password: '0123456789'
+    })
+  }
+
   render() {
     return (
-      <div>
+      <div className="form-container">
+        <h1 className="form-header">LOGIN TO PLAY WILK TRIVIA</h1>
+        <br />
         <form onSubmit={this.handleSubmit}>
-          <div>
-            <input
-              type="text"
-              value={this.state.email}
-              onChange={this.update("email")}
-              placeholder="Email"
-            />
+          <div className="form">
             <br />
-            <input
-              type="password"
-              value={this.state.password}
-              onChange={this.update("password")}
-              placeholder="Password"
-            />
+            <div className="input-container">
+              <input
+                className="user-input"
+                type="text"
+                value={this.state.email}
+                onChange={this.update("email")}
+                placeholder="Email"
+              />
+              <br />
+              <input
+                className="user-input"
+                type="password"
+                value={this.state.password}
+                onChange={this.update("password")}
+                placeholder="Password"
+              />
+            </div>
             <br />
-            <input type="submit" value="Submit" />
-            {this.renderErrors()}
+            <div className="btn-container">
+              <input
+                className="form-submit-btn"
+                type="submit"
+                value="Submit" />
+              <button 
+                onClick={this.handleDemoUser}
+                className="form-submit-btn">
+                Play as Demo User
+              </button>
+            </div>
+            <br />
+            <div className="errors-container">
+              {this.renderErrors()}
+            </div>
           </div>
         </form>
       </div>

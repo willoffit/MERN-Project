@@ -31,9 +31,7 @@ router.post(
 
     debugger;
     const userIds = req.body.members.split(" ").map(member => {
-      return User.find({ username: member })
-        .then(user => res.json(user.id));
-        
+      return User.find({ username: member })._id;
     });
 
     const newGroup = new Group({

@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const users = require("./routes/api/users");
+const groups = require("./routes/api/groups");
+const games = require("./routes/api/games");
 const bodyParser = require("body-parser");
 const db = require("./config/keys").mongoURI;
 const passport = require("passport");
@@ -32,5 +34,8 @@ const port = process.env.PORT || 5001;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/api/users", users);
+app.use("/api/groups", groups);
+app.use("/api/games", games);
+
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));

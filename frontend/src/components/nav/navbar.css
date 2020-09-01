@@ -1,0 +1,51 @@
+.splash-page-header {
+   font-size: 100px;
+   font-family: 'Luckiest Guy', cursive;
+   color: teal;
+   text-align: center;
+}
+
+.signup-login-buttons {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.signup-button {
+   text-decoration: none;
+   border: 1px solid black;
+   padding: 150px;
+   font-size: 40px;
+   font-family: 'Luckiest Guy', cursive;
+   color: teal;
+   margin: 20px;
+}
+
+.login-button {
+   text-decoration: none;
+   border: 1px solid black;
+   padding: 150px;
+   font-size: 40px;
+   font-family: 'Luckiest Guy', cursive;
+   color: teal;
+   margin: 20px;
+}
+
+.splash-page-footer {
+   text-align: center;
+   font-family: Arial, Helvetica, sans-serif;
+   padding: 100px 0px 10px 0px;
+   font-size: 15px;
+}
+
+.splash-page-team {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+.splash-page-team div {
+   padding: 15px 10px;
+   font-size: 15px;
+}

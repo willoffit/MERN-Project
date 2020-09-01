@@ -29,7 +29,6 @@ router.post(
       return res.status(400).json(errors);
     }
 
-    debugger;
     const userIds = req.body.members.split(" ").map(member => {
       return User.find({ username: member })._id;
     });

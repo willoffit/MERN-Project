@@ -31,10 +31,9 @@ router.post(
       return res.status(400).json(errors);
     }
 
-    debugger;
-    const userIds = req.body.members.split(" ").map(member => {
-      return User.findOne({ username: member })._id;
-    });
+    const userIds = req.body.members.split(" ").map(member => (
+      User.findOne({ username: member }).then(user => res.json(user._id))
+    ));
 
     const newGroup = new Group({
       name: req.body.name,

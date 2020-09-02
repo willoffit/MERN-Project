@@ -24,6 +24,7 @@ const UserSchema = new Schema({
     film: { type: Array },
     general_knowledge: { type: Array }
   },
+  group: { type: mongoose.Schema.Types.ObjectId, ref: 'Group' },
   date: {
     type: Date,
     default: Date.now,

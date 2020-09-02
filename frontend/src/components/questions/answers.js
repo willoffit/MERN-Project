@@ -8,6 +8,8 @@ class Answer extends React.Component {
         this.checkAnswer = this.checkAnswer.bind(this);
         this.handleCorrect = this.handleCorrect.bind(this);
         this.handleIncorrect = this.handleIncorrect.bind(this);
+
+        // setInterval(this.props.nextQuestion(), 10000);
     }
 
     componentDidMount() {}

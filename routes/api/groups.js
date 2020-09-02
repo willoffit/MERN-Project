@@ -19,6 +19,8 @@ router.get("/:id", (req, res) => {
       );
 });
 
+
+
 router.post(
   "/",
   // passport.authenticate("jwt", { session: false }),
@@ -29,8 +31,9 @@ router.post(
       return res.status(400).json(errors);
     }
 
+    debugger;
     const userIds = req.body.members.split(" ").map(member => {
-      return User.find({ username: member })._id;
+      return User.findOne({ username: member })._id;
     });
 
     const newGroup = new Group({
@@ -41,3 +44,7 @@ router.post(
     newGroup.save().then((group) => res.json(group));
   }
 );
+
+router.delete("/:id", (req, res) => {
+  Group.findByIdAndRemove(req.params.id);
+});

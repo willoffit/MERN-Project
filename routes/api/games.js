@@ -47,3 +47,7 @@ router.post(
     newGame.save().then((game) => res.json(game));
   }
 );
+
+router.delete("/:id", (req, res) => {
+  Game.findByIdAndRemove(req.params.id);
+});

@@ -29,7 +29,7 @@ class Profile extends React.Component {
             sum += score
         ))
 
-        return sum / (this.user.scores.length * 1.0);
+        return sum / (scores.length * 1.0);
     }
 
     highestScore() {

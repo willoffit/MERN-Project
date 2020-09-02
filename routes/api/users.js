@@ -18,8 +18,6 @@ router.post("/register", (req, res) => {
     return res.status(400).json(errors);
   }
 
-  debugger;
-
   User.findOne({ email: req.body.email }).then((user) => {
     if (user) {
       // Use the validations to send the error

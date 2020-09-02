@@ -33,7 +33,7 @@ const Protected = ({ component: Component, loggedIn, ...rest }) => (
 );
 
 // Use the isAuthenitcated slice of state to determine whether a user is logged in
-let variable = "test";
+// let variable = "test";
 const mapStateToProps = (state) => ({
   loggedIn: state.session.isAuthenticated,
 });

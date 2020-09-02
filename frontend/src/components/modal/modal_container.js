@@ -3,8 +3,7 @@ import { closeModal } from '../../actions/modal_actions';
 import Modal from './modal';
 
 const mSTP = state => ({
-   modal: state.ui.modal,
-   currentUser: state.session.id
+   modal: state.ui.modal
 });
 
 const mDTP = dispatch => ({

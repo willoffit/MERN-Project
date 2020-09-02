@@ -1,29 +1,23 @@
 import React from 'react';
-// import { makeStyles } from '@material-ui/core/styles';
-// import Radio from '@material-ui/core/Radio';
-// import RadioGroup from '@material-ui/core/RadioGroup';
-// import FormControlLabel from '@material-ui/core/FormControlLabel';
-// import FormControl from '@material-ui/core/FormControl';
-// import FormHelperText from '@material-ui/core/FormHelperText';
-// import FormLabel from '@material-ui/core/FormLabel';
-// import Button from '@material-ui/core/Button';
-
-
+import Answer from "./answers";
 
 class Question extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = this.props.questions.pop();
+        this.state = {};
 
         this.renderAnswers = this.renderAnswers.bind(this);
-        this.checkAnswer = this.checkAnswer.bind(this);
-        this.handleCorrect = this.handleCorrect.bind(this);
-        this.handleIncorrect = this.handleIncorrect.bind(this);
+        this.handleUserSelect = this.handleUserSelect.bind(this);
+        this.getNextQuestion = this.getNextQuestion.bind(this);
+    }
+
+    getNextQuestion(questions) {
+        this.setState(questions.pop())
     }
 
     componentDidMount() {
-        // this.props.fetchQuestions();
+        this.props.fetchQuestions("General");
     }
 
     renderAnswers() {
@@ -33,43 +27,48 @@ class Question extends React.Component {
         return answers;
     }
 
-    checkAnswer(e) {
+    handleUserSelect(e) {
         e.preventDefault();
-        this.setState(this.props.questions.pop());
 
-        if (e.target.value === this.state.correct_answer) {
-            return this.handleCorrect();
-        } else {
-            return this.handleIncorrect();
-        }
+        const idx = parseInt(e.target.value);
+        this.setState({ userChoice: idx });
+        // Object.freeze(this.state)
     }
 
-    handleCorrect() {
-        return <h1>YOU ARE RIGHT!</h1>
-    }
 
-    handleIncorrect() {
-        return <h1>YOU SUCK! YOU ARE BAD AT THIS!</h1>
+    afterMounted() {
+        // let questions = this.props.questions.slice();
+        // this.getNextQuestion(questions);
+        // let answers = this.renderAnswers();
+        // return Object.values(this.state)
+        // return (
+        //     <div>
+        //         <Answer 
+        //             answers={answers}
+        //             userAns={this.state.userChoice}
+        //             correctAns={this.state.correct_answer}
+        //             incorrectAns={this.state.incorrect_answers}
+        //             nextQuestion={this.props.questions.pop()}
+        //         />
+
+        //         <p>Category: {this.state.category}</p>
+        //         <p>Question: {this.state.question}</p>
+        //         <p>Answers: {answers.map((answer, idx) => (
+        //                 <button 
+        //                     type="radio"
+        //                     value={idx}
+        //                     onClick={this.handleUserSelect}
+        //                     className="trivia-q">
+        //                     {answer}
+        //                 </button>
+        //         ))}</p>
+        //     </div>
+        // )
     }
 
     render() {
-        let answers = this.renderAnswers();
-        
-        return (
-            <div>
-                <p>Category: {this.state.category}</p>
-                <p>Question: {this.state.question}</p>
-                <p>Answers: {answers.map(answer => (
-                    <label>{answer}
-                        <input 
-                            type="radio"
-                            value={answer}
-                            onClick={this.checkAnswer}
-                        />
-                    </label>
-                ))}</p>
-            </div>
-        )
+        return <h1>Component</h1>
+        // return this.props.questions.length === 0 ? null : this.afterMounted()
     }
 }
 

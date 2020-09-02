@@ -1,6 +1,5 @@
 import { 
-    RECEIVE_QUESTIONS, 
-    // RECEIVE_QUESTION, 
+    RECEIVE_QUESTIONS,  
     REMOVE_QUESTIONS 
 } from '../actions/question_actions';
 
@@ -10,9 +9,7 @@ const questionsReducer = (oldState=[], action) => {
 
     switch (action.type) {
         case RECEIVE_QUESTIONS:
-            return action.questions.results;
-        // case RECEIVE_QUESTION:
-        //     return 
+            return action.questions;
         case REMOVE_QUESTIONS:
             return [];
         default:

@@ -1,39 +1,29 @@
 import React from 'react';
+import LoginFormContainer from "../session/login_form_container";
+import SignupFormContainer from "../session/signup_form_container";
 
-class Modal extends React.Component {
-
-   componentDidUpdate() {
-      if (this.props.modal) {
-         document.body.style.overflow = 'hidden';
-      }
-      else {
-         document.body.style.overflow = 'unset';
-      }
+function Modal({ modal, closeModal }) {
+   if (!modal) {
+      return null;
    }
-
-   render() {
-      const { modal, currentUser } = this.props;
-      if (!modal || !currentUser) return null;
-      let component;
-
-      switch (modal.type) {
-         case 'createVideo':
-            component = <CreateVideoForm />;
-            break;
-         case 'updateVideo':
-            component = <EditVideoForm />;
-         default:
-            component = null;
-      }
-
-      return (
-         <div className="modal-background" onClick={this.props.closeModal}>
-            <div className="modal-child" onClick={e => e.stopPropagation()}>
-               {component}
-            </div>
+   let component;
+   switch (modal) {
+      case 'login':
+         component = <LoginFormContainer />;
+         break;
+      case 'signup':
+         component = <SignupFormContainer />;
+         break;
+      default:
+         return null;
+   }
+   return (
+      <div className="modal-background" onClick={closeModal}>
+         <div className="modal-child" onClick={e => e.stopPropagation()}>
+            {component}
          </div>
-      );
-   }
-};
+      </div>
+   );
+}
 
 export default Modal;

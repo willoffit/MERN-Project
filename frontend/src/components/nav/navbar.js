@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
+import "../modal/modal.css";
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -16,21 +17,21 @@ class NavBar extends React.Component {
 
   // Selectively render links dependent on whether the user is logged in
   getLinks() {
-    if (this.props.loggedIn) {
-      return (
-        <div>
-          <Link to={"/profile"}>Profile</Link>
-          <button onClick={this.logoutUser}>Logout</button>
-        </div>
-      );
-    } else {
+    // if (this.props.loggedIn) {
+    //   return (
+    //     <div>
+    //       <Link to={"/profile"}>Profile</Link>
+    //       <button onClick={this.logoutUser}>Logout</button>
+    //     </div>
+    //   );
+    // } else {
       return (
         <div className="signup-login-buttons">
-          <Link to={"/signup"} className="signup-button">Signup</Link>
-          <Link to={"/login"} className="login-button">Login</Link>
+          <Link className="signup-button" onClick={() => this.props.openModal('signup')}>Signup</Link>
+          <Link className="login-button" onClick={() => this.props.openModal('login')}>Login</Link>
         </div>
       );
-    }
+    // }
   }
 
   render() {

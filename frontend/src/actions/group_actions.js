@@ -1,4 +1,4 @@
-import * as GroupAPIUtil from '../actions/group_actions';
+import * as GroupAPIUtil from '../util/group_api_util';
 
 export const RECEIVE_GROUPS = 'RECEIVE_GROUPS';
 export const RECEIVE_GROUP = 'RECEIVE_GROUP';

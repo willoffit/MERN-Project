@@ -25,13 +25,13 @@ export const fetchQuestions = () => dispatch => (
 )
 
 export const fetchQuestion = questionId => dispatch => (
-    QuestionAPIUtil.fetchQuestion(groupId)
+    QuestionAPIUtil.fetchQuestion(questionId)
         .then(question => dispatch(receiveQuestion()))
         .catch(err => console.log(err))
 )
 
 // export const fetchQuestions = questionId => dispatch => (
-//     QuestionAPIUtil.deleteQuestion(groupId)
+//     QuestionAPIUtil.deleteQuestion(questionId)
 //         .then(() => dispatch(removeQuestion(questionId)))
 //         .catch(err => console.log(err))
 // )

@@ -1,7 +1,7 @@
 .splash-page-header {
    font-size: 100px;
    font-family: 'Luckiest Guy', cursive;
-   color: teal;
+   color: purple;
    text-align: center;
 }
 
@@ -13,28 +13,82 @@
 
 .signup-button {
    text-decoration: none;
-   border: 1px solid black;
-   padding: 150px;
+   border: 5px solid black;
+   width: 325px;
+   height: 550px;
+   text-align: center;
    font-size: 40px;
    font-family: 'Luckiest Guy', cursive;
+   color: teal;
+   margin: 10px 0px;
+   border-radius: 25px;
+   padding: 10px;
+   box-shadow: 5px 10px grey;
+   background-color: whitesmoke;
+}
+
+.signup-button.rotate_right {
+  float: left;
+  -ms-transform: rotate(8deg); /* IE 9 */
+  -webkit-transform: rotate(8deg); /* Safari */
+  transform: rotate(8deg);
+}
+
+.signup-button:hover {
+   border: 5px solid yellow;
    color: purple;
-   margin: 20px;
+}
+
+.signup-button div {
+   margin-top: 50px;
+}
+
+.far {
+   font-size: 125px;
+   margin-top: 10px;
 }
 
 .login-button {
    text-decoration: none;
-   border: 1px solid black;
-   padding: 150px;
+   border: 5px solid black;
+   width: 325px;
+   height: 550px;
+   text-align: center;
    font-size: 40px;
    font-family: 'Luckiest Guy', cursive;
+   color: teal;
+   margin: 10px 0px;
+   border-radius: 25px;
+   padding: 10px;
+   box-shadow: 5px 10px grey;
+   background-color: whitesmoke;
+}
+
+.login-button.rotate_left {
+  float: left;
+  -ms-transform: rotate(-15deg); /* IE 9 */
+  -webkit-transform: rotate(-15deg); /* Safari */
+  transform: rotate(-15deg);
+}
+
+.login-button:hover {
+   border: 5px solid yellow;
    color: purple;
-   margin: 20px;
+}
+
+.login-button div {
+   margin-top: 50px;
+}
+
+.fas {
+   font-size: 125px;
+   margin-top: 10px;
 }
 
 .splash-page-footer {
    text-align: center;
    font-family: Arial, Helvetica, sans-serif;
-   padding: 100px 0px 10px 0px;
+   padding: 115px 0px 5px 0px;
    font-size: 15px;
 }
 
@@ -46,6 +100,12 @@
 }
 
 .splash-page-team div {
-   padding: 15px 10px;
+   padding: 10px 13px;
    font-size: 15px;
+   text-align: center;
+}
+
+.splash-page-team div i {
+   font-size: 20px;
+   padding: 0px 10px;
 }

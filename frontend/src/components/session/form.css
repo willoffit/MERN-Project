@@ -4,6 +4,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 50px 70px;
+    font-family: 'Luckiest Guy', cursive;
 
     /* align-items: center; */
 }
@@ -13,6 +15,8 @@
     /* border: 1px solid aqua; */
     height: fit-content;
     width: fit-content;
+    font-size: 40px;
+    color: purple;
 }
 
 .form {
@@ -34,12 +38,22 @@
 
 .user-input {
     display: block;
-    border-radius: 4px;
+    border-radius: 10px;
     margin: 1%;
     padding: 5%;
     font-size: 14px;
     width: 77%;
-    /* border: darkgreen 1px solid; */
+    border: 2px solid black;
+}
+
+.user-input:focus {
+    outline: none !important;
+    border-radius: 10px;
+    border: 2px solid yellow;
+}
+
+::placeholder {
+    font-family: 'Luckiest Guy', cursive;
 }
 
 .btn-container {
@@ -52,23 +66,28 @@
 
 .form-submit-btn {
     display: block;
-    background-color: goldenrod;
+    background-color: whitesmoke;
     /* border: coral 1px solid; */
     padding-top: 5%;
     padding-bottom: 5%;
+    padding: 15px 20px 15px 20px;
     width: 100%;
     cursor: pointer;
     font-weight: 900;
-    font-size: 18px;
+    font-size: 23px;
+    font-family: 'Luckiest Guy', cursive;
+    margin: 10px 0px;
+    border-radius: 10px;
+    color: teal;
+    border: 3px solid black;
 }
 
 .form-submit-btn:hover {
-    background-color: rgb(175, 133, 25);
-    color: darkgrey;
+    border: 3px solid yellow;
+    color: purple;
 }
 
 .errors-container {
     display: block;
-    /* border: cornflowerblue 1px solid; */
     color: rgb(206, 4, 4);
 }

@@ -68,7 +68,7 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div className="form-container">
-        <h1 className="form-header">LOGIN TO PLAY WILK TRIVIA</h1>
+        <h1 className="form-header">LOGIN TO PLAY</h1>
         <br />
         <form onSubmit={this.handleSubmit}>
           <div className="form">
@@ -95,11 +95,11 @@ class LoginForm extends React.Component {
               <input
                 className="form-submit-btn"
                 type="submit"
-                value="Submit" />
+                value="SUBMIT" />
               <button 
                 onClick={this.handleDemoUser}
                 className="form-submit-btn">
-                Play as Demo User
+                PLAY AS DEMO USER
               </button>
             </div>
             <br />

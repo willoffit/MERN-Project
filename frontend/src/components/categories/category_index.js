@@ -16,12 +16,8 @@ class CategoryIndex extends React.Component {
       return (
         <div>
           <div>
-            <input type="radio" id="myRadio" value="TEMP1" onClick={this.myFunction} />
-            <input type="radio" id="myRadio" value="TEMP1" onClick={this.myFunction} />
-            <input type="radio" id="myRadio" value="TEMP1" onClick={this.myFunction} />
-            <input type="radio" id="myRadio" value="TEMP1" onClick={this.myFunction} />
             {categories.map((category) => (
-              <button>{category}</button>
+              <button className="category-buttons">{category}</button>
               // onClick={() => fetchQuestions(category)}
             ))}
           </div>

@@ -3,7 +3,7 @@ import CategoryIndex from './category_index';
 // import { fetchQuestions } from '../../actions/question_actions';
 
 const mSTP = state => ({
-   categories: ["General", "Sports", "Film", "Science", "Geograpy"]
+   categories: ["General", "Sports", "Film", "Science", "Geography"]
 });
 
 const mDTP = dispatch => ({

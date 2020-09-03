@@ -8,18 +8,11 @@ import CategoryIndexContainer from "./categories/category_index_container";
 
 const App = () => (
   <div>
-    <NavBarContainer />
     <Modal />
-    <CategoryIndexContainer />
     <Switch>
-<<<<<<< HEAD
-=======
-      {/* <AuthRoute exact path="/" component={MainPage} /> */}
+      <Route exact path="/" component={NavBarContainer} />
       <Route exact path="/question" component={QuestionsContainer} />
-      {/* <AuthRoute exact path="/login" component={LoginFormContainer} />
-      <AuthRoute exact path="/signup" component={SignupFormContainer} /> */}
-
->>>>>>> 127efc58fc6f3cf2f7dda166f4b0be5c193a9ea9
+      <Route exact path="/categories" component={CategoryIndexContainer} />
       <Route exact path="/profile" component={ProfileContainer} />
     </Switch>
   </div>

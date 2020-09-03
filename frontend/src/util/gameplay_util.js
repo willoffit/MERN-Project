@@ -16,7 +16,7 @@ export const getGame = (category) => {
       );
     case "Science":
       return axios.post(
-        "https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple"
+        "https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=multiple"
       );
     case "Geography":
       return axios.post(
@@ -26,3 +26,4 @@ export const getGame = (category) => {
       return "";
   }
 };
+

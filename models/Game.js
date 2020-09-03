@@ -4,12 +4,15 @@ const Schema = mongoose.Schema;
 const GameSchema = new Schema({
   groupIds: {
     type: Array,
-    required: true
+    required: true,
   },
   category: {
     type: String,
     required: true,
-  }
+  },
+  groups: [
+    { type: mongoose.Schema.Types.ObjectId, ref: "Group" }
+  ]
 });
 
 const Game = mongoose.model("Game", GameSchema);

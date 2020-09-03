@@ -1,5 +1,11 @@
 import * as GroupAPIUtil from '../util/group_api_util';
 
+export const addUsersToGroup = (userIds) => {
+    console.log("userIds in group action", userIds);
+    // TODO: either pass userIDs to another page or pass to db 
+}
+    
+
 export const RECEIVE_GROUPS = 'RECEIVE_GROUPS';
 export const RECEIVE_GROUP = 'RECEIVE_GROUP';
 export const REMOVE_GROUP = 'REMOVE_GROUP';

@@ -34,7 +34,7 @@ router.post(
     const userIds = []
 
     req.body.members.split(" ").forEach(member => {
-      User.findOne({ username: member }, (error, user) => {
+      await User.findOne({ username: member }, (error, user) => {
         userIds.push(user._id);
       })
     });

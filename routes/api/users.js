@@ -10,12 +10,30 @@ router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
+const { json } = require("body-parser");
 
 router.get("/", (req, res) => {
   User.find()
     .sort({ date: -1 })
     .then((users) => res.json(users))
     .catch((err) => res.status(404).json({ nousersfound: "No users found" }));
+});
+
+router.patch("/:id", (req, res) => {
+  const { errors, isValid } = validateRegisterInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  User.findByIdAndUpdate(req.params.id, {
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+    password2: req.body.password2
+  }).then(user => res.json(user)).catch(err =>
+    res.status(404).json({ nouserfound: 'No user found with that ID' })
+  );
 });
 
 router.post("/register", (req, res) => {

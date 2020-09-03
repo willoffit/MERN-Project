@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Route, Redirect, withRouter } from "react-router-dom";
 
@@ -12,7 +12,7 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
         <Component {...props} />
       ) : (
         // Redirect to the tweets page if the user is authenticated
-        <Redirect to="/tweets" />
+        <Redirect to="/" />
       )
     }
   />
@@ -26,18 +26,36 @@ const Protected = ({ component: Component, loggedIn, ...rest }) => (
         <Component {...props} />
       ) : (
         // Redirect to the login page if the user is already authenticated
-        <Redirect to="/login" />
+        <Redirect to="/" />
+      )
+    }
+  />
+);
+
+const PostSetup = ({ component: Component, postSetup, path, exact }) => (
+  <Route
+    path={path}
+    exact={exact}
+    render={(props) =>
+      postSetup ? (
+        <Component {...props} />
+      ) : (
+        // Redirect to the tweets page if the user is authenticated
+        <Redirect to="/categories" />
       )
     }
   />
 );
 
 // Use the isAuthenitcated slice of state to determine whether a user is logged in
-let variable = "test";
+// let variable = "test";
 const mapStateToProps = (state) => ({
   loggedIn: state.session.isAuthenticated,
+  postSetup: state.entities.questions.length > 0
 });
 
 export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));
 
 export const ProtectedRoute = withRouter(connect(mapStateToProps)(Protected));
+
+export const PostSetupRoute = withRouter(connect(mapStateToProps)(PostSetup))

@@ -5,7 +5,7 @@ class MainPage extends React.Component {
     return (
       <div>
         <h1>A Trivia Game</h1>
-        <footer>Copyright &copy; 2020 Trivia</footer>
+        <footer>Copyright &copy; 2020 WILK Trivia</footer>
       </div>
     );
   }

@@ -56,10 +56,11 @@ class SignupForm extends React.Component {
     );
   }
 
-  handleDemoUser() {
+  handleDemoUser(e) {
+    e.preventDefault();
     this.props.login({
       username: 'username1',
-      email: 'user@user.com',
+      email: 'user@username.com',
       password: '0123456789',
       password2: '0123456789'
     })
@@ -68,7 +69,7 @@ class SignupForm extends React.Component {
   render() {
     return (
       <div className="form-container">
-        <h1 className="form-header">SIGN UP TO PLAY WILK TRIVIA</h1>
+        <h1 className="form-header">SIGN UP TO PLAY</h1>
         <br />
         <form onSubmit={this.handleSubmit}>
           <div className="form">
@@ -111,11 +112,11 @@ class SignupForm extends React.Component {
               <input 
                 className="form-submit-btn"
                 type="submit" 
-                value="Submit" />
+                value="SUBMIT" />
               <button 
                 className="form-submit-btn"
                 onClick={this.handleDemoUser}>
-                Play as Demo User
+                PLAY AS DEMO USER
               </button>
             </div>
             <br />

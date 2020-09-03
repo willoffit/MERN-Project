@@ -35,15 +35,19 @@ router.post(
       return res.status(400).json(errors);
     }
 
-    // const userIds = req.members.map(member => {
-    //   return User.find({ username: member }).id;
-    // });
+    const userIds = req.members.map(member => {
+      return User.find({ username: member }).then(user => res.json(user));
+    });
 
     const newGame = new Game({
-    category: req.body.category,
-    group: req.body.groupId,
+      category: req.body.category,
+      group: req.body.groupId,
     });
 
     newGame.save().then((game) => res.json(game));
   }
 );
+
+router.delete("/:id", (req, res) => {
+  Game.findByIdAndRemove(req.params.id);
+});

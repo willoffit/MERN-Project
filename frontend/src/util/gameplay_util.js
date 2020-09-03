@@ -26,3 +26,4 @@ export const getGame = (category) => {
       return "";
   }
 };
+

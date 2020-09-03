@@ -12,7 +12,6 @@ module.exports = function validateGameInput(data) {
     if (Validator.isEmpty(data.groupId)) {
       errors.text = "Group ID field is required";
     }
-    
 
     return {
         errors,

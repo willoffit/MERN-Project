@@ -11,11 +11,22 @@ class GroupForm extends React.Component {
             selectedUserId: null,
             selectedUsersId: []
         };
-            
+        
         this.handleChange = this.handleChange.bind(this);
         this.onAddUser = this.onAddUser.bind(this);
         this.onConfirm = this.onConfirm.bind(this);
+        this.removeUser = this.removeUser.bind(this);
+        // this.selectedUsersIdDuplicate = this.selectedUsersIdDuplicate(this);
     }
+    
+
+    // selectedUsersIdDuplicate = () => {
+    //     this.state.selectedUsersId.map((user, i) => {
+    //         return (
+    //             <li>{user}<button onClick={this.removeUser} value={user}>remove user</button></li>
+    //         )
+    //     })
+    // };
 
     // Once the user has been authenticated, redirect to the Tweets page
     componentWillReceiveProps(nextProps) {
@@ -32,6 +43,9 @@ class GroupForm extends React.Component {
         console.log("this.state.selectedUserId", this.state.selectedUserId)
 
     }
+
+
+
     // Handle field updates (called in the render method)
     // 
     // update(field) {
@@ -70,6 +84,17 @@ class GroupForm extends React.Component {
     //         password: '0123456789'
     //     })
     // }
+    removeUser(e){ 
+        e.preventDefault(); 
+        console.log("members array:", this.state.selectedUsersId)
+        console.log("remove user target index:", this.state.selectedUsersId.indexOf(e.target.value)) 
+        console.log("e.target.value", e.target.value)
+
+        const updatedArray = this.state.selectedUsersId.slice(0, this.state.selectedUsersId.indexOf(e.target.value)).concat(this.state.selectedUsersId.slice(this.state.selectedUsersId.indexOf(e.target.value) + 1, this.state.selectedUsersId.length));
+
+        this.setState({selectedUsersId: updatedArray})
+    }
+
     onConfirm(e){
         addUsersToGroup(this.state.selectedUsersId);
     }
@@ -78,9 +103,11 @@ class GroupForm extends React.Component {
         // TODO: check if user is already in array, 
         e.preventDefault();
         console.log("submitted", this.state.selectedUserId);
-        this.setState({
-            selectedUsersId: this.state.selectedUsersId.concat(this.state.selectedUserId),
-        });
+        if( this.state.selectedUsersId.indexOf(this.state.selectedUserId) === -1 && this.state.selectedUserId !== null){
+            this.setState({
+                selectedUsersId: this.state.selectedUsersId.concat(this.state.selectedUserId),
+            });
+        }
     }
 
     handleChange(e) {
@@ -92,17 +119,24 @@ class GroupForm extends React.Component {
     }
 
     render() {
+        let memberList = this.state.selectedUsersId.map((user, i) => {
+            return (
+                <li>{user}<button onClick={this.removeUser} value={user}>remove user</button></li>
+            )
+        })
         // TODO: replace with users from db. Adjust option value={userId}
         // display users in the array 
         // add remove button for each function 
         let users = ["jamaal", "steve", "doug", "willie", "ralph"];
+        const defaultOption = "_1"
         return (
             <div class="group-container">
-                <select name="users" onChange={this.handleChange}>
+                <select value={this.state.selectedUserId || defaultOption} name="users" onChange={this.handleChange}>
+                    <option value="_1" selected={true} disabled={true}>Select User</option>
                     {
                         users.map((user, i) => {
                             return (
-                                <option value={i}>{user}</option>
+                                <option value={i} selected>{user}</option>
                             )
                         })
                     }
@@ -114,11 +148,8 @@ class GroupForm extends React.Component {
                 <div className="add-member-list">
                     <ol>
                         {
-                            this.state.selectedUsersId.map((user, i) => {
-                                return (
-                                    <li>{user}</li>
-                                )
-                            })
+                        //   this.selectedUsersIdDuplicate()
+                        memberList
                             // console.log("coming from orderd list:this.state.selectedUsersId", this.state.selectedUsersId)
                         }
                        

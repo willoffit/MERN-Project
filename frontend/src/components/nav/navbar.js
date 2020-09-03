@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
+import "../modal/modal.css";
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -16,28 +17,37 @@ class NavBar extends React.Component {
 
   // Selectively render links dependent on whether the user is logged in
   getLinks() {
-    if (this.props.loggedIn) {
+    // if (this.props.loggedIn) {
+    //   return (
+    //     <div>
+    //       <Link to={"/profile"}>Profile</Link>
+    //       <button onClick={this.logoutUser}>Logout</button>
+    //     </div>
+    //   );
+    // } else {
       return (
-        <div>
-          <Link to={"/profile"}>Profile</Link>
-          <button onClick={this.logoutUser}>Logout</button>
+        <div className="signup-login-buttons">
+          <Link className="signup-button" onClick={() => this.props.openModal('signup')}>Signup</Link>
+          <Link className="login-button" onClick={() => this.props.openModal('login')}>Login</Link>
         </div>
       );
-    } else {
-      return (
-        <div>
-          <Link to={"/signup"}>Signup</Link>
-          <Link to={"/login"}>Login</Link>
-        </div>
-      );
-    }
+    // }
   }
 
   render() {
     return (
-      <div>
-        <h1>Trivia</h1>
-        {this.getLinks()}
+      <div className="splash-page">
+        <h1 className="splash-page-header">WILK TRIVIA</h1>
+        <div className="splash-page-body">{this.getLinks()}</div>
+        <div>
+          <footer className="splash-page-footer">Copyright &copy; 2020 WILK Trivia</footer>
+          <div className="splash-page-team">
+            <div>Leah de la Pena</div>
+            <div>Israel Gonzalez</div>
+            <div>Will Offit</div>
+            <div>Kevin Besenio</div>
+          </div>
+        </div>
       </div>
     );
   }

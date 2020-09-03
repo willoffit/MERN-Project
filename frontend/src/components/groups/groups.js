@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { addUsersToGroup } from "../../actions/group_actions";
-// import './form.css';
+import "./groups.css";
 
 class GroupForm extends React.Component {
     constructor(props) {
@@ -114,11 +114,11 @@ class GroupForm extends React.Component {
         });
       
     }
-
+   
     render() {
         let memberList = this.state.selectedUsersId.map((user, i) => {
             return (
-                <li>{user}<button onClick={this.removeUser} value={user}>remove user</button></li>
+                <li className="group-remove-li">{user}<button className="group-remove-btn" onClick={this.removeUser} value={user}>remove user</button></li>
             )
         })
         // TODO: replace with users from db. Adjust option value={userId}
@@ -127,29 +127,34 @@ class GroupForm extends React.Component {
         let users = ["jamaal", "steve", "doug", "willie", "ralph"];
         const defaultOption = "_1"
         return (
-            <div class="group-container">
-                <select value={this.state.selectedUserId || defaultOption} name="users" onChange={this.handleChange}>
-                    <option value="_1" selected={true} disabled={true}>Select User</option>
+            <div className="group-main-div">
+            <h3>Add members to group</h3>
+            <div className="group-c-users">
+                
+                <select className="group-drop-down" value={this.state.selectedUserId || defaultOption} name="users" onChange={this.handleChange}>
+                    <option className="group-drop-item" value="_1" selected={true} disabled={true}>Select User</option>
                     {
                         users.map((user, i) => {
                             return (
-                                <option value={i} selected>{user}</option>
+                                <option className="group-drop-item" value={i} selected>{user}</option>
                             )
                         })
                     }
                 </select>
-                <button onClick={this.onAddUser}>Add user</button>
-                <div>
-                    <button onClick={this.onConfirm}>Confirm</button>
+                <button className="group-addUser" onClick={this.onAddUser}>Add user</button>
                 </div>
-                <div className="add-member-list">
-                    <ol>
+                <div className="group-b-users">
+                    <ol className="group-remove-ol">
                         {
-                        //   this.selectedUsersIdDuplicate()
-                        memberList
+                            
+                            memberList
                         }
                        
                     </ol> 
+                </div>
+                <br/>
+                <div className="confirm-div">
+                    <button className="group-confirm" onClick={this.onConfirm}><span>Create Group</span></button>
                 </div>
             </div>
         );

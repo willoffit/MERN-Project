@@ -1,0 +1,201 @@
+.group-main-div {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    margin: auto;
+}
+
+h3 {
+    text-align: center;
+}
+/Users/israelgonzalez/Desktop/wilk/MERN-Project/frontend/src/components/groups/groups.css
+.group-main-div {
+  position: relative;
+  width: 90%;
+  height: 200px;
+  border: 3px solid red;
+}
+
+.group-confirm {
+  font-family: 'Luckiest Guy', cursive;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: purple;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+  width: 180px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+li {
+    text-align: center;
+}
+
+.group-remove-ol{
+    margin:auto;
+}
+
+.group-confirm span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.group-confirm span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.group-confirm:hover span {
+  padding-right: 25px;
+}
+
+.group-confirm:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.group-b-users {
+  position: absolute;
+  right: 10%;
+  width: 30%;
+  height: 120px;
+  border: 3px solid blue;
+} 
+
+.group-c-users {
+  position: absolute;
+  right: 65%;  
+  width: 30%;
+  height: 120px;
+  border: 3px solid green;
+} 
+
+
+.confirm-div {
+    margin:auto;
+    position: absolute;
+    bottom: 10%;
+    left: 42%;
+}
+
+
+.group-addUser {
+ font-family: 'Luckiest Guy', cursive;
+  display: inline-block;
+  padding: 3px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: teal;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 4px #999;
+}
+
+.group-addUser:hover {background-color: rgb(2, 110, 110)}
+
+.group-addUser:active {
+  background-color:  rgb(2, 110, 110);
+  box-shadow: 0 2px #666;
+  transform: translateY(2px);
+}
+
+
+.group-remove-btn {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.group-remove-btn:hover {background-color: #3e8e41}
+
+.group-remove-btn:active {
+  background-color: #3e8e41;
+  box-shadow: 0 3px #666;
+  transform: translateY(4px);
+}
+.group-drop-item {
+
+}
+
+.group-add-user {
+
+}
+
+.group-confirm {
+
+}
+
+.group-remove-btn {
+
+}
+
+.group-remove-ol{
+
+}
+
+.group-remove-li {
+
+}
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.group-drop-down {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.group-drop-down a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.group-drop-down a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .group-drop-down {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+} */

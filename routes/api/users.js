@@ -20,17 +20,8 @@ router.get("/", (req, res) => {
 });
 
 router.patch("/:id", (req, res) => {
-  const { errors, isValid } = validateRegisterInput(req.body);
-
-  if (!isValid) {
-    return res.status(400).json(errors);
-  }
-
   User.findByIdAndUpdate(req.params.id, {
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password,
-    password2: req.body.password2
+    scores: req.body.scores
   }).then(user => res.json(user)).catch(err =>
     res.status(404).json({ nouserfound: 'No user found with that ID' })
   );

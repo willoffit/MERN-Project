@@ -36,7 +36,7 @@ router.post(
     req.body.members.split(" ").forEach(member => {
       User.findOne({ username: member }, (error, user) => {
         userIds.push(user._id);
-      })
+      }).populate('group')
     });
 
     const newGroup = new Group({

@@ -27,13 +27,12 @@ router.patch("/:id", (req, res) => {
   }
 
   User.findByIdAndUpdate(req.params.id, {
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password,
-    password2: req.body.password2
-  }).then(user => res.json(user)).catch(err =>
-    res.status(404).json({ nouserfound: 'No user found with that ID' })
-  );
+    scores: req.body.scores,
+  })
+    .then((user) => res.json(user))
+    .catch((err) =>
+      res.status(404).json({ nouserfound: "No user found with that ID" })
+    );
 });
 
 router.post("/register", (req, res) => {

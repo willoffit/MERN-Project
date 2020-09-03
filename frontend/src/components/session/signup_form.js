@@ -36,6 +36,7 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    
     let user = {
       email: this.state.email,
       username: this.state.username,
@@ -58,9 +59,11 @@ class SignupForm extends React.Component {
 
   handleDemoUser(e) {
     e.preventDefault();
-    this.props.login({
-      username: 'username1',
-      email: 'user@username.com',
+    let userNum = Math.floor(Math.random() * Math.floor(3000000000));
+
+    this.props.signup({
+      username: 'username',
+      email: `user${userNum}@username.com`,
       password: '0123456789',
       password2: '0123456789'
     })

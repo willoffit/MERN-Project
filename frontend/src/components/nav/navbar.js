@@ -16,14 +16,14 @@ class NavBar extends React.Component {
               onClick={() => this.props.openModal("signup")}
             >
               <div>Signup</div>
-              <i class="far fa-id-badge"></i>
+              <i className="far fa-id-badge"></i>
             </Link>
             <Link
               className="login-button rotate_left"
               onClick={() => this.props.openModal("login")}
             >
               <div>Login</div>
-              <i class="fas fa-sign-in-alt"></i>
+              <i className="fas fa-sign-in-alt"></i>
             </Link>
           </div>
         </div>
@@ -34,27 +34,27 @@ class NavBar extends React.Component {
           <div className="splash-page-team">
             <div className="Will">
               <div>Will Offit</div>
-              <i class="fab fa-github"></i>
-              <i class="fab fa-linkedin"></i>
-              <i class="fab fa-angellist"></i>
+              <i className="fab fa-github"></i>
+              <i className="fab fa-linkedin"></i>
+              <i className="fab fa-angellist"></i>
             </div>
             <div className="Isreal">
               <div>Israel Gonzalez</div>
-              <i class="fab fa-github"></i>
-              <i class="fab fa-linkedin"></i>
-              <i class="fab fa-angellist"></i>
+              <i className="fab fa-github"></i>
+              <i className="fab fa-linkedin"></i>
+              <i className="fab fa-angellist"></i>
             </div>
             <div className="Leah">
               <div>Leah de la Pena</div>
-              <i class="fab fa-github"></i>
-              <i class="fab fa-linkedin"></i>
-              <i class="fab fa-angellist"></i>
+              <i className="fab fa-github"></i>
+              <i className="fab fa-linkedin"></i>
+              <i className="fab fa-angellist"></i>
             </div>
             <div className="Kevin">
               <div>Kevin Besenio</div>
-              <i class="fab fa-github"></i>
-              <i class="fab fa-linkedin"></i>
-              <i class="fab fa-angellist"></i>
+              <i className="fab fa-github"></i>
+              <i className="fab fa-linkedin"></i>
+              <i className="fab fa-angellist"></i>
             </div>
           </div>
         </div>

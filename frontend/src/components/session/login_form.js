@@ -60,8 +60,8 @@ class LoginForm extends React.Component {
 
   handleDemoUser() {
     this.props.login({
-      email: 'user@user.com',
-      password: '0123456789'
+      email: 'will@email1.com',
+      password: 'phillies'
     })
   }
 

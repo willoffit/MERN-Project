@@ -31,9 +31,11 @@ class Answer extends React.Component {
     }
 
     render() {
-        return (
-            this.props.userAns === -1 ? null : this.checkAnswer()
-        )
+        return this.props.userAns === -1 ? null : (
+            <div>
+                {this.checkAnswer()}
+                <button onClick={() => this.props.nextQuestion()}>Next</button>
+            </div>);
     }
 }
 

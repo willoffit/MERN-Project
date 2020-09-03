@@ -1,6 +1,21 @@
+import React from 'react';
+import Answer from './answers'
+import Question from './questions';
+
 import { connect } from 'react-redux';
 import { fetchQuestions, fetchQuestion } from '../../actions/question_actions';
-import Question from './questions';
+
+
+// class Game extends React.Component {
+//     componentDidMount() {
+//         this.props.fetchQuestions("General");
+//     }
+
+//     render() {
+//         return 
+//     }
+// }
+
 
 const mapStateToProps = (state, ownProps) => ({
     questions: state.entities.questions

@@ -30,6 +30,11 @@ class Question extends React.Component {
     handleUserSelect(e) {
         e.preventDefault();
 
+        document.getElementById("radio-0").disabled = true;
+        document.getElementById("radio-1").disabled = true;
+        document.getElementById("radio-2").disabled = true;
+        document.getElementById("radio-3").disabled = true;
+
         const idx = parseInt(e.target.value);
         this.setState({ userChoice: idx });
 
@@ -54,6 +59,7 @@ class Question extends React.Component {
                  <p>Question: {question.question}</p>
                  <p>Answers: {answers.map((answer, idx) => (
                         <button 
+                            id={`radio-${idx}`}
                             key={`answer-${idx}`}
                             type="radio"
                             value={idx}

@@ -1,9 +1,7 @@
-import React from 'react';
-import Answer from './answers'
 import Question from './questions';
 
 import { connect } from 'react-redux';
-import { fetchQuestions, fetchQuestion } from '../../actions/question_actions';
+import { fetchQuestions } from '../../actions/question_actions';
 
 
 // class Game extends React.Component {

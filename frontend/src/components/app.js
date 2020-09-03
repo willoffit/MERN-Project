@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import { AuthRoute, ProtectedRoute, PostSetupRoute } from '../util/route_util'
+import { PostSetupRoute } from '../util/route_util'
 import NavBarContainer from "./nav/navbar_container";
 import ProfileContainer from "./profile/profile_container";
 import GroupFormContainer from "./groups/groups_container";
@@ -12,6 +12,8 @@ const App = () => (
   <div>
     <Modal />
     <Switch>
+      <Route exact path="/" component={NavBarContainer} />
+      <Route exact path="/category" component={CategoryIndexContainer} />
       <Route exact path="/group" component={GroupFormContainer} /> 
       <PostSetupRoute exact path="/question" component={QuestionsContainer} />
       <Route exact path="/profile" component={ProfileContainer} />

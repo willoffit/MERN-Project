@@ -1,63 +1,75 @@
 import React from 'react';
 import Answer from "./answers";
+import { Link } from 'react-router-dom';
 
 class Question extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { userChoice: -1 };
+        this.state = { userChoice: -1, done: false };
 
-        this.renderAnswers = this.renderAnswers.bind(this);
         this.handleUserSelect = this.handleUserSelect.bind(this);
-        this.getNextQuestion = this.getNextQuestion.bind(this);
+        this.handleNext = this.handleNext.bind(this);
+
+        this.questions = this.props.questions.slice();
+        this.question = this.questions.pop();
+
+        this.answers = [
+            this.question.correct_answer, 
+            ...this.question.incorrect_answers
+        ]
+        this.answers = this.shuffle(this.answers);
     }
 
-    getNextQuestion(questions) {
-        return questions.pop();
-    }
-
-    componentDidMount() {
-        this.props.fetchQuestions("General")
-    }
-
-    renderAnswers(question) {
-        let answers = [];
-        answers.push(question.correct_answer);
-        answers.push(...question.incorrect_answers);
-        return answers;
+    shuffle(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
     }
 
     handleUserSelect(e) {
         e.preventDefault();
 
-        document.getElementById("radio-0").disabled = true;
-        document.getElementById("radio-1").disabled = true;
-        document.getElementById("radio-2").disabled = true;
-        document.getElementById("radio-3").disabled = true;
+        document.getElementById("radio-0").setAttribute("disabled", "");
+        document.getElementById("radio-1").setAttribute("disabled", "");
+        document.getElementById("radio-2").setAttribute("disabled", "");
+        document.getElementById("radio-3").setAttribute("disabled", "");
 
         const idx = parseInt(e.target.value);
-        this.setState({ userChoice: idx });
-
+        this.setState({ userChoice: idx, done: false });
     }
 
+    handleNext() {
+        document.getElementById("radio-0").removeAttribute("disabled");
+        document.getElementById("radio-1").removeAttribute("disabled");
+        document.getElementById("radio-2").removeAttribute("disabled");
+        document.getElementById("radio-3").removeAttribute("disabled");
 
-    afterMounted(questions) {
-        let question = this.getNextQuestion(questions);
-        let answers = this.renderAnswers(question);
+        this.question = this.questions.pop()
+        this.answers = this.shuffle([
+            this.question.correct_answer,
+            ...this.question.incorrect_answers,
+        ]);
 
+        this.setState({ userChoice: -1, done: true });
+    }
+
+    afterMounted() {
         return (
             <div>
                 <Answer 
-                     answers={answers}
+                     answers={this.answers}
                      userAns={this.state.userChoice}
-                     correctAns={question.correct_answer}
-                     incorrectAns={question.incorrect_answers}
-                     nextQuestion={() => this.getNextQuestion(questions)}
+                     correctAns={this.question.correct_answer}
+                     incorrectAns={this.question.incorrect_answers}
+                     nextQuestion={() => this.getNextQuestion(this.questions)}
                  />
 
-                 <p>Category: {question.category}</p>
-                 <p>Question: {question.question}</p>
-                 <p>Answers: {answers.map((answer, idx) => (
+                 <p>Category: {this.question.category}</p>
+                 <p>Question: {this.question.question}</p>
+                 <p>Answers: {this.answers.map((answer, idx) => (
                         <button 
                             id={`radio-${idx}`}
                             key={`answer-${idx}`}
@@ -68,13 +80,18 @@ class Question extends React.Component {
                             {answer}
                          </button>
                  ))}</p>
+                
+                <button onClick={() => this.handleNext()}>Next</button>
             </div>
         )
     }
 
     render() {
-        let questions = this.props.questions.slice();
-        return this.props.questions.length === 0 ? null : this.afterMounted(questions)
+        return this.questions.length === 0 ? (
+            <Link to="/">Play Again?</Link>
+            ) : (
+                this.afterMounted(this.questions)
+            )
     }
 }
 

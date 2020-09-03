@@ -17,7 +17,7 @@ class CategoryIndex extends React.Component {
         <div>
           <div>
             {categories.map((category) => (
-              <button className="category-buttons">{category}</button>
+              <button onClick={() => this.props.fetchQuestions(category)}>{category}</button>
               // onClick={() => fetchQuestions(category)}
             ))}
           </div>

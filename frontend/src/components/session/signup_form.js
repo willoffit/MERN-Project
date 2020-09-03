@@ -56,10 +56,11 @@ class SignupForm extends React.Component {
     );
   }
 
-  handleDemoUser() {
+  handleDemoUser(e) {
+    e.preventDefault();
     this.props.login({
       username: 'username1',
-      email: 'user@user.com',
+      email: 'user@username.com',
       password: '0123456789',
       password2: '0123456789'
     })

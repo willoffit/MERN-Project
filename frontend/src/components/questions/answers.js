@@ -8,12 +8,8 @@ class Answer extends React.Component {
         this.checkAnswer = this.checkAnswer.bind(this);
         this.handleCorrect = this.handleCorrect.bind(this);
         this.handleIncorrect = this.handleIncorrect.bind(this);
-
-        // setInterval(this.props.nextQuestion(), 10000);
     }
-
-    componentDidMount() {}
-
+    
     checkAnswer() {
         if (this.props.userAns === this.props.answers.indexOf(this.props.correctAns)) {
             return this.handleCorrect();
@@ -31,9 +27,10 @@ class Answer extends React.Component {
     }
 
     render() {
-        return (
-            this.props.userAns === -1 ? null : this.checkAnswer()
-        )
+        return this.props.userAns === -1 ? null : (
+            <div>
+                {this.checkAnswer()}
+            </div>);
     }
 }
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import { AuthRoute, ProtectedRoute, PostSetupRoute } from '../util/route_util'
 import NavBarContainer from "./nav/navbar_container";
 import ProfileContainer from "./profile/profile_container";
 import QuestionsContainer from './questions/questions_container';
@@ -12,8 +13,7 @@ const App = () => (
     <Modal />
     <CategoryIndexContainer />
     <Switch>
-      <Route exact path="/question" component={QuestionsContainer} />
-
+      <PostSetupRoute exact path="/question" component={QuestionsContainer} />
       <Route exact path="/profile" component={ProfileContainer} />
     </Switch>
   </div>

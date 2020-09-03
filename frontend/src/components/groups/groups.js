@@ -39,8 +39,7 @@ class GroupForm extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState){
-        console.log("this.state.selectedUsersId", this.state.selectedUsersId )
-        console.log("this.state.selectedUserId", this.state.selectedUserId)
+       
 
     }
 
@@ -86,9 +85,7 @@ class GroupForm extends React.Component {
     // }
     removeUser(e){ 
         e.preventDefault(); 
-        console.log("members array:", this.state.selectedUsersId)
-        console.log("remove user target index:", this.state.selectedUsersId.indexOf(e.target.value)) 
-        console.log("e.target.value", e.target.value)
+       
 
         const updatedArray = this.state.selectedUsersId.slice(0, this.state.selectedUsersId.indexOf(e.target.value)).concat(this.state.selectedUsersId.slice(this.state.selectedUsersId.indexOf(e.target.value) + 1, this.state.selectedUsersId.length));
 
@@ -102,7 +99,7 @@ class GroupForm extends React.Component {
     onAddUser(e){
         // TODO: check if user is already in array, 
         e.preventDefault();
-        console.log("submitted", this.state.selectedUserId);
+      
         if( this.state.selectedUsersId.indexOf(this.state.selectedUserId) === -1 && this.state.selectedUserId !== null){
             this.setState({
                 selectedUsersId: this.state.selectedUsersId.concat(this.state.selectedUserId),
@@ -115,7 +112,7 @@ class GroupForm extends React.Component {
         this.setState({
             selectedUserId: e.target.value,
         });
-        console.log("e.target", e.target.value, "e.target.id", e.target.id);
+      
     }
 
     render() {
@@ -150,7 +147,6 @@ class GroupForm extends React.Component {
                         {
                         //   this.selectedUsersIdDuplicate()
                         memberList
-                            // console.log("coming from orderd list:this.state.selectedUsersId", this.state.selectedUsersId)
                         }
                        
                     </ol> 

@@ -12,6 +12,8 @@ const App = () => (
   <div>
     <Modal />
     <Switch>
+      <Route exact path="/" component={NavBarContainer} />
+      <Route exact path="/categories" component={CategoryIndexContainer} />
       <Route exact path="/group" component={GroupFormContainer} /> 
       <PostSetupRoute exact path="/question" component={QuestionsContainer} />
       <Route exact path="/profile" component={ProfileContainer} />

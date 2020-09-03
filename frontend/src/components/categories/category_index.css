@@ -1,0 +1,34 @@
+.category-page {
+   font-size: 90px;
+   font-family: 'Luckiest Guy', cursive;
+   color: purple;
+   text-align: center;
+   padding: 30px 75px;
+}
+
+.categories {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: space-around;
+   margin: 30px 0px;
+}
+
+.category-buttons {
+   width: 32%;
+   height: 250px;
+   margin: 20px 0px;
+   border-radius: 20px;
+   border: 4px solid black;
+   box-shadow: 10px 10px grey;
+   background-color: whitesmoke;
+   font-family: 'Luckiest Guy', cursive;
+   font-size: 40px;
+   color: teal;
+   text-decoration: underline;
+}
+
+.category-buttons:hover {
+   border: 4px solid yellow;
+   color: purple;
+}

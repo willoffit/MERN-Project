@@ -31,26 +31,27 @@ router.post(
       return res.status(400).json(errors);
     }
 
-    const userIds = []
-
-    req.body.members.split(" ").forEach(member => {
-      User.findOne({ username: member }, (error, user) => {
-        userIds.push(user._id);
-      }).populate('group')
-    });
-
     const newGroup = new Group({
       name: req.body.name,
-      members: userIds
+      members: req.body.members
     });
 
     newGroup.save().then((group) => res.json(group));
   }
 );
 
+router.get(
+  "/", (req, res) => { 
+    Group.find()    
+    .then((group) => res.json(group))   
+    .catch((err) => res.status(404).json({ nogroupfound: "No group found" }));
+  });
+
+  
 // router.update(
 //   "/",
 //   // passport.authenticate("jwt", { session: false }),
+
 //   (req, res) => {
 //     const { errors, isValid } = validateGroupInput(req.body);
 

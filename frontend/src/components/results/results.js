@@ -6,6 +6,7 @@ class Results extends React.Component {
    }
 
    render() {
+      const members = this.props.group.members;
       return (
          <div>
 

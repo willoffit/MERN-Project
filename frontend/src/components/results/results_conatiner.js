@@ -4,7 +4,7 @@ import { fetchUsers } from '../../actions/user_actions';
 import { fetchGroup } from '../../actions/group_actions'
 
 const mSTP = (state, ownProps) => ({
-   group: state.entities.group[ownProps.match.params.groupId],
+   group: state.entities.groups[ownProps.match.params.groupId],
    currentUser: state.session.id
 });
 

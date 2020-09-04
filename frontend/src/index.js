@@ -16,7 +16,7 @@ import { setAuthToken } from "./util/session_api_util";
 // We have not created this action yet, but will do so in the next step
 import { logout } from "./actions/session_actions";
 
-// import { fetchUsers } from './actions/user_actions';
+import { fetchUsers } from './actions/user_actions';
 // import { fetchUsers } from './util/users_api_util'
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // FOR TESTING
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  // window.fetchUsers = fetchUsers;
+  window.fetchUsers = fetchUsers;
   // FOR TESTING
 
   ReactDOM.render(<Root store={store} />, root);

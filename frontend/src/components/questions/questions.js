@@ -1,5 +1,6 @@
 import React from 'react';
 import Answer from "./answers";
+import Results from '../results/results'
 import { Link } from 'react-router-dom';
 
 class Question extends React.Component {
@@ -99,7 +100,11 @@ class Question extends React.Component {
 
     render() {
         return this.questions.length === 0 ? (
-            <Link to="/">Play Again?</Link>
+            <Results 
+                category={this.question.category}
+                users={this.props.users}
+                group={this.props.group}
+            />
             ) : (
                 this.afterMounted(this.questions)
             )

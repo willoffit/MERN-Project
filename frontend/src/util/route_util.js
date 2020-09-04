@@ -41,7 +41,7 @@ const PostSetup = ({ component: Component, postSetup, path, exact }) => (
         <Component {...props} />
       ) : (
         // Redirect to the tweets page if the user is authenticated
-        <Redirect to="/categories" />
+        <Redirect to="/category" />
       )
     }
   />

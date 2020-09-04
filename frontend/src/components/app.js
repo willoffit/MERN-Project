@@ -15,7 +15,7 @@ const App = () => (
       <Route exact path="/" component={NavBarContainer} />
       <Route exact path="/category" component={CategoryIndexContainer} />
       <Route exact path="/group" component={GroupFormContainer} /> 
-      <PostSetupRoute exact path="/question" component={QuestionsContainer} />
+      <Route exact path="/question" component={QuestionsContainer} />
       <Route exact path="/profile" component={ProfileContainer} />
     </Switch>
   </div>

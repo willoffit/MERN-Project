@@ -6,7 +6,6 @@ const usersReducer = (oldState={}, action) => {
 
   switch (action.type) {
     case RECEIVE_USERS:
-      // return action.users;
       for (let i = 0; i < action.users.length; i++) {
         let user = action.users[i];
         nextState[user._id] = user

@@ -28,14 +28,8 @@ class GroupForm extends React.Component {
     }
 
     updateUser(group) {
-        // debugger
         let users = Object.values(group.members).map(userId => {
-            console.log(this.props.users[userId]);
-            console.log(group._id);
-
             this.props.users[userId].group = group._id;
-
-            console.log(this.props.users[userId]);
             return this.props.users[userId]
         })
 
@@ -46,30 +40,14 @@ class GroupForm extends React.Component {
 
     onConfirm(e){
         e.preventDefault();
-        let members;
-        let name;
+
         let group = {};
         group.name = this.state.groupName
-        group.members = this.state.selectedUsersId
-        console.log(group);
+        group.members = this.state.selectedUsersId;
+
         this.props.createGroup(group)
             .then(action => this.updateUser(action.group))
             .then(() => this.props.history.push("/category"))
-            // .then(group => console.log(group))
-        // const formData = new FormData();
-        // formData.append('group[id]', this.props.match.params.groupId);
-        // formData.append('group[name]', this.state.groupName);
-        // formData.append('group[members]', this.state.selectedUsersId);
-        
-        // this.props.createGroup(formData);
-        console.log("this.state.groupName:", this.state.groupName);
-        console.log("this.state.selectedUsersId:", this.state.selectedUsersId)
-        // console.log("form data:", formData)
-
-
-        // const formData2 = new FormData();]
-        // formData2.append('user[group]', this.props.match.params.group);
-        // this.props.updateUser(formData2);
     }
 
     handleGroupNameInput(e){
@@ -98,7 +76,6 @@ class GroupForm extends React.Component {
         }
         let test = Object.values(this.props.users)
         let memberList = this.state.selectedUsersId.map((userId, i) => {
-            console.log(userId)
             return (
                 <li>{this.props.users[userId].username}<button onClick={this.removeUser} value={userId}>remove user</button></li>
             )

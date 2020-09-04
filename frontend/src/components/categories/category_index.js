@@ -14,7 +14,6 @@ class CategoryIndex extends React.Component {
 
    render() {
       const { categories } = this.props;
-      // console.log(this.props.users['5f51c4403e05452d6745ca70'].group)
 
       return (
         <div>

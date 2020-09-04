@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import GroupForm from "./groups";
 import { fetchUsers } from "../../actions/user_actions";
-import { updateUser } from "../../actions/user_actions";
+import { editUser } from "../../actions/user_actions";
 import { createGroup } from "../../actions/group_actions";
 
 const mapStateToProps = (state) => {
@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchUsers: () => dispatch(fetchUsers()),
-        updateUser: (user) => dispatch(updateUser(user)),
+        updateUser: (user) => dispatch(editUser(user)),
         createGroup: (group) => dispatch(createGroup(group))
     };
 };

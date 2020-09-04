@@ -18,11 +18,11 @@ const UserSchema = new Schema({
     required: true,
   },
   scores: {
-    sports: { type: Array },
-    geography: { type: Array },
-    history: { type: Array },
-    film: { type: Array },
-    general_knowledge: { type: Array }
+    "Sports": { type: Array },
+    "Geography": { type: Array }, 
+    "History": { type: Array }, 
+    "Film": { type: Array },
+    "General Knowledge": { type: Array }
   },
   group: { type: mongoose.Schema.Types.ObjectId, ref: 'Group' },
   date: {
@@ -34,3 +34,4 @@ const UserSchema = new Schema({
 UserSchema.plugin(uniqueValidator);
 const User = mongoose.model("User", UserSchema);
 module.exports = User;
+

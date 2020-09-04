@@ -44,7 +44,9 @@ class LoginForm extends React.Component {
       password: this.state.password,
     };
 
-    this.props.login(user);
+    this.props.login(user)
+        .then(() => this.props.history.push('/group'))
+        .then(() => this.props.closeModal())
   }
 
   // Render the session errors if there are any
@@ -59,10 +61,13 @@ class LoginForm extends React.Component {
   }
 
   handleDemoUser() {
-    this.props.login({
-      email: 'user@user.com',
-      password: '0123456789'
-    })
+    this.props
+      .login({
+        email: "Kev@kevvykev.com",
+        password: "0123456789",
+      })
+      .then(() => this.props.history.push("/group"))
+      .then(() => this.props.closeModal());
   }
 
   render() {

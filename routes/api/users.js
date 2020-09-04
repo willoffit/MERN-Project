@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
 
+
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 
 const validateRegisterInput = require("../../validation/register");
@@ -20,8 +21,9 @@ router.get("/", (req, res) => {
 });
 
 router.patch("/:id", (req, res) => {
-  User.findByIdAndUpdate(req.params.id, {
-    scores: req.body.scores
+  User.findOneAndUpdate({ id: req.params.id }, {
+    scores: req.body.scores,
+    group: req.body.group
   }).then(user => res.json(user)).catch(err =>
     res.status(404).json({ nouserfound: 'No user found with that ID' })
   );

@@ -27,14 +27,35 @@ class GroupForm extends React.Component {
         this.setState({selectedUsersId: updatedArray})
     }
 
+    updateUser(group) {
+        // debugger
+        let users = Object.values(group.members).map(userId => {
+            console.log(this.props.users[userId]);
+            console.log(group._id);
+
+            this.props.users[userId].group = group._id;
+
+            console.log(this.props.users[userId]);
+            return this.props.users[userId]
+        })
+
+        users.forEach(user => {
+            this.props.updateUser(user);
+        })
+    }
+
     onConfirm(e){
         e.preventDefault();
         let members;
         let name;
         let group = {};
-        group[name] = this.state.groupName
-        group[members] = this.state.selectedUsersId
-        this.props.createGroup(group);
+        group.name = this.state.groupName
+        group.members = this.state.selectedUsersId
+        console.log(group);
+        this.props.createGroup(group)
+            .then(action => this.updateUser(action.group))
+            .then(() => this.props.history.push("/category"))
+            // .then(group => console.log(group))
         // const formData = new FormData();
         // formData.append('group[id]', this.props.match.params.groupId);
         // formData.append('group[name]', this.state.groupName);
@@ -46,7 +67,7 @@ class GroupForm extends React.Component {
         // console.log("form data:", formData)
 
 
-        // const formData2 = new FormData();
+        // const formData2 = new FormData();]
         // formData2.append('user[group]', this.props.match.params.group);
         // this.props.updateUser(formData2);
     }

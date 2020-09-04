@@ -32,12 +32,12 @@ class Question extends React.Component {
     handleUserSelect(e) {
         e.preventDefault();
 
-        document.getElementById("radio-0").setAttribute("disabled", "");
-        document.getElementById("radio-1").setAttribute("disabled", "");
+        document.getElementById("btn-0").setAttribute("disabled", "");
+        document.getElementById("btn-1").setAttribute("disabled", "");
 
         if (this.question.type === "multiple") {
-            document.getElementById("radio-2").setAttribute("disabled", "");
-            document.getElementById("radio-3").setAttribute("disabled", "");
+            document.getElementById("btn-2").setAttribute("disabled", "");
+            document.getElementById("btn-3").setAttribute("disabled", "");
         }
 
         const idx = parseInt(e.target.value);
@@ -45,12 +45,12 @@ class Question extends React.Component {
     }
 
     handleNext() {
-        document.getElementById("radio-0").removeAttribute("disabled");
-        document.getElementById("radio-1").removeAttribute("disabled");
+        document.getElementById("btn-0").removeAttribute("disabled");
+        document.getElementById("btn-1").removeAttribute("disabled");
 
         if (this.question.type === "multiple") {
-            document.getElementById("radio-2").removeAttribute("disabled");
-            document.getElementById("radio-3").removeAttribute("disabled");
+            document.getElementById("btn-2").removeAttribute("disabled");
+            document.getElementById("btn-3").removeAttribute("disabled");
         }
 
         this.question = this.questions.pop()
@@ -63,7 +63,8 @@ class Question extends React.Component {
     }
 
     afterMounted() {
-        // console.log(this.props.user)
+        let klass = "correct";
+
         return (
             <div>
                 <Answer
@@ -75,14 +76,14 @@ class Question extends React.Component {
                     difficulty={this.question.difficulty}
                     category={this.question.category}
                     user={this.props.user}
-                    updateUser={this.props.updateUser}
+                    editUser={this.props.editUser}
                 />
 
                 <p>Category: {this.question.category}</p>
                 <p>Question: {this.question.question}</p>
                 <p>Answers: {this.answers.map((answer, idx) => (
                     <button 
-                        id={`radio-${idx}`}
+                        id={`btn-${idx}`}
                         key={`answer-${idx}`}
                         type="radio"
                         value={idx}

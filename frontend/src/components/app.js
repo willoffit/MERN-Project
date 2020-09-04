@@ -12,11 +12,11 @@ const App = () => (
   <div>
     <Modal />
     <Switch>
-      <Route exact path="/" component={NavBarContainer} />
       <Route exact path="/category" component={CategoryIndexContainer} />
       <Route exact path="/group" component={GroupFormContainer} /> 
       <Route exact path="/question" component={QuestionsContainer} />
       <Route exact path="/profile" component={ProfileContainer} />
+      <Route exact path="/" component={NavBarContainer} />
     </Switch>
   </div>
 );

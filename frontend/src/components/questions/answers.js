@@ -35,6 +35,7 @@ class Answer extends React.Component {
           <div>
             <h1>YOU ARE RIGHT!</h1>
             <p>Points: {this.total}</p>
+            <p>Correct Answer: {this.props.correctAns}</p>
           </div>
         );
     }
@@ -47,6 +48,7 @@ class Answer extends React.Component {
               YOU SUCK! YOU ARE BAD AT THIS!
             </h1>
             <p>Points: {this.total}</p>
+            <p>Correct Answer: {this.props.correctAns}</p>
           </div>
         );
     }
@@ -83,8 +85,7 @@ class Answer extends React.Component {
         let user = this.props.user;
 
         user.scores[this.props.category].push(this.total);
-        console.log(user);
-        // this.props.updateUser(user);
+        this.props.editUser(user);
     }
 
     render() {

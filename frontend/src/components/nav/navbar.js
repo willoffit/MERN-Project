@@ -9,6 +9,7 @@ class NavBar extends React.Component {
     return (
       <div className="splash-page">
         <h1 className="splash-page-header">WILK TRIVIA</h1>
+        <button onClick={() => this.props.logout()}>Log Out</button>
         <div className="splash-page-body">
           <div className="signup-login-buttons">
             <Link

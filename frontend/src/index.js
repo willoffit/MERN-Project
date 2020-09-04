@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // FOR TESTING
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  // window.fetchUsers = fetchUsers;
+  window.fetchUsers = fetchUsers;
   // FOR TESTING
 
   ReactDOM.render(<Root store={store} />, root);

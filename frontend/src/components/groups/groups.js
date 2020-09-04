@@ -74,7 +74,7 @@ class GroupForm extends React.Component {
         if (Object.values(this.props.users).length === 0){
             return null 
         }
-        let test = Object.values(this.props.users)
+
         let memberList = this.state.selectedUsersId.map((userId, i) => {
             return (
                 <li>{this.props.users[userId].username}<button onClick={this.removeUser} value={userId}>remove user</button></li>

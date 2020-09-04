@@ -17,6 +17,7 @@ export const updateUser = (user) => ({
 export const fetchUsers = () => (dispatch) => (
   UsersAPIUtil.fetchUsers()
     .then(users => dispatch(receiveUsers(users.data)))
+    .catch(err => console.log(err))
 )
 
 export const editUser = (user) => (dispatch) => (

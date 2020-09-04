@@ -5,10 +5,104 @@ import { fetchQuestions } from '../../actions/question_actions';
 import { editUser } from '../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) => ({
-    questions: state.entities.questions,
-    users: state.entities.users,
-    // user: state.entities.users["5f501a5bf22e47df39371e32"],
-    user: state.entities.users[state.session.user.id],
+  // questions: state.entities.questions,
+  questions: [
+    {
+      category: "General Knowledge",
+      type: "multiple",
+      difficulty: "easy",
+      question: "What does a funambulist walk on?",
+      correct_answer: "A Tight Rope",
+      incorrect_answers: ["Broken Glass", "Balls", "The Moon"],
+    },
+    {
+      category: "General Knowledge",
+      type: "multiple",
+      difficulty: "hard",
+      question: "What year was Queen Elizabeth II born?",
+      correct_answer: "1926",
+      incorrect_answers: ["1923", "1929", "1930"],
+    },
+    {
+      category: "General Knowledge",
+      type: "boolean",
+      difficulty: "easy",
+      question: "The Sun rises from the North.",
+      correct_answer: "False",
+      incorrect_answers: ["True"],
+    },
+    {
+      category: "General Knowledge",
+      type: "multiple",
+      difficulty: "easy",
+      question: "Five dollars is worth how many nickles?",
+      correct_answer: "100",
+      incorrect_answers: ["50", "25", "69"],
+    },
+    {
+      category: "General Knowledge",
+      type: "boolean",
+      difficulty: "easy",
+      question: "Pluto is a planet.",
+      correct_answer: "False",
+      incorrect_answers: ["True"],
+    },
+    {
+      category: "General Knowledge",
+      type: "multiple",
+      difficulty: "easy",
+      question:
+        "Which American-owned brewery led the country in sales by volume in 2015?",
+      correct_answer: "D. G. Yuengling and Son, Inc",
+      incorrect_answers: [
+        "Anheuser Busch",
+        "Boston Beer Company",
+        "Miller Coors",
+      ],
+    },
+    {
+      category: "General Knowledge",
+      type: "multiple",
+      difficulty: "easy",
+      question: "What zodiac sign is represented by a pair of scales?",
+      correct_answer: "Libra",
+      incorrect_answers: ["Aries", "Capricorn", "Sagittarius"],
+    },
+    {
+      category: "General Knowledge",
+      type: "multiple",
+      difficulty: "medium",
+      question:
+        "What was the name given to Japanese military dictators who ruled the country through the 12th and 19th Century?",
+      correct_answer: "Shogun",
+      incorrect_answers: ["Ninja", "Samurai", "Shinobi"],
+    },
+    {
+      category: "General Knowledge",
+      type: "multiple",
+      difficulty: "hard",
+      question: "The word &quot;abulia&quot; means which of the following?",
+      correct_answer: "The inability to make decisions",
+      incorrect_answers: [
+        "The inability to stand up",
+        "The inability to concentrate on anything",
+        "A feverish desire to rip one&#039;s clothes off",
+      ],
+    },
+    {
+      category: "General Knowledge",
+      type: "multiple",
+      difficulty: "hard",
+      question:
+        "In &quot;Resident Evil 3&quot;, how many inventory slots does Jill have at the start of the game?",
+      correct_answer: "10",
+      incorrect_answers: ["6", "8", "12"],
+    },
+  ],
+  users: state.entities.users,
+  // user: state.entities.users["5f501a5bf22e47df39371e32"],
+  user: state.entities.users[state.session.user.id],
+  group: state.entities.groups[state.entities.users[state.session.user.id].group],
   // questions: state.entities.questions
 });
 
@@ -18,99 +112,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Question);
-    //   questions: [
-    //     {
-    //         category: "General Knowledge",
-    //         type: "multiple",
-    //         difficulty: "easy",
-    //         question: "What does a funambulist walk on?",
-    //         correct_answer: "A Tight Rope",
-    //         incorrect_answers: ["Broken Glass", "Balls", "The Moon"],
-    //     },
-    //     {
-    //         category: "General Knowledge",
-    //         type: "multiple",
-    //         difficulty: "hard",
-    //         question: "What year was Queen Elizabeth II born?",
-    //         correct_answer: "1926",
-    //         incorrect_answers: ["1923", "1929", "1930"],
-    //     },
-    //     {
-    //         category: "General Knowledge",
-    //         type: "boolean",
-    //         difficulty: "easy",
-    //         question: "The Sun rises from the North.",
-    //         correct_answer: "False",
-    //         incorrect_answers: ["True"],
-    //     },
-    //     {
-    //         category: "General Knowledge",
-    //         type: "multiple",
-    //         difficulty: "easy",
-    //         question: "Five dollars is worth how many nickles?",
-    //         correct_answer: "100",
-    //         incorrect_answers: ["50", "25", "69"],
-    //     },
-    //     {
-    //         category: "General Knowledge",
-    //         type: "boolean",
-    //         difficulty: "easy",
-    //         question: "Pluto is a planet.",
-    //         correct_answer: "False",
-    //         incorrect_answers: ["True"],
-    //     },
-    //     {
-    //         category: "General Knowledge",
-    //         type: "multiple",
-    //         difficulty: "easy",
-    //         question:
-    //             "Which American-owned brewery led the country in sales by volume in 2015?",
-    //         correct_answer: "D. G. Yuengling and Son, Inc",
-    //         incorrect_answers: [
-    //             "Anheuser Busch",
-    //             "Boston Beer Company",
-    //             "Miller Coors",
-    //         ],
-    //     },
-    //     {
-    //         category: "General Knowledge",
-    //         type: "multiple",
-    //         difficulty: "easy",
-    //         question: "What zodiac sign is represented by a pair of scales?",
-    //         correct_answer: "Libra",
-    //         incorrect_answers: ["Aries", "Capricorn", "Sagittarius"],
-    //     },
-    //     {
-    //         category: "General Knowledge",
-    //         type: "multiple",
-    //         difficulty: "medium",
-    //         question:
-    //             "What was the name given to Japanese military dictators who ruled the country through the 12th and 19th Century?",
-    //         correct_answer: "Shogun",
-    //         incorrect_answers: ["Ninja", "Samurai", "Shinobi"],
-    //     },
-    //     {
-    //         category: "General Knowledge",
-    //         type: "multiple",
-    //         difficulty: "hard",
-    //         question: "The word &quot;abulia&quot; means which of the following?",
-    //         correct_answer: "The inability to make decisions",
-    //         incorrect_answers: [
-    //             "The inability to stand up",
-    //             "The inability to concentrate on anything",
-    //             "A feverish desire to rip one&#039;s clothes off",
-    //         ],
-    //     },
-    //     {
-    //         category: "General Knowledge",
-    //         type: "multiple",
-    //         difficulty: "hard",
-    //         question:
-    //             "In &quot;Resident Evil 3&quot;, how many inventory slots does Jill have at the start of the game?",
-    //         correct_answer: "10",
-    //         incorrect_answers: ["6", "8", "12"],
-    //     },
-    //   ],
 
 //   questions: [
 //     {

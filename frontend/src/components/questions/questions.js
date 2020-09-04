@@ -64,7 +64,6 @@ class Question extends React.Component {
     }
 
     afterMounted() {
-        let klass = "correct";
 
         return (
             <div>

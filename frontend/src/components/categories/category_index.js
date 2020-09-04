@@ -1,4 +1,5 @@
 import React from 'react';
+import './category_index.css';
 
 class CategoryIndex extends React.Component {
   constructor(props) {
@@ -16,15 +17,17 @@ class CategoryIndex extends React.Component {
       const { categories } = this.props;
 
       return (
-        <div>
-          <div>
+        <div className="category-page">
+          <div className="category-page-header">CATEGORIES</div>
+          <div className="categories">
             {categories.map((category) => (
-              <button onClick={() => this.handleClick(category)}>{category}</button>
+              <button className="category-buttons" onClick={() => this.handleClick(category)}>{category}</button>
             ))}
           </div>
         </div>
       );
    }
+
 }
 
 export default CategoryIndex;

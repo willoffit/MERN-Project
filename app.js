@@ -40,5 +40,4 @@ app.use("/api/users", users);
 app.use("/api/groups", groups);
 app.use("/api/games", games);
 
-
 app.listen(port, () => console.log(`Server is running on port ${port}`));

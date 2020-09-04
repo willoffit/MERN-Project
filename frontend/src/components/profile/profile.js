@@ -4,23 +4,25 @@ import './profile.css';
 class Profile extends React.Component {
     constructor(props) {
         super(props);
-        // this.user = this.props.user;
-        this.user = {
-            id: 2,
-            username: "user2",
-            email: "g@b.net",
-            scores: [
-                { category: "sports", score: 2 }, 
-                { category: "geography", score: 0 }, 
-                { category: "history", score: 3 }
-            ]
-        }
 
+        this.turnToIterable = this.turnToIterable.bind(this);
+        this.averageScore = this.averageScore.bind(this);
+        this.highestScore = this.highestScore.bind(this);
+        this.strongestCategory = this.strongestCategory.bind(this);
     }
 
     componentDidMount() {
-        // this.props.fetchUsers();
-        // this.props.fetchCategories();
+        this.props.fetchUsers();
+    }
+
+    turnToIterable(scores) {
+        let arr = [];
+
+        for (let category in scores) {
+            arr.push([category, scores[category]])
+        }
+
+        return arr;
     }
 
     averageScore(scores) {
@@ -32,42 +34,60 @@ class Profile extends React.Component {
         return sum / (scores.length * 1.0);
     }
 
-    highestScore() {
-        return Math.max(...this.user.scores);
+    highestScore(scores) {
+        return Math.max(scores);
     }
 
     strongestCategory() {
+        let scores = this.props.user.scores;
+        let highest = Object.values(scores)[0];
+        let best = "";
 
+        for (let category in scores) {
+            if (scores[category] >= highest) best = category;
+        }
+
+        return best;
     }
 
     render() {
-        // let user = {name: 'Ralph', scores: [1, 2, 3]};
+        if (Object.values(this.props.users).length === 0) return null;
+
         return (
-            <div>
-                <h1>{this.user.username}'s Profile Page</h1>
-                <div>
-                    <h3>Previous Game Stats</h3>
-                </div>
+          <div className="profile">
+            <h1>{this.props.user.username}'s Profile Page</h1>
 
-                <div>
-                    <h3>Career Stats</h3>
-                    <h4>Average Scores by Category:</h4>
-                    <ul>
-                        {Object.values(this.user.scores).map(score => (
-                            <li>
-                                {score.category}: {this.averageScore(Array.from(score.score))}
-                            </li>
-                        ))}
-                    </ul>
-                    <h4>Highest Scores by Category:</h4>
-                    <ul>
-                        {}
-                    </ul>
+            <div className="stats">
+              <div className="previous-game">
+                <h3>Previous Game Stats</h3>
+              </div>
+              
+              <div className="career">
+                <h3>Career Stats</h3>
+                <h4>Average Scores by Category:</h4>
+                <ul>
+                  {this.turnToIterable(this.props.user.scores).map((score) => (
+                    <li>
+                      {score[0]}: {this.averageScore(score[1])}
+                    </li>
+                  ))}
+                </ul>
 
-                    <h4>Best Category:</h4>
-                </div>
+                <h4>Highest Scores by Category:</h4>
+                <ul>
+                  {this.turnToIterable(this.props.user.scores).map((score) => (
+                    <li>
+                      {score[0]}: {this.highestScore(score[1])}
+                    </li>
+                  ))}
+                </ul>
+
+                <h4>Best Category:</h4>
+                <li>{this.strongestCategory()}</li>
+              </div>
             </div>
-        )
+          </div>
+        );
     }
 }
 

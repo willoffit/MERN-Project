@@ -26,6 +26,7 @@ class Answer extends React.Component {
             }
 
         if (this.props.questions.length === 1) this.finalTotal();
+
         return result;
     }
 

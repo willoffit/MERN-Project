@@ -109,3 +109,22 @@
    font-size: 20px;
    padding: 0px 10px;
 }
+
+.logout, .profile-link {
+  border: 5px solid black;
+  font-family: 'Luckiest Guy', cursive;
+  color: teal;
+  box-shadow: 5px 10px grey;
+  border-radius: 25px;
+   padding: 10px;
+   font-size: 25px;
+   display: flex;
+   justify-content: center;
+}
+
+.logout:hover, .profile-link:hover {
+   border: 5px solid yellow;
+   color: purple;
+   background-color: whitesmoke;
+   
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import Answer from "./answers";
 import { Link } from 'react-router-dom';
 import "./questions.css";
+import Results from "../results/results";
 
 class Question extends React.Component {
     constructor(props) {
@@ -22,6 +23,11 @@ class Question extends React.Component {
         this.answers = this.shuffle(this.answers);
     }
 
+
+    componentDidMount() {
+      this.props.fetchQuestions();
+    }
+    
     shuffle(arr) {
         for (let i = arr.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -115,7 +121,11 @@ class Question extends React.Component {
 
     render() {
         return this.questions.length === 0 ? (
-            <Link to="/">Play Again?</Link>
+            <Results 
+                category={this.question.category}
+                users={this.props.users}
+                group={this.props.group}
+            />
             ) : (
                 this.afterMounted(this.questions)
             )

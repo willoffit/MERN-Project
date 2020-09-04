@@ -7,6 +7,7 @@ const games = require("./routes/api/games");
 const bodyParser = require("body-parser");
 const db = require("./config/keys").mongoURI;
 const passport = require("passport");
+const cors = require("cors");
 
 const path = require("path");
 
@@ -31,11 +32,12 @@ mongoose
   .catch((err) => console.log(err));
 const port = process.env.PORT || 5001;
 
+
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/api/users", users);
 app.use("/api/groups", groups);
 app.use("/api/games", games);
-
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));

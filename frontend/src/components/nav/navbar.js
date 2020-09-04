@@ -10,6 +10,7 @@ class NavBar extends React.Component {
       <div className="splash-page">
         <h1 className="splash-page-header">WILK TRIVIA</h1>
         <button onClick={() => this.props.logout()}>Log Out</button>
+        <button onClick={() => this.props.history.push("/profile")}>Profile</button>
         <div className="splash-page-body">
           <div className="signup-login-buttons">
             <Link

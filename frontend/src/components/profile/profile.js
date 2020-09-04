@@ -56,34 +56,35 @@ class Profile extends React.Component {
         return (
           <div className="profile">
             <h1>{this.props.user.username}'s Profile Page</h1>
-            
-            <h3>Previous Game Stats</h3>
-            
-            <div>
-              <h3>Career Stats</h3>
+
+            <div className="stats">
+              <div className="previous-game">
+                <h3>Previous Game Stats</h3>
+              </div>
               
-              <h4>Average Scores by Category:</h4>
-              <ul>
-                {this.turnToIterable(this.props.user.scores).map((score) => (
-                  <li>
-                    {score[0]}: {this.averageScore(score[1])}
-                  </li>
-                ))}
-              </ul>
+              <div className="career">
+                <h3>Career Stats</h3>
+                <h4>Average Scores by Category:</h4>
+                <ul>
+                  {this.turnToIterable(this.props.user.scores).map((score) => (
+                    <li>
+                      {score[0]}: {this.averageScore(score[1])}
+                    </li>
+                  ))}
+                </ul>
 
-              <h4>Highest Scores by Category:</h4>
-              <ul>
-                {this.turnToIterable(this.props.user.scores).map((score) => (
-                  <li>
-                    {score[0]}: {this.highestScore(score[1])}
-                  </li>
-                ))}
-              </ul>
+                <h4>Highest Scores by Category:</h4>
+                <ul>
+                  {this.turnToIterable(this.props.user.scores).map((score) => (
+                    <li>
+                      {score[0]}: {this.highestScore(score[1])}
+                    </li>
+                  ))}
+                </ul>
 
-              <h4>Best Category:</h4>
-                <li>
-                    {this.strongestCategory()}
-                </li>
+                <h4>Best Category:</h4>
+                <li>{this.strongestCategory()}</li>
+              </div>
             </div>
           </div>
         );

@@ -4,8 +4,15 @@
   align-items: center;
   color: teal;
   font-family: 'Luckiest Guy', cursive;
+  font-size: 25px;
 }
 
 h1, h3, h4 {
   color: purple !important;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
 }

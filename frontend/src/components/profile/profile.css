@@ -1,0 +1,11 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: teal;
+  font-family: 'Luckiest Guy', cursive;
+}
+
+h1, h3, h4 {
+  color: purple !important;
+}

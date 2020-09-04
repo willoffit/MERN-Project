@@ -1,7 +1,7 @@
 import React from 'react';
 import Answer from "./answers";
 import Results from '../results/results'
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 class Question extends React.Component {
     constructor(props) {

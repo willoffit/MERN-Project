@@ -54,12 +54,11 @@ class Profile extends React.Component {
         if (Object.values(this.props.users).length === 0) return null;
 
         return (
-          <div>
+          <div className="profile">
             <h1>{this.props.user.username}'s Profile Page</h1>
-            <div>
-              <h3>Previous Game Stats</h3>
-            </div>
-
+            
+            <h3>Previous Game Stats</h3>
+            
             <div>
               <h3>Career Stats</h3>
               

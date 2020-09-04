@@ -45,7 +45,7 @@ class Answer extends React.Component {
         return (
           <div>
             <h1>
-              YOU SUCK! YOU ARE BAD AT THIS!
+              YOU ARE BAD AT THIS!
             </h1>
             <p>Points: {this.total}</p>
             <p>Correct Answer: {this.props.correctAns}</p>
@@ -89,7 +89,7 @@ class Answer extends React.Component {
     }
 
     render() {
-        return this.props.userAns === -1 ? null : <div>{this.checkAnswer()}</div>;
+        return this.props.userAns === -1 ? null : <div className="answer-footer">{this.checkAnswer()}</div>;
     }
 }
 

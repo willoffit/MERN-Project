@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import "./group.css";
 
 class GroupForm extends React.Component {
     constructor(props) {
@@ -22,7 +23,11 @@ class GroupForm extends React.Component {
     }
 
     removeUser(e){ 
-        e.preventDefault(); 
+        let selectedUsersId = this.state.selectedUsersId;
+        let idx = selectedUsersId.indexOf(e.target.value);
+        let before = this.state.selectedUsersId.slice(0, idx);
+        let after = this.state.selectedUsersId.slice(idx +1, selectedUsersId.length )
+        e.preventDefault();
         const updatedArray = this.state.selectedUsersId.slice(0, this.state.selectedUsersId.indexOf(e.target.value)).concat(this.state.selectedUsersId.slice(this.state.selectedUsersId.indexOf(e.target.value) + 1, this.state.selectedUsersId.length));
         this.setState({selectedUsersId: updatedArray})
     }
@@ -57,7 +62,7 @@ class GroupForm extends React.Component {
 
     onAddUser(e){
         e.preventDefault();
-       
+        console.log("this.state.selectedUserId:", this.state.selectedUserId)
         if( this.state.selectedUsersId.indexOf(this.state.selectedUserId) === -1 && this.state.selectedUserId !== null && this.state.selectedUsersId.length < 4){
             this.setState({
                 selectedUsersId: this.state.selectedUsersId.concat(this.state.selectedUserId),
@@ -77,7 +82,15 @@ class GroupForm extends React.Component {
 
         let memberList = this.state.selectedUsersId.map((userId, i) => {
             return (
-                <li>{this.props.users[userId].username}<button onClick={this.removeUser} value={userId}>remove user</button></li>
+                <div className="member">
+                    <div className="member-select-user">
+                        {this.props.users[userId].username}
+                    </div>
+                    <div>
+                        <button className="remove-user" onClick={this.removeUser} value={userId}>remove user</button>
+                        {/* <i onClick={this.removeUser} class="far fa-trash-alt" value={userId}></i> */}
+                    </div>
+                </div>
             )
         })
        
@@ -86,31 +99,30 @@ class GroupForm extends React.Component {
         const defaultOption = "_1"
         return (
             <div className="create-group-form">
-                <h1 className="create-group-header">Create Group</h1>
-                <h4>Group max size 4</h4>
-                <form className="">
-                <label for="GroupName">Group Name:</label>
-                <input onChange={this.handleGroupNameInput} type="text" id="GroupName" name="GroupName" /><br></br>
-                <select value={this.state.selectedUserId || defaultOption} name="users" onChange={this.handleChange}>
-                    <option value="_1" selected={true} disabled={true}>Select User</option>
-                    {
-                        users.map((user, i) => {
-                            return (
-                                <option value={user._id} selected>{user.username}</option>
-                            )
-                        })
-                    }
-                </select>
-                <button onClick={this.onAddUser}>Add user</button>
-                    <button onClick={this.onConfirm}>Confirm</button>
-                </form>
-                <div className="">
-                    <ol>
+                <h1 className="create-group-header">CREATE GROUP</h1>
+                <div className="create-group-groupname">
+                    <label for="GroupName">Group Name:</label>
+                    <input className="create-group-groupname-input" onChange={this.handleGroupNameInput} type="text" id="GroupName" name="GroupName" /><br></br>
+                    
+                </div>
+                <div className="create-group-select-members">
+                    <select value={this.state.selectedUserId || defaultOption} name="users" onChange={this.handleChange}>
+                        <option value="_1" selected={true} disabled={true}>Select User</option>
                         {
-                        memberList
+                            users.map((user, i) => {
+                                return (
+                                    <option value={user._id} selected>{user.username}</option>
+                                )
+                            })
                         }
-                       
-                    </ol> 
+                    </select>
+                    <button onClick={this.onAddUser}>Add user</button>
+                    <button onClick={this.onConfirm}>Confirm Group</button>
+                </div>
+                <div>
+                    <div className="member-list">
+                        { memberList }
+                    </div> 
                 </div>
             </div>
         );

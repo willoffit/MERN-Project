@@ -1,0 +1,97 @@
+.questions {
+
+}
+
+.questions-category {
+   font-size: 40px;
+   font-family: 'Luckiest Guy', cursive;
+   color: purple;
+   text-align: center;
+}
+
+.questions-category-selected {
+   color: teal;
+}
+
+.questions-question {
+   font-size: 60px;
+   font-family: 'Luckiest Guy', cursive;
+   color: purple;
+   text-align: center;
+}
+
+.questions-question-selected {
+   color: teal;
+}
+
+.questions-answer {
+   display: flex;
+   flex-wrap: wrap;
+   align-content: center;
+   justify-content: center;
+   margin: 30px 0px;
+   padding: 0px 0px;
+}
+
+.trivia-q {
+   width: 20%;
+   height: 200px;
+   margin: 20px 10px;
+   border-radius: 20px;
+   border: 4px solid black;
+   box-shadow: 10px 10px grey;
+   background-color: whitesmoke;
+   font-family: 'Luckiest Guy', cursive;
+   font-size: 40px;
+   color: teal;
+   text-decoration: underline;
+}
+
+.questions-footer {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 0px 200px;
+}
+
+.answer-footer {
+   margin-right: 100px;
+   width: 37%;
+   height: 280px;
+   margin: 0px 10px;
+   border-radius: 20px;
+   border: 4px solid black;
+   box-shadow: 10px 10px grey;
+   background-color: whitesmoke;
+   font-family: 'Luckiest Guy', cursive;
+   font-size: 30px;
+   color: teal;
+   background-color: yellow;
+   padding: 30px;
+}
+
+.next-button {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 10%;
+   height: 150px;
+   margin: 0px 10px;
+   border-radius: 20px;
+   border: 4px solid black;
+   box-shadow: 10px 10px grey;
+   background-color: whitesmoke;
+   font-family: 'Luckiest Guy', cursive;
+   font-size: 30px;
+   color: teal;
+}
+
+.next-button:hover {
+   border: 4px solid yellow;
+   color: purple;
+}
+
+.next-button i {
+   font-size: 50px;
+   margin-left: 15px;
+}

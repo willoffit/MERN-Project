@@ -1,6 +1,7 @@
 import React from 'react';
 import Answer from "./answers";
 import { Link } from 'react-router-dom';
+import "./questions.css";
 
 class Question extends React.Component {
     constructor(props) {
@@ -65,22 +66,24 @@ class Question extends React.Component {
     afterMounted() {
 
         return (
-            <div>
-                <Answer
-                    questions={this.questions} 
-                    answers={this.answers}
-                    userAns={this.state.userChoice}
-                    correctAns={this.question.correct_answer}
-                    incorrectAns={this.question.incorrect_answers}
-                    difficulty={this.question.difficulty}
-                    category={this.question.category}
-                    user={this.props.user}
-                    editUser={this.props.editUser}
-                />
-
-                <p>Category: {this.question.category}</p>
-                <p>Question: {this.question.question}</p>
-                <p>Answers: {this.answers.map((answer, idx) => (
+            <div className="questions">
+                <p className="questions-category">
+                    <div>
+                        Category:
+                    </div>
+                    <div className="questions-category-selected">
+                        {this.question.category}
+                    </div>        
+                </p>
+                <p className="questions-question">
+                    <div>
+                        Question:
+                    </div>
+                    <div className="questions-question-selected">
+                        {this.question.question}
+                    </div>
+                </p>
+                <p className="questions-answer">{this.answers.map((answer, idx) => (
                     <button 
                         id={`btn-${idx}`}
                         key={`answer-${idx}`}
@@ -91,8 +94,21 @@ class Question extends React.Component {
                         {answer}
                     </button>
                 ))}</p>
-                
-                <button onClick={() => this.handleNext()}>Next</button>
+                <div className="questions-footer">
+                    <Answer
+                        questions={this.questions}
+                        answers={this.answers}
+                        userAns={this.state.userChoice}
+                        correctAns={this.question.correct_answer}
+                        incorrectAns={this.question.incorrect_answers}
+                        difficulty={this.question.difficulty}
+                        category={this.question.category}
+                        user={this.props.user}
+                        editUser={this.props.editUser}
+                    />
+                    
+                    <button className="next-button" onClick={() => this.handleNext()}>Next <i class="fas fa-arrow-right"></i></button>
+                </div>
             </div>
         )
     }

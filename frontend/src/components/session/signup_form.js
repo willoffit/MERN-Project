@@ -19,13 +19,13 @@ class SignupForm extends React.Component {
 
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.signedIn === true) {
-      this.props.history.push("/login");
-    }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.signedIn === true) {
+  //     this.props.history.push("/group");
+  //   }
 
-    this.setState({ errors: nextProps.errors });
-  }
+  //   this.setState({ errors: nextProps.errors });
+  // }
 
   update(field) {
     return (e) =>
@@ -43,7 +43,9 @@ class SignupForm extends React.Component {
       password2: this.state.password2,
     };
 
-    this.props.signup(user, this.props.history);
+    this.props.signup(user, this.props.history)
+        .then(() => this.props.history.push('/group'))
+        .then(() => this.props.closeModal())
   }
 
   renderErrors() {
@@ -58,12 +60,16 @@ class SignupForm extends React.Component {
 
   handleDemoUser(e) {
     e.preventDefault();
-    this.props.login({
-      username: 'username1',
-      email: 'user@username.com',
+    let num = Math.floor(Math.random() * Math.floor(100000000000));
+
+    this.props.signup({
+      username: `username${num}`,
+      email: `user${num}@username.com`,
       password: '0123456789',
       password2: '0123456789'
     })
+    .then(() => this.props.history.push('/group'))
+    .then(() => this.props.closeModal())
   }
 
   render() {

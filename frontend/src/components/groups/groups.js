@@ -1,7 +1,5 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { addUsersToGroup } from "../../actions/group_actions";
-// import './form.css';
 
 class GroupForm extends React.Component {
     constructor(props) {
@@ -9,101 +7,58 @@ class GroupForm extends React.Component {
         // TODO: get users from database 
         this.state = {
             selectedUserId: null,
-            selectedUsersId: []
+            selectedUsersId: [],
+            groupName: "",
         };
-        
         this.handleChange = this.handleChange.bind(this);
         this.onAddUser = this.onAddUser.bind(this);
         this.onConfirm = this.onConfirm.bind(this);
         this.removeUser = this.removeUser.bind(this);
-        // this.selectedUsersIdDuplicate = this.selectedUsersIdDuplicate(this);
+        this.handleGroupNameInput = this.handleGroupNameInput.bind(this);
     }
     
-
-    // selectedUsersIdDuplicate = () => {
-    //     this.state.selectedUsersId.map((user, i) => {
-    //         return (
-    //             <li>{user}<button onClick={this.removeUser} value={user}>remove user</button></li>
-    //         )
-    //     })
-    // };
-
-    // Once the user has been authenticated, redirect to the Tweets page
-    componentWillReceiveProps(nextProps) {
-        // if (nextProps.currentUser === true) {
-        //     this.props.history.push("/tweets");
-        // }
-
-        // Set or clear errors
-        // this.setState({ errors: nextProps.errors });
+    componentDidMount(){
+        this.props.fetchUsers()
     }
 
-    componentDidUpdate(prevProps, prevState){
-        console.log("this.state.selectedUsersId", this.state.selectedUsersId )
-        console.log("this.state.selectedUserId", this.state.selectedUserId)
-
-    }
-
-
-
-    // Handle field updates (called in the render method)
-    // 
-    // update(field) {
-    //     return (e) =>
-    //         this.setState({
-    //             [field]: e.currentTarget.value,
-    //         });
-    // }
-
-    // Handle form submission
-    // handleSubmit(e) {
-    //     e.preventDefault();
-
-    //     let user = {
-    //         email: this.state.email,
-    //         password: this.state.password,
-    //     };
-
-    //     this.props.login(user);
-    // }
-
-    // Render the session errors if there are any
-    // renderErrors() {
-    //     return (
-    //         <ul className="errors">
-    //             {Object.keys(this.state.errors).map((error, i) => (
-    //                 <li key={`error-${i}`}>{this.state.errors[error]}</li>
-    //             ))}
-    //         </ul>
-    //     );
-    // }
-
-    // handleDemoUser() {
-    //     this.props.login({
-    //         email: 'user@user.com',
-    //         password: '0123456789'
-    //     })
-    // }
     removeUser(e){ 
         e.preventDefault(); 
-        console.log("members array:", this.state.selectedUsersId)
-        console.log("remove user target index:", this.state.selectedUsersId.indexOf(e.target.value)) 
-        console.log("e.target.value", e.target.value)
-
         const updatedArray = this.state.selectedUsersId.slice(0, this.state.selectedUsersId.indexOf(e.target.value)).concat(this.state.selectedUsersId.slice(this.state.selectedUsersId.indexOf(e.target.value) + 1, this.state.selectedUsersId.length));
-
         this.setState({selectedUsersId: updatedArray})
     }
 
-    onConfirm(e){
-        addUsersToGroup(this.state.selectedUsersId);
+    updateUser(group) {
+        let users = Object.values(group.members).map(userId => {
+            this.props.users[userId].group = group._id;
+            return this.props.users[userId]
+        })
+
+        users.forEach(user => {
+            this.props.updateUser(user);
+        })
     }
 
-    onAddUser(e){
-        // TODO: check if user is already in array, 
+    onConfirm(e){
         e.preventDefault();
-        console.log("submitted", this.state.selectedUserId);
-        if( this.state.selectedUsersId.indexOf(this.state.selectedUserId) === -1 && this.state.selectedUserId !== null){
+
+        let group = {};
+        group.name = this.state.groupName
+        group.members = this.state.selectedUsersId;
+
+        this.props.createGroup(group)
+            .then(action => this.updateUser(action.group))
+            .then(() => this.props.history.push("/category"))
+    }
+
+    handleGroupNameInput(e){
+        e.preventDefault();
+        this.setState({ groupName: e.currentTarget.value });
+    };
+
+    onAddUser(e){
+        e.preventDefault();
+       
+        if( this.state.selectedUsersId.indexOf(this.state.selectedUserId) === -1 && this.state.selectedUserId !== null && this.state.selectedUsersId.length < 4){
             this.setState({
                 selectedUsersId: this.state.selectedUsersId.concat(this.state.selectedUserId),
             });
@@ -111,46 +66,48 @@ class GroupForm extends React.Component {
     }
 
     handleChange(e) {
-        // let { name, value } = e.target;
-        this.setState({
-            selectedUserId: e.target.value,
-        });
-        console.log("e.target", e.target.value, "e.target.id", e.target.id);
-    }
+        e.preventDefault();
+        this.setState({ selectedUserId: e.currentTarget.value });
+    };
 
     render() {
-        let memberList = this.state.selectedUsersId.map((user, i) => {
+        if (Object.values(this.props.users).length === 0){
+            return null 
+        }
+        let test = Object.values(this.props.users)
+        let memberList = this.state.selectedUsersId.map((userId, i) => {
             return (
-                <li>{user}<button onClick={this.removeUser} value={user}>remove user</button></li>
+                <li>{this.props.users[userId].username}<button onClick={this.removeUser} value={userId}>remove user</button></li>
             )
         })
-        // TODO: replace with users from db. Adjust option value={userId}
-        // display users in the array 
-        // add remove button for each function 
-        let users = ["jamaal", "steve", "doug", "willie", "ralph"];
+       
+        let users = Object.values(this.props.users)
+
         const defaultOption = "_1"
         return (
-            <div class="group-container">
+            <div className="create-group-form">
+                <h1 className="create-group-header">Create Group</h1>
+                <h4>Group max size 4</h4>
+                <form className="">
+                <label for="GroupName">Group Name:</label>
+                <input onChange={this.handleGroupNameInput} type="text" id="GroupName" name="GroupName" /><br></br>
                 <select value={this.state.selectedUserId || defaultOption} name="users" onChange={this.handleChange}>
                     <option value="_1" selected={true} disabled={true}>Select User</option>
                     {
                         users.map((user, i) => {
                             return (
-                                <option value={i} selected>{user}</option>
+                                <option value={user._id} selected>{user.username}</option>
                             )
                         })
                     }
                 </select>
                 <button onClick={this.onAddUser}>Add user</button>
-                <div>
                     <button onClick={this.onConfirm}>Confirm</button>
-                </div>
-                <div className="add-member-list">
+                </form>
+                <div className="">
                     <ol>
                         {
-                        //   this.selectedUsersIdDuplicate()
                         memberList
-                            // console.log("coming from orderd list:this.state.selectedUsersId", this.state.selectedUsersId)
                         }
                        
                     </ol> 

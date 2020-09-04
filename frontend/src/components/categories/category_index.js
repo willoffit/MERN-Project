@@ -1,29 +1,33 @@
 import React from 'react';
-// import { fetchQuestions } from '../../actions/';
+import './category_index.css';
 
 class CategoryIndex extends React.Component {
-   // componentDidMount() {
-   //    this.props.fetchQuestions();
-   // }
+  constructor(props) {
+    super(props);
+    
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-   myFunction() {
-      document.getElementById("myRadio").disabled = true;
-   }
+  handleClick(category) {
+    this.props.fetchQuestions(category)
+      .then(() => this.props.history.push('/question'))
+  }
 
    render() {
       const { categories } = this.props;
 
       return (
-        <div>
-          <div>
+        <div className="category-page">
+          <div className="category-page-header">CATEGORIES</div>
+          <div className="categories">
             {categories.map((category) => (
-              <button onClick={() => this.props.fetchQuestions(category)}>{category}</button>
-              // onClick={() => fetchQuestions(category)}
+              <button className="category-buttons" onClick={() => this.handleClick(category)}>{category}</button>
             ))}
           </div>
         </div>
       );
    }
+
 }
 
 export default CategoryIndex;

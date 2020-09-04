@@ -32,20 +32,26 @@ class Question extends React.Component {
     handleUserSelect(e) {
         e.preventDefault();
 
-        document.getElementById("radio-0").setAttribute("disabled", "");
-        document.getElementById("radio-1").setAttribute("disabled", "");
-        document.getElementById("radio-2").setAttribute("disabled", "");
-        document.getElementById("radio-3").setAttribute("disabled", "");
+        document.getElementById("btn-0").setAttribute("disabled", "");
+        document.getElementById("btn-1").setAttribute("disabled", "");
+
+        if (this.question.type === "multiple") {
+            document.getElementById("btn-2").setAttribute("disabled", "");
+            document.getElementById("btn-3").setAttribute("disabled", "");
+        }
 
         const idx = parseInt(e.target.value);
         this.setState({ userChoice: idx, done: false });
     }
 
     handleNext() {
-        document.getElementById("radio-0").removeAttribute("disabled");
-        document.getElementById("radio-1").removeAttribute("disabled");
-        document.getElementById("radio-2").removeAttribute("disabled");
-        document.getElementById("radio-3").removeAttribute("disabled");
+        document.getElementById("btn-0").removeAttribute("disabled");
+        document.getElementById("btn-1").removeAttribute("disabled");
+
+        if (this.question.type === "multiple") {
+            document.getElementById("btn-2").removeAttribute("disabled");
+            document.getElementById("btn-3").removeAttribute("disabled");
+        }
 
         this.question = this.questions.pop()
         this.answers = this.shuffle([
@@ -57,29 +63,34 @@ class Question extends React.Component {
     }
 
     afterMounted() {
+
         return (
             <div>
-                <Answer 
-                     answers={this.answers}
-                     userAns={this.state.userChoice}
-                     correctAns={this.question.correct_answer}
-                     incorrectAns={this.question.incorrect_answers}
-                     nextQuestion={() => this.getNextQuestion(this.questions)}
-                 />
+                <Answer
+                    questions={this.questions} 
+                    answers={this.answers}
+                    userAns={this.state.userChoice}
+                    correctAns={this.question.correct_answer}
+                    incorrectAns={this.question.incorrect_answers}
+                    difficulty={this.question.difficulty}
+                    category={this.question.category}
+                    user={this.props.user}
+                    editUser={this.props.editUser}
+                />
 
-                 <p>Category: {this.question.category}</p>
-                 <p>Question: {this.question.question}</p>
-                 <p>Answers: {this.answers.map((answer, idx) => (
-                        <button 
-                            id={`radio-${idx}`}
-                            key={`answer-${idx}`}
-                            type="radio"
-                            value={idx}
-                            onClick={this.handleUserSelect}
-                            className="trivia-q">
-                            {answer}
-                         </button>
-                 ))}</p>
+                <p>Category: {this.question.category}</p>
+                <p>Question: {this.question.question}</p>
+                <p>Answers: {this.answers.map((answer, idx) => (
+                    <button 
+                        id={`btn-${idx}`}
+                        key={`answer-${idx}`}
+                        type="radio"
+                        value={idx}
+                        onClick={this.handleUserSelect}
+                        className="trivia-q">
+                        {answer}
+                    </button>
+                ))}</p>
                 
                 <button onClick={() => this.handleNext()}>Next</button>
             </div>

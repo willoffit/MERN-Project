@@ -1,12 +1,11 @@
 .splash-page-header {
-   font-size: 100px;
+   font-size: 90px;
    font-family: 'Luckiest Guy', cursive;
    color: purple;
    text-align: center;
 }
 
 .signup-login-buttons {
-
    display: flex;
    align-items: center;
    justify-content: center;

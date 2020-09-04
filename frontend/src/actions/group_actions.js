@@ -1,5 +1,4 @@
 import * as GroupAPIUtil from '../util/group_api_util';
-    
 
 export const RECEIVE_GROUPS = 'RECEIVE_GROUPS';
 export const RECEIVE_GROUP = 'RECEIVE_GROUP';
@@ -10,9 +9,9 @@ export const receiveGroups = groups => ({
    groups
 });
 
-export const receiveGroup = groupId => ({
+export const receiveGroup = group => ({
    type: RECEIVE_GROUP,
-   groupId
+   group
 });
 
 export const removeGroup = groupId => ({
@@ -32,7 +31,7 @@ export const fetchGroup = groupId => dispatch => {
 
 export const createGroup = group => dispatch => {
    return GroupAPIUtil.createGroup(group)
-      .then(createdGroup => dispatch(receiveGroup(createdGroup)))
+      .then(createdGroup => dispatch(receiveGroup(createdGroup.data)))
 };
 
 export const updateGroup = group => dispatch => {

@@ -1,8 +1,8 @@
 import React from 'react';
 import Answer from "./answers";
-import { Link } from 'react-router-dom';
-import "./questions.css";
-import Results from "../results/results";
+// import { Link } from 'react-router-dom';
+import Results from '../results/results';
+import './questions.css';
 
 class Question extends React.Component {
     constructor(props) {
@@ -23,11 +23,6 @@ class Question extends React.Component {
         this.answers = this.shuffle(this.answers);
     }
 
-
-    componentDidMount() {
-      this.props.fetchQuestions();
-    }
-    
     shuffle(arr) {
         for (let i = arr.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -70,17 +65,19 @@ class Question extends React.Component {
     }
 
     afterMounted() {
+        let klass = "correct";
 
         return (
             <div className="questions">
                 <p className="questions-category">
                     <div>
                         Category:
-                    </div>
+                </div>
                     <div className="questions-category-selected">
                         {this.question.category}
-                    </div>        
+                    </div>
                 </p>
+
                 <p className="questions-question">
                     <div>
                         Question:
@@ -91,18 +88,18 @@ class Question extends React.Component {
                 </p>
                 <p className="questions-answer">{this.answers.map((answer, idx) => (
                     <button 
-                        id={`btn-${idx}`}
-                        key={`answer-${idx}`}
-                        type="radio"
-                        value={idx}
-                        onClick={this.handleUserSelect}
-                        className="trivia-q">
+                    id={`btn-${idx}`}
+                    key={`answer-${idx}`}
+                    type="radio"
+                    value={idx}
+                    onClick={this.handleUserSelect}
+                    className="trivia-q">
                         {answer}
                     </button>
                 ))}</p>
                 <div className="questions-footer">
                     <Answer
-                        questions={this.questions}
+                        questions={this.questions} 
                         answers={this.answers}
                         userAns={this.state.userChoice}
                         correctAns={this.question.correct_answer}
@@ -113,7 +110,7 @@ class Question extends React.Component {
                         editUser={this.props.editUser}
                     />
                     
-                    <button className="next-button" onClick={() => this.handleNext()}>Next <i class="fas fa-arrow-right"></i></button>
+                    <button className="next-button" onClick={() => this.handleNext()}>Next</button>
                 </div>
             </div>
         )
@@ -121,7 +118,7 @@ class Question extends React.Component {
 
     render() {
         return this.questions.length === 0 ? (
-            <Results 
+            <Results
                 category={this.question.category}
                 users={this.props.users}
                 group={this.props.group}

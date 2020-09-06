@@ -5,6 +5,7 @@ class Answer extends React.Component {
         super(props);
 
         this.total = 0;
+        this.user = this.props.user;
 
         this.checkAnswer = this.checkAnswer.bind(this);
         this.handleCorrect = this.handleCorrect.bind(this);
@@ -12,6 +13,10 @@ class Answer extends React.Component {
         this.awardPoints = this.awardPoints.bind(this);
         this.deductPoints = this.deductPoints.bind(this);
         this.finalTotal = this.finalTotal.bind(this);
+    }
+
+    componentWillUnmount() {
+        this.props.editUser(this.user);
     }
 
     checkAnswer() {
@@ -25,7 +30,7 @@ class Answer extends React.Component {
                 result = this.handleIncorrect();
             }
 
-        // if (this.props.questions.length === 1) this.finalTotal();
+        if (this.props.questions.length === 1) this.finalTotal();
 
         return result;
     }
@@ -83,10 +88,8 @@ class Answer extends React.Component {
     }
 
     finalTotal() {
-        let user = this.props.user;
-
+        let user = this.user;
         user.scores[this.props.category].push(this.total);
-        this.props.editUser(user);
     }
 
     render() {

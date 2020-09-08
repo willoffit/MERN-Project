@@ -21,7 +21,7 @@ router.get("/", (req, res) => {
 });
 
 router.patch("/:id", (req, res) => {
-  debugger
+  // debugger;
   User.findOneAndUpdate({ id: req.params.id }, {
     scores: req.body.scores,
     group: req.body.group

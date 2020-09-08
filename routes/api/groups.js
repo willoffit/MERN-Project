@@ -77,3 +77,5 @@ router.get(
 router.delete("/:id", (req, res) => {
   Group.findByIdAndRemove(req.params.id);
 });
+
+module.exports = router;

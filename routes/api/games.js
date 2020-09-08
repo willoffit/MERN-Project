@@ -27,7 +27,7 @@ router.get("/:id", (req, res) => {
 
 router.post(
   "/",
-  passport.authenticate("jwt", { session: false }),
+  // passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const { errors, isValid } = validateGameInput(req.body);
 
@@ -48,6 +48,18 @@ router.post(
   }
 );
 
+router.patch("/:id", (req, res) => {
+  // debugger;
+  Game.findOneAndUpdate({ id: req.params.id }, {
+    group: req.body.groupId,
+    questions: req.body.questions
+  }).then(game => res.json(game)).catch(err =>
+    res.status(404).json({ nogamefound: 'No game found with that ID' })
+  );
+});
+
 router.delete("/:id", (req, res) => {
   Game.findByIdAndRemove(req.params.id);
 });
+
+module.exports = router;

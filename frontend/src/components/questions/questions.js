@@ -13,7 +13,8 @@ class Question extends React.Component {
         this.handleUserSelect = this.handleUserSelect.bind(this);
         this.handleNext = this.handleNext.bind(this);
 
-        this.category = this.props.games[this.props.group.game].category;
+        this.group = this.props.group;
+        this.category = this.props.games[this.group.game].category;
 
         this.questions = this.props.questions.slice();
         this.question = this.questions.pop();
@@ -123,7 +124,7 @@ class Question extends React.Component {
             <Results
                 category={this.category}
                 users={this.props.users}
-                group={this.props.group}
+                group={this.group}
                 fetchUsers={this.props.fetchUsers}
             />
             ) : (

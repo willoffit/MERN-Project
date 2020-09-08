@@ -8,7 +8,7 @@ class GroupForm extends React.Component {
         // TODO: get users from database 
         this.state = {
             selectedUserId: null,
-            selectedUsersId: [this.props.currentUser.id],
+            selectedUsersId: [this.props.currentUserId],
             groupName: "",
         };
         this.handleChange = this.handleChange.bind(this);

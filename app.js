@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const users = require("./routes/api/users");
 const groups = require("./routes/api/groups");
+const categories = require("./routes/api/categories");
 const games = require("./routes/api/games");
 const bodyParser = require("body-parser");
 const db = require("./config/keys").mongoURI;
@@ -33,11 +34,12 @@ mongoose
 const port = process.env.PORT || 5001;
 
 
-app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 app.use("/api/users", users);
 app.use("/api/groups", groups);
+app.use("/api/categories", categories)
 app.use("/api/games", games);
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));

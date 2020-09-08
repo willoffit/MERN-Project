@@ -4,15 +4,10 @@ import "./navbar.css";
 import "../modal/modal.css";
 
 class NavBar extends React.Component {
-
   render() {
     return (
       <div className="splash-page">
         <h1 className="splash-page-header">WILK TRIVIA</h1>
-          <button className="logout" onClick={() => this.props.logout()}>Log Out</button>
-          <button className="profile-link" onClick={() => this.props.history.push("/profile")}>
-            Profile
-          </button>
 
         <div className="splash-page-body">
           <div className="signup-login-buttons">
@@ -66,7 +61,7 @@ class NavBar extends React.Component {
       </div>
     );
   };
+}
 
-};
 
 export default NavBar;

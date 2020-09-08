@@ -1,27 +1,19 @@
 import axios from "axios";
 
+const type = { general: 9, sports: 21, film: 11, science: 18, geography: 22 }
+
 export const getGame = (category) => {
   switch (category) {
     case "General":
-      return axios.post(
-        "https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple"
-      );
+      return axios.get(`/api/categories/${type.general}`);
     case "Sports":
-      return axios.post(
-        "https://opentdb.com/api.php?amount=10&category=21&difficulty=medium&type=multiple"
-      );
+      return axios.get(`/api/categories/${type.sports}`);
     case "Film":
-      return axios.post(
-        "https://opentdb.com/api.php?amount=10&category=11&difficulty=medium&type=multiple"
-      );
+      return axios.get(`/api/categories/${type.film}`);
     case "Science":
-      return axios.post(
-        "https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=multiple"
-      );
+      return axios.get(`/api/categories/${type.science}`);
     case "Geography":
-      return axios.post(
-        "https://opentdb.com/api.php?amount=10&category=22&difficulty=medium&type=multiple"
-      );
+      return axios.get(`/api/categories/${type.geography}`);
     default:
       return "";
   }

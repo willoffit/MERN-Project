@@ -8,7 +8,7 @@ class GroupForm extends React.Component {
         // TODO: get users from database 
         this.state = {
             selectedUserId: null,
-            selectedUsersId: [],
+            selectedUsersId: [this.props.currentUserId],
             groupName: "",
         };
         this.handleChange = this.handleChange.bind(this);
@@ -62,7 +62,7 @@ class GroupForm extends React.Component {
 
     onAddUser(e){
         e.preventDefault();
-        console.log("this.state.selectedUserId:", this.state.selectedUserId)
+
         if( this.state.selectedUsersId.indexOf(this.state.selectedUserId) === -1 && this.state.selectedUserId !== null && this.state.selectedUsersId.length < 4){
             this.setState({
                 selectedUsersId: this.state.selectedUsersId.concat(this.state.selectedUserId),

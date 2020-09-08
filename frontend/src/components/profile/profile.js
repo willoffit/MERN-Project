@@ -35,19 +35,25 @@ class Profile extends React.Component {
     }
 
     highestScore(scores) {
-        return Math.max(scores);
+        return Math.max(...scores);
     }
 
     strongestCategory() {
         let scores = this.props.user.scores;
-        let highest = Object.values(scores)[0];
+        let first = Object.values(scores)[0];
+        let highest = this.highestScore(first);
         let best = "";
 
         for (let category in scores) {
-            if (scores[category] >= highest) best = category;
+            let next = this.highestScore(scores[category])
+            if (next >= highest) best = category;
         }
 
         return best;
+    }
+
+    gameStart() {
+        this.props.history.push("/group");
     }
 
     render() {
@@ -55,6 +61,11 @@ class Profile extends React.Component {
 
         return (
           <div className="profile">
+
+            <div className="splash-page">
+              <h1 className="splash-page-header">WILK TRIVIA</h1>
+            </div>
+
             <h1>{this.props.user.username}'s Profile Page</h1>
 
             <div className="stats">
@@ -86,6 +97,11 @@ class Profile extends React.Component {
                 <li>{this.strongestCategory()}</li>
               </div>
             </div>
+            <button className="logout" onClick={() => this.props.logout()}>Log Out</button>
+
+            <button className="profile-link" onClick={() => this.gameStart()}>
+              Start Game
+              </button>
           </div>
         );
     }

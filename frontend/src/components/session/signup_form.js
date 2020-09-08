@@ -44,7 +44,7 @@ class SignupForm extends React.Component {
     };
 
     this.props.signup(user, this.props.history)
-        .then(() => this.props.history.push('/group'))
+        .then(() => this.props.history.push('/'))
         .then(() => this.props.closeModal())
   }
 
@@ -68,7 +68,7 @@ class SignupForm extends React.Component {
       password: '0123456789',
       password2: '0123456789'
     })
-    .then(() => this.props.history.push('/group'))
+    .then(() => this.props.history.push('/'))
     .then(() => this.props.closeModal())
   }
 

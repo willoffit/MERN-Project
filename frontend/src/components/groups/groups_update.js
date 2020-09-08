@@ -20,10 +20,6 @@ class GroupUpdate extends React.Component {
    }
 
    componentDidMount() {
-      console.log(this.props.currentUser)
-      console.log(this.props.users)
-      console.log(this.props.groups)
-      console.log(this.props.users[this.props.currentUser.id])
       this.props.fetchUsers()
          .then(this.props.fetchGroup(this.props.group._id));
    }

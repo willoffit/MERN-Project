@@ -31,7 +31,6 @@ router.post(
       return res.status(400).json(errors);
     }
 
-    // debugger;
     const newGame = new Game({
       category: req.body.category,
       groupId: req.body.groupId,

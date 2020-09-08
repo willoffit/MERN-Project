@@ -3,6 +3,7 @@ import Question from './questions';
 import { connect } from 'react-redux';
 import { fetchQuestions } from '../../actions/question_actions';
 import { editUser } from '../../actions/user_actions';
+import { fetchUsers } from '../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   // questions: state.entities.questions,
@@ -99,16 +100,30 @@ const mapStateToProps = (state, ownProps) => ({
       incorrect_answers: ["6", "8", "12"],
     },
   ],
-  users: state.entities.users,
+  group: {
+    _id: "5f51c0e42053ca2c0d652ce5",
+    name: "Midnight Club",
+    members: ["5f51c1312ea2e52c39b1046e"]
+  },
+  users: {
+    "5f51c1312ea2e52c39b1046e": {date: "2020-09-04T04:23:13.186Z",
+    email: "user8742828035@username.com",
+    password: "$2a$10$Js0KDlL490Vh9ElkOBI6Buj82dxMuqCzSpfu3A6qwm6V1pluYqEky",
+    scores: { "Sports": Array(0), "Geography": Array(0), "History": Array(0), "Film": Array(0), "General Knowledge": Array(0) },
+    username: "username8742828035",
+    _id: "5f51c1312ea2e52c39b1046e"}
+  },
+  // users: state.entities.users,
   // user: state.entities.users["5f501a5bf22e47df39371e32"],
   user: state.entities.users[state.session.user.id],
-  group: state.entities.groups[state.entities.users[state.session.user.id].group],
+  // group: state.entities.groups[state.entities.users[state.session.user.id].group],
   // questions: state.entities.questions
 });
 
 const mapDispatchToProps = dispatch => ({
     fetchQuestions: category => dispatch(fetchQuestions(category)),
-    editUser: user => dispatch(editUser(user))
+    editUser: user => dispatch(editUser(user)),
+    fetchUsers: () => dispatch(fetchUsers())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Question);

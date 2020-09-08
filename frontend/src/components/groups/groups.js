@@ -8,7 +8,7 @@ class GroupForm extends React.Component {
         // TODO: get users from database 
         this.state = {
             selectedUserId: null,
-            selectedUsersId: [],
+            selectedUsersId: [this.props.currentUser.id],
             groupName: "",
         };
         this.handleChange = this.handleChange.bind(this);
@@ -62,7 +62,6 @@ class GroupForm extends React.Component {
 
     onAddUser(e){
         e.preventDefault();
-        console.log("this.state.selectedUserId:", this.state.selectedUserId)
         if( this.state.selectedUsersId.indexOf(this.state.selectedUserId) === -1 && this.state.selectedUserId !== null && this.state.selectedUsersId.length < 4){
             this.setState({
                 selectedUsersId: this.state.selectedUsersId.concat(this.state.selectedUserId),
@@ -87,8 +86,7 @@ class GroupForm extends React.Component {
                         {this.props.users[userId].username}
                     </div>
                     <div>
-                        <button className="remove-user" onClick={this.removeUser} value={userId}>remove user</button>
-                        {/* <i onClick={this.removeUser} class="far fa-trash-alt" value={userId}></i> */}
+                        <button className="remove-user" onClick={this.removeUser} value={userId}>Remove User</button>
                     </div>
                 </div>
             )
@@ -109,9 +107,9 @@ class GroupForm extends React.Component {
                     <select value={this.state.selectedUserId || defaultOption} name="users" onChange={this.handleChange}>
                         <option value="_1" selected={true} disabled={true}>Select User</option>
                         {
-                            users.map((user, i) => {
+                            users.map((user, idx) => {
                                 return (
-                                    <option value={user._id} selected>{user.username}</option>
+                                    <option key={idx} value={user._id} selected>{user.username}</option>
                                 )
                             })
                         }

@@ -7,7 +7,8 @@ import { createGroup } from "../../actions/group_actions";
 const mapStateToProps = (state) => {
     return {
         errors: state.errors.session,
-        users: state.entities.users 
+        users: state.entities.users,
+        currentUser: state.session.user
     };
 };
 

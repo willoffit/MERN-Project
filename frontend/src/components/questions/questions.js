@@ -122,6 +122,7 @@ class Question extends React.Component {
                 category={this.question.category}
                 users={this.props.users}
                 group={this.props.group}
+                fetchUsers={this.props.fetchUsers}
             />
             ) : (
                 this.afterMounted(this.questions)

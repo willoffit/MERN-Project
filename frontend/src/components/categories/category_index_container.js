@@ -4,6 +4,7 @@ import { fetchQuestions } from '../../actions/question_actions';
 
 const mSTP = state => ({
    categories: ["General", "Sports", "Film", "Science", "Geography"],
+   group: state.entities.groups[state.entities.users[state.session.user.id].group],
    users: state.entities.users
 });
 

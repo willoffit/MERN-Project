@@ -45,7 +45,7 @@ class LoginForm extends React.Component {
     };
 
     this.props.login(user)
-        .then(() => this.props.history.push('/group'))
+        .then(() => this.props.history.push('/'))
         .then(() => this.props.closeModal())
   }
 
@@ -66,7 +66,7 @@ class LoginForm extends React.Component {
         email: "Kev@kevvykev.com",
         password: "0123456789",
       })
-      .then(() => this.props.history.push("/group"))
+      .then(() => this.props.history.push("/"))
       .then(() => this.props.closeModal());
   }
 

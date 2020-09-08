@@ -1,15 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Results extends React.Component {
   //  constructor(props) {
   //     super(props);
   //  }
 
+   componentDidMount() {
+      this.props.fetchUsers();
+   }
+   
    render() {
       const group = this.props.group;
       const members = group.members;
       const category = this.props.category;
-
+      if (Object.values(this.props.users).length === 0) {
+         return null;
+      };
       return (
          <div>
             <h1>Final Results!</h1>
@@ -26,9 +33,11 @@ class Results extends React.Component {
                      )
                   } else {
                      return (
-                        <li>
-                           {user.username}: waiting for player to finish game...
-                        </li>
+                        <div>
+                           <div>{user.username}: waiting for player to finish game...</div>
+                           <Link to={`/group/${group._id}`}>Play again?</Link>
+                           <Link to="/profile">End game?</Link>
+                        </div>
                      )
                   }
                })}

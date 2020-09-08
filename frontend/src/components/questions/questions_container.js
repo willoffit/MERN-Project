@@ -3,6 +3,7 @@ import Question from './questions';
 import { connect } from 'react-redux';
 import { fetchQuestions } from '../../actions/question_actions';
 import { editUser } from '../../actions/user_actions';
+import { fetchUsers } from '../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   questions: state.entities.questions,
@@ -14,7 +15,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
     fetchQuestions: category => dispatch(fetchQuestions(category)),
-    editUser: user => dispatch(editUser(user))
+    editUser: user => dispatch(editUser(user)),
+    fetchUsers: () => dispatch(fetchUsers())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Question);

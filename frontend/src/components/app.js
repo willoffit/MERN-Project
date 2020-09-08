@@ -7,11 +7,14 @@ import GroupFormContainer from "./groups/groups_container";
 import Modal from "./modal/modal_container";
 import QuestionsContainer from './questions/questions_container';
 import CategoryIndexContainer from "./categories/category_index_container";
+import GroupUpdateContainer from "./groups/groups_update_container";
 
 const App = () => (
   <div>
     <Modal />
     <Switch>
+      <Route exact path="/group/:groupId" component={GroupUpdateContainer}/>
+      <Route exact path="/profile" component={ProfileContainer} />
       <PreSetupRoute exact path="/category" component={CategoryIndexContainer} />
       <ProtectedRoute exact path="/group" component={GroupFormContainer} /> 
       <PostSetupRoute exact path="/question" component={QuestionsContainer} />

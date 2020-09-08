@@ -12,7 +12,7 @@ export const createGame = game => {
     return axios.post(`/api/games/`, game)
 };
 
-export const updateGroup = game => {
+export const updateGame = game => {
     return axios.patch(`/api/games/${game.id}`, game)
 };
 

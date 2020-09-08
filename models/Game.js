@@ -10,10 +10,11 @@ const GameSchema = new Schema({
     type: String,
     required: true,
   },
-  questions: [
-    { type: mongoose.Schema.Types.ObjectId, ref: "Question" }
-  ]
+  questions: {
+    type: Array,
+    required: true
+  }
 });
 
 const Game = mongoose.model("Game", GameSchema);
-module.exports = Game;
+module.exports = Game; 

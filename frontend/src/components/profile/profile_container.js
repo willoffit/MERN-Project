@@ -7,7 +7,7 @@ import { createGame } from '../../actions/game_actions';
 
 const mapStateToProps = (state, ownProps) => ({
     users: state.entities.users,
-    // user: state.entities.users[state.session.user.id]
+    // user: state.entities.users[state.session.user.id],
     user: { 
         date: "2020-09-04T04:36:16.626Z",
         email: "Kev@kevvykev.com",

@@ -48,31 +48,13 @@ router.get(
   });
 
   
-// router.update(
-//   "/",
-//   // passport.authenticate("jwt", { session: false }),
-
-//   (req, res) => {
-//     const { errors, isValid } = validateGroupInput(req.body);
-
-//     if (!isValid) {
-//       return res.status(400).json(errors);
-//     }
-
-//     const userIds = req.body.members
-//       .split(" ")
-//       .map((member) =>
-//         User.findOne({ username: member }).then((user) => res.json(user._id))
-//       );
-
-//     const newGroup = new Group({
-//       name: req.body.name,
-//       members: userIds,
-//     });
-
-//     newGroup.save().then((group) => res.json(group));
-//   }
-// );
+router.patch("/:id", (req, res) => {
+  Group.findOneAndUpdate({ id: req.params.id }, {
+    game: req.body.game
+  })
+    .then(group => res.json(group))
+    .catch(err => res.status(404).json({ noGroupFound: "No Group found with that ID"}))
+});
 
 router.delete("/:id", (req, res) => {
   Group.findByIdAndRemove(req.params.id);

@@ -10,6 +10,7 @@ const mapStateToProps = (state, ownProps) => ({
   users: state.entities.users,
   user: state.entities.users[state.session.user.id],
   group: state.entities.groups[state.entities.users[state.session.user.id].group],
+  games: state.entities.games
 });
 
 const mapDispatchToProps = dispatch => ({

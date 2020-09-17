@@ -20,8 +20,9 @@ export const removeGame = gameId => ({
 });
 
 export const fetchGames = () => dispatch => {
-    return GameAPIUtil.fetchGame()
-        .then(game => dispatch(receiveGame(game)))
+    return GameAPIUtil.fetchGames()
+        .then(games => dispatch(receiveGames(games)))
+        .catch(err => console.log(err))
 };
 
 export const fetchGame = gameId => dispatch => {

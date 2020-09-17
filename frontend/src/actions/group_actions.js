@@ -36,7 +36,7 @@ export const createGroup = group => dispatch => {
 
 export const updateGroup = group => dispatch => {
    return GroupAPIUtil.updateGroup(group)
-      .then(updatedGroup => dispatch(receiveGroup(updatedGroup)))
+      .then(group => dispatch(receiveGroup(JSON.parse(group.config.data))))
 };
 
 export const deleteGroup = groupId => dispatch => {

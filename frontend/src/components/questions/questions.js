@@ -13,6 +13,9 @@ class Question extends React.Component {
         this.handleUserSelect = this.handleUserSelect.bind(this);
         this.handleNext = this.handleNext.bind(this);
 
+        this.group = this.props.group;
+        this.category = this.props.games[this.group.game].category;
+
         this.questions = this.props.questions.slice();
         this.question = this.questions.pop();
 
@@ -74,7 +77,7 @@ class Question extends React.Component {
                         Category:
                 </div>
                     <div className="questions-category-selected">
-                        {this.question.category}
+                        {this.category}
                     </div>
                 </p>
 
@@ -105,7 +108,7 @@ class Question extends React.Component {
                         correctAns={this.question.correct_answer}
                         incorrectAns={this.question.incorrect_answers}
                         difficulty={this.question.difficulty}
-                        category={this.question.category}
+                        category={this.category}
                         user={this.props.user}
                         editUser={this.props.editUser}
                     />
@@ -119,10 +122,12 @@ class Question extends React.Component {
     render() {
         return this.questions.length === 0 ? (
             <Results
-                category={this.question.category}
+                category={this.category}
                 users={this.props.users}
-                group={this.props.group}
+                user={this.props.user}
+                group={this.group}
                 fetchUsers={this.props.fetchUsers}
+                updateUser={this.props.editUser}
             />
             ) : (
                 this.afterMounted(this.questions)

@@ -1,6 +1,5 @@
 import React from 'react';
 import './category_index.css';
-import { createGame } from '../../util/game_api_util';
 
 class CategoryIndex extends React.Component {
   constructor(props) {
@@ -10,15 +9,25 @@ class CategoryIndex extends React.Component {
   }
 
   handleClick(category) {
+    let group = this.props.group;
+
     const game = { 
-      groupId: this.props.group._id,
+      groupId: group._id,
       category: category,
     }
 
-    // this.props.createGame(game);
-
     this.props.fetchQuestions(category)
+      .then(action => game.questions = action.questions)
+      .then(() => this.props.createGame(game))
+      .then(action => group.game = action.game._id)
+      .then(() => this.props.updateGroup(group))
       .then(() => this.props.history.push('/question'))
+
+    group.members.forEach(memberId => {
+      let user = this.props.users[memberId];
+      user.inProgress = true;
+      this.props.updateUser(user)
+    })
   }
 
    render() {

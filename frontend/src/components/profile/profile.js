@@ -13,9 +13,12 @@ class Profile extends React.Component {
 
     componentDidMount() {
         this.props.fetchUsers();
+        // this.props.fetchGroups();
+        // this.props.fetchGames();
+        // this.props.fetchGame(this.props.game._id);
     }
 
-    turnToIterable(scores) {
+    turnToIterable(scores) { 
         let arr = [];
 
         for (let category in scores) {
@@ -58,6 +61,14 @@ class Profile extends React.Component {
 
     render() {
         if (Object.values(this.props.users).length === 0) return null;
+        // if (Object.values(this.props.groups).length === 0) return null;
+        // if (Object.values(this.props.games).length === 0) return null;
+
+        let user = this.props.user;
+        let scores = user.scores;
+        // let group = this.props.groups[user.group];
+        // let game = this.props.games[group.game];
+        // let category = game.category;
 
         return (
           <div className="profile">
@@ -66,18 +77,19 @@ class Profile extends React.Component {
               <h1 className="splash-page-header">WILK TRIVIA</h1>
             </div>
 
-            <h1>{this.props.user.username}'s Profile Page</h1>
+            <h1>{user.username}'s Profile Page</h1>
 
             <div className="stats">
               <div className="previous-game">
                 <h3>Previous Game Stats</h3>
+                {/* <h4>Category: {category}</h4> */}
               </div>
               
               <div className="career">
                 <h3>Career Stats</h3>
                 <h4>Average Scores by Category:</h4>
                 <ul>
-                  {this.turnToIterable(this.props.user.scores).map((score) => (
+                  {this.turnToIterable(scores).map(score => (
                     <li>
                       {score[0]}: {this.averageScore(score[1])}
                     </li>
@@ -86,7 +98,7 @@ class Profile extends React.Component {
 
                 <h4>Highest Scores by Category:</h4>
                 <ul>
-                  {this.turnToIterable(this.props.user.scores).map((score) => (
+                  {this.turnToIterable(scores).map(score => (
                     <li>
                       {score[0]}: {this.highestScore(score[1])}
                     </li>

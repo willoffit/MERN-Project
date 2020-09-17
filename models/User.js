@@ -25,6 +25,10 @@ const UserSchema = new Schema({
     "General Knowledge": { type: Array }
   },
   group: { type: mongoose.Schema.Types.ObjectId, ref: 'Group' },
+  inProgress: {
+    type: Boolean, 
+    required: true
+  },
   date: {
     type: Date,
     default: Date.now,

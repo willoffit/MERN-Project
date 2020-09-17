@@ -124,8 +124,10 @@ class Question extends React.Component {
             <Results
                 category={this.category}
                 users={this.props.users}
+                user={this.props.user}
                 group={this.group}
                 fetchUsers={this.props.fetchUsers}
+                updateUser={this.props.editUser}
             />
             ) : (
                 this.afterMounted(this.questions)

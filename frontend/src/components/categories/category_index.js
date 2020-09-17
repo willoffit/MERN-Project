@@ -22,6 +22,12 @@ class CategoryIndex extends React.Component {
       .then(action => group.game = action.game._id)
       .then(() => this.props.updateGroup(group))
       .then(() => this.props.history.push('/question'))
+
+    group.members.forEach(memberId => {
+      let user = this.props.users[memberId];
+      user.inProgress = true;
+      this.props.updateUser(user)
+    })
   }
 
    render() {

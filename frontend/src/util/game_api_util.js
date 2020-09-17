@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-// export const fetchGame = () => {
-//     return axios.get('/api/groups')
-// };
+export const fetchGames = () => {
+    return axios.get('/api/games')
+};
 
 export const fetchGame = gameId => {
     return axios.get(`/api/games/${gameId}`)

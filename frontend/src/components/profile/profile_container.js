@@ -2,12 +2,14 @@ import { connect } from 'react-redux';
 import Profile from './profile';
 import { fetchUsers } from '../../actions/user_actions';
 import { logout } from '../../actions/session_actions';
-import { createGame } from '../../actions/game_actions';
+import { fetchGroups } from '../../actions/group_actions';
+import { fetchGames } from '../../actions/game_actions';
+// import { createGame } from '../../actions/game_actions';
 
 
 const mapStateToProps = (state, ownProps) => ({
     users: state.entities.users,
-    // user: state.entities.users[state.session.user.id]
+    // user: state.entities.users[state.session.user.id],
     user: { 
         date: "2020-09-04T04:36:16.626Z",
         email: "Kev@kevvykev.com",
@@ -22,13 +24,18 @@ const mapStateToProps = (state, ownProps) => ({
         },
         username: "kev",
         _id: "5f51c4403e05452d6745ca70"
-    }
+    },
+    groups: state.entities.groups,
+    games: state.entities.games,
+    // game: state.entities.games[state.entities.groups[state.entities.users[state.session.user.id].group].game]
 })
 
 const mapDispatchToProps = dispatch => ({
     fetchUsers: () => dispatch(fetchUsers()),
     logout: () => dispatch(logout()), 
-    createGame: game => dispatch(createGame(game))
+    fetchGroups: () => dispatch(fetchGroups()),
+    fetchGames: () => dispatch(fetchGames())
+    // fetchGame: game => dispatch(fetchGame(game))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

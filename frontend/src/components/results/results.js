@@ -2,49 +2,92 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class Results extends React.Component {
-  //  constructor(props) {
-  //     super(props);
-  //  }
-
    componentDidMount() {
-      this.props.fetchUsers();
+      const user = this.props.user;
+      user.inProgress = false;
+      this.props.updateUser(user);
    }
+
+   curryScores(fcn, numArgs) {
+      const category = this.props.category
+      let scores = [];
+      console.log(numArgs);
    
+      return function _curry (score) {
+         scores.push(score);
+
+         if (Object.values(scores).length < numArgs) {
+            return _curry;
+         } else {
+            return fcn(...scores)
+         }
+      }
+   }
+
+   winner(high_score) {
+      const category = this.props.category;
+      let winners = [];
+
+      if (typeof high_score === "function") return null;
+
+      const members = this.props.group.members;
+      Object.values(members).map((userId) => {
+         let user = this.props.users[userId];
+         let scores = user.scores[category];
+         let username = user.username;
+
+         if (scores[scores.length - 1] === high_score) winners.push(username);
+      });
+
+      return winners;
+   }
+
    render() {
       const group = this.props.group;
       const members = group.members;
       const category = this.props.category;
-      if (Object.values(this.props.users).length === 0) {
-         return null;
-      };
+
+      if (Object.values(this.props.users).length === 0) return null;
+      let curry = this.curryScores(Math.max, Object.values(members).length)
+      let high_score;
+
       return (
-         <div>
-            <h1>Final Results!</h1>
-            <ul>
-               {Object.values(members).map(userId => {
-                  let user = this.props.users[userId]
-                  let category_scores = user.scores[category]
-                  
-                  if (category_scores.length > 0) {
-                     return (
-                        <li>
-                           {user.username}: {category_scores[category_scores.length - 1]}
-                        </li>
-                     )
-                  } else {
-                     return (
-                        <div>
-                           <div>{user.username}: waiting for player to finish game...</div>
-                           <Link to={`/group/${group._id}`}>Play again?</Link>
-                           <Link to="/profile">End game?</Link>
-                        </div>
-                     )
-                  }
-               })}
-            </ul>
-         </div>
-      )
+        <div>
+         <h1>Final Results!</h1>
+         <ul>
+            {Object.values(members).map((userId) => {
+              let user = this.props.users[userId];
+              let scores = user.scores[category];
+              let score = scores[scores.length - 1];
+
+              if (user.inProgress === false) {
+                high_score = curry(score);
+                return (
+                  <div>
+                    {user.username}: {score}
+                  </div>
+                );
+               } else {
+                  return (
+                     <div>
+                    {user.username}: waiting for player to finish game...
+                  </div>
+                );
+               }
+            })}
+         </ul>
+
+         <Link to={`/group/${group._id}`}>Play again?</Link>
+         <Link to="/profile">End game?</Link>
+
+         {console.log(high_score)}
+         <h2>AND THE WINNER IS....: {this.winner(high_score)}</h2>
+         
+
+        </div>
+      );
    }
+   
 };
 
 export default Results;

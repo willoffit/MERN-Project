@@ -8,7 +8,7 @@ class GroupUpdate extends React.Component {
 
       this.state = {
          selectedUserId: null,
-         selectedUsersId: [],
+         selectedUsersId: this.props.group.members,
          groupName: this.props.group.name,
       };
 

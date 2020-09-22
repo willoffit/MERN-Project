@@ -8,8 +8,8 @@ class GroupUpdate extends React.Component {
 
       this.state = {
          selectedUserId: null,
-         selectedUsersId: [],
-         groupName: this.props.group.name,
+         selectedUsersId: this.props.group.members,
+         groupName: this.props.group.name
       };
 
       this.handleChange = this.handleChange.bind(this);
@@ -21,7 +21,7 @@ class GroupUpdate extends React.Component {
 
    componentDidMount() {
       this.props.fetchUsers()
-         .then(this.props.fetchGroup(this.props.group._id));
+         .then(this.props.fetchGroup(this.props.groups._id));
    }
 
    removeUser(e) {
@@ -66,7 +66,7 @@ class GroupUpdate extends React.Component {
       e.preventDefault();
       if (this.state.selectedUsersId.indexOf(this.state.selectedUserId) === -1 && this.state.selectedUserId !== null && this.state.selectedUsersId.length < 4) {
          this.setState({
-            selectedUsersId: [this.state.selectedUsersId].concat([this.state.selectedUserId]),
+            selectedUsersId: this.state.selectedUsersId.concat([this.state.selectedUserId]),
          });
       }
    }

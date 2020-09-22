@@ -21,7 +21,7 @@ export const removeGame = gameId => ({
 
 export const fetchGames = () => dispatch => {
     return GameAPIUtil.fetchGames()
-        .then(games => dispatch(receiveGames(games)))
+        .then(games => dispatch(receiveGames(games.data)))
         .catch(err => console.log(err))
 };
 

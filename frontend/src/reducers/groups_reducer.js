@@ -6,7 +6,14 @@ const groupsReducer = (oldState = {}, action) => {
 
    switch(action.type) {
       case RECEIVE_GROUPS:
-         return action.groups;
+         nextState = {};
+
+         for(let i = 0; i < action.groups.length; i++) {
+            let group = action.groups[i];
+            nextState[group._id] = group;
+         }
+
+         return nextState;
       case RECEIVE_GROUP:
          nextState[action.group._id] = action.group;
          return nextState

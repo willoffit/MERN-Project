@@ -9,6 +9,8 @@ class Profile extends React.Component {
         this.averageScore = this.averageScore.bind(this);
         this.highestScore = this.highestScore.bind(this);
         this.strongestCategory = this.strongestCategory.bind(this);
+        this.mostPlayedCategory = this.mostPlayedCategory.bind(this);
+        this.renderGameBtn = this.renderGameBtn.bind(this);
     }
 
     componentDidMount() {
@@ -55,8 +57,32 @@ class Profile extends React.Component {
         return best;
     }
 
+    mostPlayedCategory() {
+      let scores = this.props.user.scores;
+      let longest = Object.keys(scores)[0];
+
+      for (let category in scores) {
+        if (scores[category].length > scores[longest].length) longest = category;
+      }
+
+      return longest;
+    }
+
     gameStart() {
         this.props.history.push("/group");
+    }
+
+    renderGameBtn() {
+      // console.log(this.props.user)
+      if (this.props.user.inProgress) {
+        return (<button className="profile-link" onClick={() => this.history.push("/question")}>
+          Join Game
+        </button>)
+      } else {
+        return (<button className="profile-link" onClick={() => this.gameStart()}>
+          Start Game
+        </button>)
+      }
     }
 
     render() {
@@ -107,13 +133,12 @@ class Profile extends React.Component {
 
                 <h4>Best Category:</h4>
                 <li>{this.strongestCategory()}</li>
+                <h4>Most Played Category:</h4>
+                <li>{this.mostPlayedCategory()}</li>
               </div>
             </div>
             <button className="logout" onClick={() => this.props.logout()}>Log Out</button>
-
-            <button className="profile-link" onClick={() => this.gameStart()}>
-              Start Game
-              </button>
+            {this.renderGameBtn()}
           </div>
         );
     }

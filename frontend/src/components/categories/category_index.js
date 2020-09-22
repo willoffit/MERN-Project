@@ -25,7 +25,11 @@ class CategoryIndex extends React.Component {
 
     group.members.forEach(memberId => {
       let user = this.props.users[memberId];
+      console.log('cat-idx-user-before')
+      console.log(user);
       user.inProgress = true;
+      console.log("cat-idx-user-after");
+      console.log(user);
       this.props.updateUser(user)
     })
   }

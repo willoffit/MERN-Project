@@ -39,6 +39,8 @@ class GroupForm extends React.Component {
         })
 
         users.forEach(user => {
+            console.log('grp-user');
+            console.log(user);
             this.props.updateUser(user);
         })
     }

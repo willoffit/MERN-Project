@@ -6,7 +6,6 @@ const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
 
-
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 
 const validateRegisterInput = require("../../validation/register");
@@ -21,6 +20,8 @@ router.get("/", (req, res) => {
 });
 
 router.patch("/:id", (req, res) => {
+  console.log('req.body');
+  console.log(req.body);
   User.findOneAndUpdate({ id: req.params.id }, {
     scores: req.body.scores,
     group: req.body.group

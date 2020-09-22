@@ -17,12 +17,13 @@ const mapStateToProps = (state, ownProps) => ({
         password: "$2a$10$nNRRn6RroVZC3UXhzaE.2uJeNl.5LhvYL2Wocf6iPFvnw310RovLq",
         scores: {
             "Film": [-300, 1240],
-            "General Knowledge": [1000, 1800],
+            "General Knowledge": [1000, 1800, 3],
             "Geography": [3, -300],
             "History": [40, 2500],
             "Sports": [11, 1200]
         },
         username: "kev",
+        inProgress: false,
         _id: "5f51c4403e05452d6745ca70"
     },
     groups: state.entities.groups,

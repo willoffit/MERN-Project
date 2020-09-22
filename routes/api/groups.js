@@ -49,12 +49,20 @@ router.get(
 
   
 router.patch("/:id", (req, res) => {
-  Group.findOneAndUpdate({ id: req.params.id }, {
-    game: req.body.game
-  })
-    .then(group => res.json(group))
+  Group.findOneAndUpdate({ id: req.params.id })
+    .then(group => {
+      const updatedGroup = group;
+      updatedGroup.game = req.body.game;
+      updatedGroup.name = req.body.name;
+      updatedGroup.members = req.body.members;
+
+      updatedGroup
+        .save()
+        .then(group => res.json(group))
+        .catch(err => console.log(err))
+    })
     .catch(err => res.status(404).json({ noGroupFound: "No Group found with that ID"}))
-});
+ });
 
 router.delete("/:id", (req, res) => {
   Group.findByIdAndRemove(req.params.id);

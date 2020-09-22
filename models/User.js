@@ -22,7 +22,8 @@ const UserSchema = new Schema({
     "Geography": { type: Array }, 
     "History": { type: Array }, 
     "Film": { type: Array },
-    "General Knowledge": { type: Array }
+    "General Knowledge": { type: Array },
+    "Science": { type: Array }
   },
   group: { type: mongoose.Schema.Types.ObjectId, ref: 'Group' },
   inProgress: {

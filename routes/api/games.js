@@ -12,20 +12,19 @@ router.get("/test", (req, res) =>
 
 const validateGameInput = require("../../validation/games");
 
-// router.get("/", (req, res) => {
-//   Game.find()
-//     .then(games => console.log(games))
-//     .then(games => res.json(games))
-//     .catch(err => res.status(404).json({ nogroupfound: "No games found" }));
-// });
-
-router.get("/:id", (req, res) => {
-    Game.findById(req.params.id)
-      .then((game) => res.json(Game))
-      .catch((err) =>
-        res.status(404).json({ nogamefound: "No game found with that ID" })
-      );
+router.get("/", (req, res) => {
+  Game.find()
+    .then(games => res.json(games))
+    .catch(err => res.status(404).json({ nogroupfound: "No games found" }));
 });
+
+// router.get("/:id", (req, res) => {
+//     Game.findById(req.params.id)
+//       .then((game) => res.json(Game))
+//       .catch((err) =>
+//         res.status(404).json({ nogamefound: "No game found with that ID" })
+//       );
+// });
 
 router.post(
   "/",

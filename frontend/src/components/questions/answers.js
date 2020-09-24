@@ -89,11 +89,7 @@ class Answer extends React.Component {
 
     finalTotal() {
         let user = this.user;
-        console.log('user');
-        console.log(user);
 
-        console.log('category')
-        console.log(this.props.category)
         user.scores[this.props.category].push(this.total);
     }
 

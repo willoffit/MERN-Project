@@ -19,15 +19,29 @@ router.get("/", (req, res) => {
     .catch((err) => res.status(404).json({ nousersfound: "No users found" }));
 });
 
+// router.patch("/:id", (req, res) => {
+//   User.findOneAndUpdate({ id: req.params.id }, {
+//     scores: req.body.scores,
+//     group: req.body.group
+//   }).then(user => res.json(user)).catch(err =>
+//     res.status(404).json({ nouserfound: 'No user found with that ID' })
+//   );
+// });
+
 router.patch("/:id", (req, res) => {
-  console.log('req.body');
-  console.log(req.body);
-  User.findOneAndUpdate({ id: req.params.id }, {
-    scores: req.body.scores,
-    group: req.body.group
-  }).then(user => res.json(user)).catch(err =>
-    res.status(404).json({ nouserfound: 'No user found with that ID' })
-  );
+  User.findById(req.params.id)
+    .then(user => {
+        const updatedUser = user;
+        updatedUser.scores = req.body.scores;
+        updatedUser.group = req.body.group;
+        updatedUser.inProgress = req.body.inProgress;
+
+        updatedUser
+          .save()
+          .then(user => res.json(user))
+          .catch(err => console.log('ERROR:', err));
+      })
+    .catch(err => res.status(404).json({ nouserfound: "Could not find user" }))
 });
 
 router.post("/register", (req, res) => {
@@ -54,8 +68,6 @@ router.post("/register", (req, res) => {
           if (err) throw err;
 
           newUser.password = hash;
-
-          // newUser.password = hash;
 
           newUser
             .save()

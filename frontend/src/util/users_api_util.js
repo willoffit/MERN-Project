@@ -5,7 +5,5 @@ export const fetchUsers = () => {
 };
 
 export const updateUser = user => {
-  console.log('api util update')
-  console.log(user)
   return axios.patch(`/api/users/${user._id}`, user)
 }

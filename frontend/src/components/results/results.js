@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 class Results extends React.Component {
    componentDidMount() {
       const user = this.props.user;
-      // console.log('user')
-      // console.log(user)
       user.inProgress = false;
       this.props.updateUser(user);
    }
@@ -14,14 +12,8 @@ class Results extends React.Component {
       const category = this.props.category
       let scores = [];
 
-      // console.log('numArgs')
-      // console.log(numArgs);
-   
       return function _curry (score) {
-         console.log('score');
-         // console.log(score);
-         // scores.push(score);
-
+         scores.push(score);
          if (Object.values(scores).length < numArgs) {
             return _curry;
          } else {
@@ -33,9 +25,6 @@ class Results extends React.Component {
    winner(high_score) {
       const category = this.props.category;
       let winners = [];
-
-      // console.log(`highscore:`);
-      // console.log(high_score);
 
       if (typeof high_score === "function") return null;
 
@@ -89,7 +78,6 @@ class Results extends React.Component {
          <Link to={`/group/${group._id}`}>Play again?</Link>
          <Link to="/profile">End game?</Link>
 
-         {/* {console.log(high_score)} */}
          <h2>AND THE WINNER IS....: {this.winner(high_score)}</h2>
          
 

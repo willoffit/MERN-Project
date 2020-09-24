@@ -21,7 +21,7 @@ export const removeGroup = groupId => ({
 
 export const fetchGroups = () => dispatch => {
    return GroupAPIUtil.fetchGroups()
-      .then(groups => dispatch(receiveGroups(groups)))
+      .then(groups => dispatch(receiveGroups(groups.data)))
 };
 
 export const fetchGroup = groupId => dispatch => {

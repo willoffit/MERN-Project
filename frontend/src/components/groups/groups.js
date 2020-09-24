@@ -138,7 +138,9 @@ class GroupForm extends React.Component {
                     </div> 
                 </div>
                 <div>
-                    <button className="return-previous-page" onClick={this.previousPage}>Return to Profile Page</button>
+                    <button className="return-previous-page" onClick={this.previousPage}>
+                        <i class="fas fa-arrow-left"></i> Return to Profile Page
+                    </button>
                 </div>
             </div>
         );

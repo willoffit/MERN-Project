@@ -26,9 +26,28 @@
    font-size: 40px;
    color: teal;
    text-decoration: underline;
+   cursor: pointer;
 }
 
 .category-buttons:hover {
    border: 4px solid yellow;
    color: purple;
 }
+
+.categories-update-group {
+   padding: 10px 20px;
+   background-color: whitesmoke;
+   border: 1px solid black;
+   font-family: 'Luckiest Guy', cursive;
+   font-size: 20px;
+   color: purple;
+   border-radius: 7px;
+   cursor: pointer;
+   text-decoration: none;
+}
+
+.categories-update-group:hover {
+   border: 1px solid yellow;
+   color: teal;
+}
+

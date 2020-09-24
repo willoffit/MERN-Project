@@ -1,12 +1,11 @@
 import React from 'react';
 import './category_index.css';
+import { Link } from 'react-router-dom';
 
 class CategoryIndex extends React.Component {
   constructor(props) {
     super(props);
-    
     this.handleClick = this.handleClick.bind(this);
-    this.updateGroup = this.updateGroup.bind(this);
   }
 
   handleClick(category) {
@@ -31,11 +30,6 @@ class CategoryIndex extends React.Component {
     })
   }
 
-  updateGroup(e) {
-    e.preventDefault();
-    this.props.history.push(`/group/${group._id}`)
-  }
-
    render() {
       const { categories } = this.props;
 
@@ -51,7 +45,9 @@ class CategoryIndex extends React.Component {
               </button>
             ))}
           </div>
-          <button className="categories-update-group" onClick={this.updateGroup}>Update Group</button>
+          <Link className="categories-update-group" to={`/group/${this.props.group._id}`}>
+            <i class="fas fa-arrow-left"></i> Return to Update Group
+          </Link>
         </div>
       );
    }

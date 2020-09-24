@@ -6,6 +6,7 @@ class CategoryIndex extends React.Component {
     super(props);
     
     this.handleClick = this.handleClick.bind(this);
+    this.updateGroup = this.updateGroup.bind(this);
   }
 
   handleClick(category) {
@@ -30,6 +31,11 @@ class CategoryIndex extends React.Component {
     })
   }
 
+  updateGroup(e) {
+    e.preventDefault();
+    this.props.history.push(`/group/${group._id}`)
+  }
+
    render() {
       const { categories } = this.props;
 
@@ -45,6 +51,7 @@ class CategoryIndex extends React.Component {
               </button>
             ))}
           </div>
+          <button className="categories-update-group" onClick={this.updateGroup}>Update Group</button>
         </div>
       );
    }

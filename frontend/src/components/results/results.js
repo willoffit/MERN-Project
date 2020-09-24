@@ -63,8 +63,8 @@ class Results extends React.Component {
 
       return (
          <div className="results-page">
-            <h1 className="results-header">Final Results!</h1>
-            <ul>
+            <h1 className="results-header">FINAL RESULTS!!!</h1>
+            <div className="results-users">
                {Object.values(members).map((userId) => {
                   let user = this.props.users[userId];
                   let scores = user.scores[category];
@@ -80,15 +80,17 @@ class Results extends React.Component {
                   } else {
                      return (
                      <div>
-                        {user.username}: waiting for player to finish game...
+                        {user.username}: Pending Answers
                      </div>
                      );
                   }
                })}
-            </ul>
-            <Link to={`/group/${group._id}`} className="results-play-again">Play again?</Link>
-            <Link to="/profile" className="results-end-game">End game?</Link>
-            <h2 className="results-winner">AND THE WINNER IS....: {this.winner(high_score)}</h2>
+            </div>
+            <h2 className="results-winner">AND THE WINNER IS... {this.winner(high_score)}!!!</h2>
+            <div className="results-options">
+               <Link to={`/group/${group._id}`} className="results-play-again">Play again?</Link>
+               <Link to="/profile" className="results-end-game">End game?</Link>
+            </div>
          </div>
       );
    }

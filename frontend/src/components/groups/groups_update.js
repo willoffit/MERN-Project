@@ -136,7 +136,7 @@ class GroupUpdate extends React.Component {
                <button onClick={this.onAddUser}>Add user</button>
                <button onClick={this.onConfirm}>Confirm Group</button>
             </div>
-            <label className="limit">**Limit 4 Players**</label>
+            <label className="limit">**Limit Four Players**</label>
             <div>
                <div className="member-list">
                   {memberList}

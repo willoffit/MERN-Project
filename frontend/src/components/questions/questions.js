@@ -113,7 +113,7 @@ class Question extends React.Component {
                         editUser={this.props.editUser}
                     />
                     
-                    <button className="next-button" onClick={() => this.handleNext()}>Next</button>
+                    <button className="next-button" onClick={() => this.handleNext()}>Next <i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
         )

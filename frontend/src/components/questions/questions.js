@@ -8,7 +8,7 @@ class Question extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { userChoice: -1, done: false };
+        this.state = { userChoice: -1, done: false, numQuestions: 1 };
 
         this.handleUserSelect = this.handleUserSelect.bind(this);
         this.handleNext = this.handleNext.bind(this);
@@ -65,6 +65,7 @@ class Question extends React.Component {
         ]);
 
         this.setState({ userChoice: -1, done: true });
+        this.state.numQuestions = this.state.numQuestions + 1;
     }
 
     afterMounted() {
@@ -83,7 +84,7 @@ class Question extends React.Component {
 
                 <p className="questions-question">
                     <div>
-                        Question:
+                        Question {this.state.numQuestions} / 10:
                     </div>
                     <div className="questions-question-selected">
                         {this.question.question}

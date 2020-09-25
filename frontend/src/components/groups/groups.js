@@ -8,7 +8,7 @@ class GroupForm extends React.Component {
         this.state = {
             selectedUserId: null,
             selectedUsersId: [this.props.currentUserId],
-            groupName: "",
+            groupName: ""
         };
         this.handleChange = this.handleChange.bind(this);
         this.onAddUser = this.onAddUser.bind(this);
@@ -16,10 +16,11 @@ class GroupForm extends React.Component {
         this.removeUser = this.removeUser.bind(this);
         this.handleGroupNameInput = this.handleGroupNameInput.bind(this);
         this.previousPage = this.previousPage.bind(this);
+        // this.handleFlip = this.handleFlip.bind(this);
     }
     
     componentDidMount(){
-        this.props.fetchUsers()
+        this.props.fetchUsers();
     }
 
     removeUser(e){ 
@@ -78,6 +79,11 @@ class GroupForm extends React.Component {
         e.preventDefault();
         this.props.history.push('/profile');
     };
+
+    // handleFlip() {
+    //     this.state.flip = !this.state.flip;
+    //     console.log(this.state.flip);
+    // }
 
     render() {
         if (Object.values(this.props.users).length === 0){

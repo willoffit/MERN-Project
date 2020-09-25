@@ -17,6 +17,7 @@ class GroupUpdate extends React.Component {
       this.onConfirm = this.onConfirm.bind(this);
       this.removeUser = this.removeUser.bind(this);
       this.handleGroupNameInput = this.handleGroupNameInput.bind(this);
+      this.previousPage = this.previousPage.bind(this);
    }
 
    componentDidMount() {
@@ -76,22 +77,37 @@ class GroupUpdate extends React.Component {
       this.setState({ selectedUserId: e.currentTarget.value });
    };
 
+   previousPage(e) {
+      e.preventDefault();
+      this.props.history.push('/profile');
+   };
+
    render() {
       if (Object.values(this.props.users).length === 0) {
          return null
       }
 
       let memberList = this.state.selectedUsersId.map((userId, i) => {
-         return (
+         return (this.props.currentUserId === userId ? (
             <div className="member">
                <div className="member-select-user">
                   {this.props.users[userId].username}
                </div>
                <div>
+                  <button className="remove-user" value={userId}>Player Stats</button>
+               </div>
+            </div>
+         ) : (
+            <div className="member">
+               <div className="member-select-user">
+                  {this.props.users[userId].username}
+               </div>
+               <div>
+                  <button className="remove-user" value={userId}>Player Stats</button>
                   <button className="remove-user" onClick={this.removeUser} value={userId}>Remove User</button>
                </div>
             </div>
-         )
+         ))
       })
 
       let users = Object.values(this.props.users)
@@ -120,10 +136,16 @@ class GroupUpdate extends React.Component {
                <button onClick={this.onAddUser}>Add user</button>
                <button onClick={this.onConfirm}>Confirm Group</button>
             </div>
+            <label className="limit">**Limit 4 Players**</label>
             <div>
                <div className="member-list">
                   {memberList}
                </div>
+            </div>
+            <div>
+               <button className="return-previous-page" onClick={this.previousPage}>
+                  <i class="fas fa-arrow-left"></i> Return to Profile Page
+               </button>
             </div>
          </div>
       );

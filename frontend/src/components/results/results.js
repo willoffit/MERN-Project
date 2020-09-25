@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './results.css'
 
 class Results extends React.Component {
    componentDidMount() {
@@ -50,38 +51,37 @@ class Results extends React.Component {
       let high_score;
 
       return (
-        <div>
-         <h1>Final Results!</h1>
-         <ul>
-            {Object.values(members).map((userId) => {
-              let user = this.props.users[userId];
-              let scores = user.scores[category];
-              let score = scores[scores.length - 1];
+         <div className="results-page">
+            <h1 className="results-header">FINAL RESULTS!!!</h1>
+            <div className="results-users">
+               {Object.values(members).map((userId) => {
+                  let user = this.props.users[userId];
+                  let scores = user.scores[category];
+                  let score = scores[scores.length - 1];
 
-              if (user.inProgress === false) {
-                high_score = curry(score);
-                return (
-                  <div>
-                    {user.username}: {score}
-                  </div>
-                );
-               } else {
-                  return (
+                  if (user.inProgress === false) {
+                     high_score = curry(score);
+                     return (
+                     <div>
+                        {user.username}: {score}
+                     </div>
+                     );
+                  } else {
+                     return (
                      <div>
                     {user.username}: waiting for player to finish game...
                   </div>
                 );
                }
             })}
-         </ul>
-
-         <Link to={`/group/${group._id}`}>Play again?</Link>
-         <Link to="/profile">End game?</Link>
-
-         <h2>AND THE WINNER IS....: {this.winner(high_score)}</h2>
-         
-
-        </div>
+            </ul>
+            </div>
+            <h2 className="results-winner">AND THE WINNER IS... {this.winner(high_score)}!!!</h2>
+            <div className="results-options">
+               <Link to={`/group/${group._id}`} className="results-play-again">Play again?</Link>
+               <Link to="/profile" className="results-end-game">End game?</Link>
+            </div>
+         </div>
       );
    }
    

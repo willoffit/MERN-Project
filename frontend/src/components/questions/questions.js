@@ -8,7 +8,7 @@ class Question extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { userChoice: -1, done: false };
+        this.state = { userChoice: -1, done: false, numQuestions: 1 };
 
         this.handleUserSelect = this.handleUserSelect.bind(this);
         this.handleNext = this.handleNext.bind(this);
@@ -76,6 +76,13 @@ class Question extends React.Component {
         ]);
 
         this.setState({ userChoice: -1, done: true });
+        this.state.numQuestions = this.state.numQuestions + 1;
+    }
+
+    decodeString(str) {
+        const textArea = document.createElement('textarea');
+        textArea.innerHTML = str;
+        return textArea.value;
     }
 
     afterMounted() {
@@ -94,10 +101,10 @@ class Question extends React.Component {
 
                 <p className="questions-question">
                     <div>
-                        Question:
+                        Question {this.state.numQuestions} / 10:
                     </div>
                     <div className="questions-question-selected">
-                        {this.question.question}
+                        {this.decodeString(this.question.question)}
                     </div>
                 </p>
                 <p className="questions-answer">{this.answers.map((answer, idx) => (
@@ -124,7 +131,7 @@ class Question extends React.Component {
                         editUser={this.props.editUser}
                     />
                     
-                    <button className="next-button" onClick={() => this.handleNext()}>Next</button>
+                    <button className="next-button" onClick={() => this.handleNext()}>Next <i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
         )

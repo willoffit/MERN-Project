@@ -25,7 +25,6 @@
 .create-group-groupname-input {
    display: block;
    border-radius: 10px;
-   /* margin: 1%; */
    padding: 10px;
    font-size: 25px;
    width: 250px;
@@ -36,9 +35,9 @@
 }
 
 .create-group-groupname-input:focus {
-    outline: none !important;
-    border-radius: 10px;
-    border: 1px solid yellow;
+   outline: none !important;
+   border-radius: 10px;
+   border: 1px solid yellow;
 }
 
 .create-group-select-members select {
@@ -52,6 +51,7 @@
    font-size: 20px;
    padding: 5px;
    border: 1px solid black;
+   outline: none !important;
 }
 
 .create-group-select-members button {
@@ -65,11 +65,17 @@
    font-size: 20px;
    padding: 5px;
    border: 1px solid black;
+   outline: none !important;
+   cursor: pointer;
 }
 
 .create-group-select-members button:hover {
    border: 1px solid yellow;
    color: purple;
+}
+
+.limit {
+   font-size: 20px;
 }
 
 .member-list {
@@ -78,7 +84,7 @@
    flex-wrap: wrap;
    align-content: center;
    justify-content: center;
-   margin: 20px;
+   margin: 15px 20px;
 }
 
 .member {
@@ -98,7 +104,6 @@
 
 .member:hover {
    border: 1px solid yellow;
-   color: purple;
    border-radius: 10px;
    background-color: whitesmoke;
 }
@@ -107,31 +112,60 @@
    font-size: 30px;
 }
 
+.selected-user {
+   text-decoration: underline;
+}
+
+.member-select-user-stats {
+   font-size: 20px;
+   color: goldenrod;
+}
+
 .member i {
    font-size: 20px;
 }
 
 .remove-user {
-  font-family: 'Luckiest Guy', cursive;
-  display: inline-block;
-  padding: 14px, 30px;
-  font-size: 20px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: white;
-  background-color: purple;
-  border: none;
-  border-radius: 4px;
-  box-shadow: 0 5px #999;
-  margin-top: 3px;
+   font-family: 'Luckiest Guy', cursive;
+   display: inline-block;
+   padding: 14px, 30px;
+   font-size: 20px;
+   cursor: pointer;
+   text-align: center;
+   text-decoration: none;
+   outline: none;
+   color: white;
+   background-color: purple;
+   border: none;
+   border-radius: 4px;
+   box-shadow: 0 5px #999;
+   margin: 5px;
 }
 
 .remove-user:hover {background-color: purple}
 
 .remove-user:active {
-  background-color: teal;
-  box-shadow: 0 5px #999;
-  transform: translateY(4px);
+   background-color: teal;
+   box-shadow: 0 5px #999;
+   transform: translateY(4px);
+}
+
+.return-previous-page {
+   padding: 10px 20px;
+   background-color: whitesmoke;
+   border: 1px solid black;
+   font-family: 'Luckiest Guy', cursive;
+   font-size: 20px;
+   color: teal;
+   border-radius: 7px;
+   cursor: pointer;
+}
+
+.return-previous-page:hover {
+   border: 1px solid yellow;
+   color: purple;
+}
+
+.fas {
+   font-size: 20px;
 }

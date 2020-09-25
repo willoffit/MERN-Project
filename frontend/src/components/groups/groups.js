@@ -5,21 +5,22 @@ import "./group.css";
 class GroupForm extends React.Component {
     constructor(props) {
         super(props);
-        // TODO: get users from database 
         this.state = {
             selectedUserId: null,
             selectedUsersId: [this.props.currentUserId],
-            groupName: "",
+            groupName: ""
         };
         this.handleChange = this.handleChange.bind(this);
         this.onAddUser = this.onAddUser.bind(this);
         this.onConfirm = this.onConfirm.bind(this);
         this.removeUser = this.removeUser.bind(this);
         this.handleGroupNameInput = this.handleGroupNameInput.bind(this);
+        this.previousPage = this.previousPage.bind(this);
+        // this.handleFlip = this.handleFlip.bind(this);
     }
     
     componentDidMount(){
-        this.props.fetchUsers()
+        this.props.fetchUsers();
     }
 
     removeUser(e){ 
@@ -67,12 +68,22 @@ class GroupForm extends React.Component {
                 selectedUsersId: this.state.selectedUsersId.concat(this.state.selectedUserId),
             });
         }
-    }
+    };
 
     handleChange(e) {
         e.preventDefault();
         this.setState({ selectedUserId: e.currentTarget.value });
     };
+
+    previousPage(e) {
+        e.preventDefault();
+        this.props.history.push('/profile');
+    };
+
+    // handleFlip() {
+    //     this.state.flip = !this.state.flip;
+    //     console.log(this.state.flip);
+    // }
 
     render() {
         if (Object.values(this.props.users).length === 0){
@@ -80,16 +91,32 @@ class GroupForm extends React.Component {
         }
 
         let memberList = this.state.selectedUsersId.map((userId, i) => {
-            return (
+            return (this.props.currentUserId === userId ? (
                 <div className="member">
                     <div className="member-select-user">
-                        {this.props.users[userId].username}
+                        <div className="selected-user">{this.props.users[userId].username}</div>
+                        <div className="member-select-user-stats">Best Category: Sports</div>
+                        <div className="member-select-user-stats">Games Played: 100</div>
+                        <div className="member-select-user-stats">Average Score: 3000</div>
+                    </div>
+                    {/* <div>
+                        <button className="remove-user" value={userId}>Player Stats</button>
+                    </div> */}
+                </div>
+            ) : (
+                <div className="member">
+                    <div className="member-select-user">
+                        <div className="selected-user">{this.props.users[userId].username}</div>
+                        <div className="member-select-user-stats">Best Category: Sports</div>
+                        <div className="member-select-user-stats">Games Played: 100</div>
+                        <div className="member-select-user-stats">Average Score: 3000</div>
                     </div>
                     <div>
+                        {/* <button className="remove-user" value={userId}>Player Stats</button> */}
                         <button className="remove-user" onClick={this.removeUser} value={userId}>Remove User</button>
                     </div>
                 </div>
-            )
+            ))
         })
        
         let users = Object.values(this.props.users)
@@ -100,8 +127,7 @@ class GroupForm extends React.Component {
                 <h1 className="create-group-header">CREATE GROUP</h1>
                 <div className="create-group-groupname">
                     <label for="GroupName">Group Name:</label>
-                    <input className="create-group-groupname-input" onChange={this.handleGroupNameInput} type="text" id="GroupName" name="GroupName" /><br></br>
-                    
+                    <input className="create-group-groupname-input" onChange={this.handleGroupNameInput} type="text" id="GroupName" name="GroupName" />
                 </div>
                 <div className="create-group-select-members">
                     <select value={this.state.selectedUserId || defaultOption} name="users" onChange={this.handleChange}>
@@ -110,17 +136,23 @@ class GroupForm extends React.Component {
                             users.map((user, idx) => {
                                 return (
                                     <option key={idx} value={user._id} selected>{user.username}</option>
-                                )
-                            })
-                        }
+                                    )
+                                })
+                            }
                     </select>
-                    <button onClick={this.onAddUser}>Add user</button>
+                    <button onClick={this.onAddUser}>Add User</button>
                     <button onClick={this.onConfirm}>Confirm Group</button>
                 </div>
+                <label className="limit">**Limit 4 Players**</label>
                 <div>
                     <div className="member-list">
                         { memberList }
                     </div> 
+                </div>
+                <div>
+                    <button className="return-previous-page" onClick={this.previousPage}>
+                        <i class="fas fa-arrow-left"></i> Return to Profile Page
+                    </button>
                 </div>
             </div>
         );

@@ -27,7 +27,7 @@ export const fetchGames = () => dispatch => {
 
 export const fetchGame = gameId => dispatch => {
     return GameAPIUtil.fetchGame(gameId)
-        .then(game => dispatch(receiveGame(game)))
+        .then(game => dispatch(receiveGame(game.data)))
 };
 
 export const createGame = game => dispatch => {

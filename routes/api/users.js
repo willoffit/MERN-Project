@@ -6,7 +6,6 @@ const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
 
-
 router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 
 const validateRegisterInput = require("../../validation/register");
@@ -30,7 +29,7 @@ router.get("/", (req, res) => {
 // });
 
 router.patch("/:id", (req, res) => {
-  User.findOneAndUpdate({ id: req.params.id })
+  User.findById(req.params.id)
     .then(user => {
         const updatedUser = user;
         updatedUser.scores = req.body.scores;
@@ -40,7 +39,7 @@ router.patch("/:id", (req, res) => {
         updatedUser
           .save()
           .then(user => res.json(user))
-          .catch(err => console.log(err));
+          .catch(err => console.log('ERROR:', err));
       })
     .catch(err => res.status(404).json({ nouserfound: "Could not find user" }))
 });
@@ -70,12 +69,34 @@ router.post("/register", (req, res) => {
 
           newUser.password = hash;
 
-          // newUser.password = hash;
-
           newUser
             .save()
-            .then((user) => res.json(user))
-            .catch((err) => console.log(err));
+            .then((user) => { 
+                const payload = {
+                  id: user.id,
+                  username: user.username,
+                  email: user.email,
+                };
+                jwt.sign(
+                  payload,
+                  keys.secretOrKey,
+                  { expiresIn: 3600 },
+                  (err, token) => {
+                    res.json({
+                      success: true,
+                      token: "Bearer " + token,
+                    });
+                  }
+                );
+              } 
+            )
+            .catch((err) => { 
+              if (err.errors.username) {
+                return res.status(400).json(err.errors.username)
+              } else {
+                return res.status(400).json(err)
+              }
+            });
         });
       });
     }

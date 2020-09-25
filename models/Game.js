@@ -13,6 +13,10 @@ const GameSchema = new Schema({
   questions: {
     type: Array,
     required: true
+  },
+  date: {
+    type: Date,
+    default: Date.now
   }
 });
 

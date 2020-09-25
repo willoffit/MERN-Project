@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const type = { general: 9, sports: 21, film: 11, science: 18, geography: 22 }
+const type = { general: 9, sports: 21, film: 11, science: 18, geography: 22, history: 23 }
 
-export const getGame = (category) => {
+export const getGame = category => {
   switch (category) {
     case "General Knowledge":
       return axios.get(`/api/categories/${type.general}`);
@@ -14,6 +14,8 @@ export const getGame = (category) => {
       return axios.get(`/api/categories/${type.science}`);
     case "Geography":
       return axios.get(`/api/categories/${type.geography}`);
+    case "History":
+      return axios.get(`/api/categories/${type.history}`);
     default:
       return "";
   }

@@ -48,8 +48,6 @@ router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
 
   if (!isValid) {
-    console.log("--------------validation-----------------");
-    console.log(errors);
     return res.status(400).json(errors);
   }
 
@@ -57,7 +55,6 @@ router.post("/register", (req, res) => {
     if (user) {
       // Use the validations to send the error
       errors.email = "Email already exists";
-      console.log("-----------------------error-------------------------")
       return res.status(400).json(errors);
     } else {
       const newUser = new User({
@@ -93,7 +90,13 @@ router.post("/register", (req, res) => {
                 );
               } 
             )
-            .catch((err) => console.log(err));
+            .catch((err) => { 
+              if (err.errors.username) {
+                return res.status(400).json(err.errors.username)
+              } else {
+                return res.status(400).json(err)
+              }
+            });
         });
       });
     }

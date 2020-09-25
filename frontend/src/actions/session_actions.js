@@ -54,6 +54,8 @@ export const signup = (user) => (dispatch) => {
   return (
     APIUtil.signup(user)
         .then(res => { 
+          console.log("-------ACTION RES----------")
+          console.log(res)
           const { token } = res.data;
           localStorage.setItem("jwtToken", token);
           APIUtil.setAuthToken(token);
@@ -61,8 +63,16 @@ export const signup = (user) => (dispatch) => {
           dispatch(receiveUserSignIn(decoded)) 
           } 
         ) 
-        .catch((err) => dispatch(receiveErrors(err.response.data)))
-        // .catch(err => console.log(err))
+        .catch(err => {
+          console.log('---------CATCH-----------')
+          console.log(err.response.data.message);
+          if (err.response.data.message) {
+            dispatch(receiveErrors(["username has been taken"]))
+            // dispatch(receiveErrors([err.response.data.message]))
+          } else {
+            dispatch(receiveErrors(err.response.data))
+          }
+        })
   )
 }
 

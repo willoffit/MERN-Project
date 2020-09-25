@@ -47,6 +47,10 @@ class SignupForm extends React.Component {
 
     this.props.signup(user)
       .then(() => { 
+        console.log('==========ERRORS-----------')
+        console.log(this.props.errors)
+      })
+      .then(() => { 
         if (this.props.errors.length === 0) this.props.closeModal() 
       })
       .then(() => this.props.history.push('/'))

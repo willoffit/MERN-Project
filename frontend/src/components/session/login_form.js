@@ -9,7 +9,6 @@ class LoginForm extends React.Component {
     this.state = {
       email: "",
       password: "",
-      errors: {},
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,13 +17,17 @@ class LoginForm extends React.Component {
   }
 
   // Once the user has been authenticated, redirect to the Tweets page
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.currentUser === true) {
-      this.props.history.push("/tweets");
-    }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.currentUser === true) {
+  //     this.props.history.push("/tweets");
+  //   }
 
-    // Set or clear errors
-    this.setState({ errors: nextProps.errors });
+  //   // Set or clear errors
+  //   this.setState({ errors: nextProps.errors });
+  // }
+
+  componentWillUnmount() {
+    this.props.clearErrors();
   }
 
   // Handle field updates (called in the render method)
@@ -45,16 +48,20 @@ class LoginForm extends React.Component {
     };
 
     this.props.login(user)
+        .then(() => { 
+          if (this.props.errors.length === 0) this.props.closeModal() 
+        })
         .then(() => this.props.history.push('/'))
-        .then(() => this.props.closeModal())
+        // .then(() => )
   }
 
   // Render the session errors if there are any
   renderErrors() {
+    console.log(this.props.errors)
     return (
       <ul className="errors">
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>{this.state.errors[error]}</li>
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>{error}</li>
         ))}
       </ul>
     );

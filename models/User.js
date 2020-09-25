@@ -28,7 +28,7 @@ const UserSchema = new Schema({
   group: { type: mongoose.Schema.Types.ObjectId, ref: 'Group' },
   inProgress: {
     type: Boolean, 
-    required: true
+    // required: true
   },
   date: {
     type: Date,

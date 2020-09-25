@@ -48,6 +48,8 @@ router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
 
   if (!isValid) {
+    console.log("--------------validation-----------------");
+    console.log(errors);
     return res.status(400).json(errors);
   }
 
@@ -55,6 +57,7 @@ router.post("/register", (req, res) => {
     if (user) {
       // Use the validations to send the error
       errors.email = "Email already exists";
+      console.log("-----------------------error-------------------------")
       return res.status(400).json(errors);
     } else {
       const newUser = new User({
@@ -71,7 +74,25 @@ router.post("/register", (req, res) => {
 
           newUser
             .save()
-            .then((user) => res.json(user))
+            .then((user) => { 
+                const payload = {
+                  id: user.id,
+                  username: user.username,
+                  email: user.email,
+                };
+                jwt.sign(
+                  payload,
+                  keys.secretOrKey,
+                  { expiresIn: 3600 },
+                  (err, token) => {
+                    res.json({
+                      success: true,
+                      token: "Bearer " + token,
+                    });
+                  }
+                );
+              } 
+            )
             .catch((err) => console.log(err));
         });
       });

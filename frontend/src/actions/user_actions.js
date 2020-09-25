@@ -23,5 +23,6 @@ export const fetchUsers = () => (dispatch) => (
 export const editUser = (user) => (dispatch) => (
   UsersAPIUtil.updateUser(user)
     .then(user => dispatch(updateUser(JSON.parse(user.config.data))))
+    // .then((data) => console.log("data:", data))
   )
 

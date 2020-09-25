@@ -94,19 +94,25 @@ class GroupForm extends React.Component {
             return (this.props.currentUserId === userId ? (
                 <div className="member">
                     <div className="member-select-user">
-                        {this.props.users[userId].username}
+                        <div className="selected-user">{this.props.users[userId].username}</div>
+                        <div className="member-select-user-stats">Best Category: Sports</div>
+                        <div className="member-select-user-stats">Games Played: 100</div>
+                        <div className="member-select-user-stats">Average Score: 3000</div>
                     </div>
-                    <div>
+                    {/* <div>
                         <button className="remove-user" value={userId}>Player Stats</button>
-                    </div>
+                    </div> */}
                 </div>
             ) : (
                 <div className="member">
                     <div className="member-select-user">
-                        {this.props.users[userId].username}
+                        <div className="selected-user">{this.props.users[userId].username}</div>
+                        <div className="member-select-user-stats">Best Category: Sports</div>
+                        <div className="member-select-user-stats">Games Played: 100</div>
+                        <div className="member-select-user-stats">Average Score: 3000</div>
                     </div>
                     <div>
-                        <button className="remove-user" value={userId}>Player Stats</button>
+                        {/* <button className="remove-user" value={userId}>Player Stats</button> */}
                         <button className="remove-user" onClick={this.removeUser} value={userId}>Remove User</button>
                     </div>
                 </div>

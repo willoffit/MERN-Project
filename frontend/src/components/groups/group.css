@@ -104,13 +104,21 @@
 
 .member:hover {
    border: 1px solid yellow;
-   color: purple;
    border-radius: 10px;
    background-color: whitesmoke;
 }
 
 .member-select-user {
    font-size: 30px;
+}
+
+.selected-user {
+   text-decoration: underline;
+}
+
+.member-select-user-stats {
+   font-size: 20px;
+   color: goldenrod;
 }
 
 .member i {

@@ -74,7 +74,6 @@ class Results extends React.Component {
                 );
                }
             })}
-            </ul>
             </div>
             <h2 className="results-winner">AND THE WINNER IS... {this.winner(high_score)}!!!</h2>
             <div className="results-options">

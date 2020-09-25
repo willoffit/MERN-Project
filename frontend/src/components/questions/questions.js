@@ -68,6 +68,12 @@ class Question extends React.Component {
         this.state.numQuestions = this.state.numQuestions + 1;
     }
 
+    decodeString(str) {
+        const textArea = document.createElement('textarea');
+        textArea.innerHTML = str;
+        return textArea.value;
+    }
+
     afterMounted() {
         let klass = "correct";
 
@@ -87,7 +93,7 @@ class Question extends React.Component {
                         Question {this.state.numQuestions} / 10:
                     </div>
                     <div className="questions-question-selected">
-                        {this.question.question}
+                        {this.decodeString(this.question.question)}
                     </div>
                 </p>
                 <p className="questions-answer">{this.answers.map((answer, idx) => (

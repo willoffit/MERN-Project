@@ -100,7 +100,6 @@ class Profile extends React.Component {
         if (Object.values(this.props.games).length === 0) return null;
         
         let user = this.props.user;
-        console.log(user)
         let scores = user.scores;
         let group = !user.group ? { members: [] } : this.props.groups[user.group];
         let game = !group ? "" : this.props.games[group.game];

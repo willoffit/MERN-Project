@@ -50,12 +50,9 @@ export const logoutUser = () => ({
 
 // Upon signup, dispatch the approporiate action depending on which type of response we receieve from the backend
 export const signup = (user) => (dispatch) => {
-  console.log('thunktion', user)
   return (
     APIUtil.signup(user)
         .then(res => { 
-          console.log("-------ACTION RES----------")
-          console.log(res)
           const { token } = res.data;
           localStorage.setItem("jwtToken", token);
           APIUtil.setAuthToken(token);
@@ -64,11 +61,8 @@ export const signup = (user) => (dispatch) => {
           } 
         ) 
         .catch(err => {
-          console.log('---------CATCH-----------')
-          console.log(err.response.data.message);
           if (err.response.data.message) {
             dispatch(receiveErrors(["username has been taken"]))
-            // dispatch(receiveErrors([err.response.data.message]))
           } else {
             dispatch(receiveErrors(err.response.data))
           }

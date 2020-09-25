@@ -49,21 +49,21 @@ class NavBar extends React.Component {
               <i
                 className="fab fa-github"
                 onClick={() =>
-                  window.location.replace("https://github.com/leahdlp")
+                  window.location.href = "https://github.com/leahdlp"
                 }
               ></i>
               <i
                 className="fab fa-linkedin"
                 onClick={() =>
-                  window.location.replace(
+                  window.location.href = 
                     "https://www.linkedin.com/in/leahdelapena/"
-                  )
+                  
                 }
               ></i>
               <i
                 className="fab fa-angellist"
                 onClick={() =>
-                  window.location.replace("https://angel.co/u/leah-de-la-pena")
+                  window.location.href = "https://angel.co/u/leah-de-la-pena"
                 }
               ></i>
             </div>
@@ -72,21 +72,21 @@ class NavBar extends React.Component {
               <i
                 className="fab fa-github"
                 onClick={() =>
-                  window.location.replace("https://github.com/besenio")
+                  window.location.href = "https://github.com/besenio"
                 }
               ></i>
               <i
                 className="fab fa-linkedin"
                 onClick={() =>
-                  window.location.replace(
+                  window.location.href = 
                     "https://www.linkedin.com/in/kevin-besenio-79905a1b7/"
-                    )
+                    
                 }
               ></i>
               <i
                 className="fab fa-angellist"
                 onClick={() =>
-                  window.location.replace("https://angel.co/u/besenio")
+                  window.location.href = "https://angel.co/u/besenio"
                 }
               ></i>
             </div>

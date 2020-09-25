@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './results.css'
 
 class Results extends React.Component {
    componentDidMount() {
@@ -8,18 +9,16 @@ class Results extends React.Component {
       this.props.updateUser(user);
    }
 
-   curryScores(fcn, numArgs) {
+   curryScores(numArgs) {
       const category = this.props.category
       let scores = [];
-      console.log(numArgs);
-   
+
       return function _curry (score) {
          scores.push(score);
-
          if (Object.values(scores).length < numArgs) {
             return _curry;
          } else {
-            return fcn(...scores)
+            return Math.max(...scores)
          }
       }
    }
@@ -48,43 +47,40 @@ class Results extends React.Component {
       const category = this.props.category;
 
       if (Object.values(this.props.users).length === 0) return null;
-      let curry = this.curryScores(Math.max, Object.values(members).length)
+      let curry = this.curryScores(Object.values(members).length)
       let high_score;
 
       return (
-        <div>
-         <h1>Final Results!</h1>
-         <ul>
-            {Object.values(members).map((userId) => {
-              let user = this.props.users[userId];
-              let scores = user.scores[category];
-              let score = scores[scores.length - 1];
+         <div className="results-page">
+            <h1 className="results-header">FINAL RESULTS!!!</h1>
+            <div className="results-users">
+               {Object.values(members).map((userId) => {
+                  let user = this.props.users[userId];
+                  let scores = user.scores[category];
+                  let score = scores[scores.length - 1];
 
-              if (user.inProgress === false) {
-                high_score = curry(score);
-                return (
-                  <div>
-                    {user.username}: {score}
-                  </div>
-                );
-               } else {
-                  return (
+                  if (user.inProgress === false) {
+                     high_score = curry(score);
+                     return (
+                     <div>
+                        {user.username}: {score}
+                     </div>
+                     );
+                  } else {
+                     return (
                      <div>
                     {user.username}: waiting for player to finish game...
                   </div>
                 );
                }
             })}
-         </ul>
-
-         <Link to={`/group/${group._id}`}>Play again?</Link>
-         <Link to="/profile">End game?</Link>
-
-         {console.log(high_score)}
-         <h2>AND THE WINNER IS....: {this.winner(high_score)}</h2>
-         
-
-        </div>
+            </div>
+            <h2 className="results-winner">AND THE WINNER IS... {this.winner(high_score)}!!!</h2>
+            <div className="results-options">
+               <Link to={`/group/${group._id}`} className="results-play-again">Play again?</Link>
+               <Link to="/profile" className="results-end-game">End game?</Link>
+            </div>
+         </div>
       );
    }
    

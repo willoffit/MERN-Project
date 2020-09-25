@@ -36,25 +36,36 @@ router.post(
       members: req.body.members
     });
 
-    newGroup.save().then((group) => res.json(group));
+    newGroup
+      .save()
+      .then((group) => res.json(group))
+      .catch(err => console.log('ERR:', err))
   }
 );
 
 router.get(
   "/", (req, res) => { 
     Group.find()    
-    .then((group) => res.json(group))   
+    .then(groups => res.json(groups))   
     .catch((err) => res.status(404).json({ nogroupfound: "No group found" }));
   });
 
   
 router.patch("/:id", (req, res) => {
-  Group.findOneAndUpdate({ id: req.params.id }, {
-    game: req.body.game
-  })
-    .then(group => res.json(group))
+  Group.findById(req.params.id)
+    .then(group => {
+      const updatedGroup = group;
+      updatedGroup.game = req.body.game;
+      updatedGroup.name = req.body.name;
+      updatedGroup.members = req.body.members;
+
+      updatedGroup
+        .save()
+        .then(group => res.json(group))
+        .catch(err => console.log(err))
+      })
     .catch(err => res.status(404).json({ noGroupFound: "No Group found with that ID"}))
-});
+ });
 
 router.delete("/:id", (req, res) => {
   Group.findByIdAndRemove(req.params.id);

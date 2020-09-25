@@ -80,7 +80,7 @@
    margin-top: 50px;
 }
 
-.fas {
+.login-button .fas {
    font-size: 125px;
    margin-top: 10px;
 }
@@ -110,12 +110,16 @@
    padding: 0px 10px;
 }
 
+.splash-page-team div i:hover {
+   cursor: pointer;
+}
+
 .logout, .profile-link {
-  border: 5px solid black;
-  font-family: 'Luckiest Guy', cursive;
-  color: teal;
-  box-shadow: 5px 10px grey;
-  border-radius: 25px;
+   border: 5px solid black;
+   font-family: 'Luckiest Guy', cursive;
+   color: teal;
+   box-shadow: 5px 10px grey;
+   border-radius: 25px;
    padding: 10px;
    font-size: 25px;
    display: flex;

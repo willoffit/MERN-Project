@@ -18,7 +18,7 @@ const UserSchema = new Schema({
     required: true,
   },
   scores: {
-    "Sports": { type: Array },
+    "Sports": { type: Array }, 
     "Geography": { type: Array }, 
     "History": { type: Array }, 
     "Film": { type: Array },
@@ -28,7 +28,7 @@ const UserSchema = new Schema({
   group: { type: mongoose.Schema.Types.ObjectId, ref: 'Group' },
   inProgress: {
     type: Boolean, 
-    required: true
+    // required: true
   },
   date: {
     type: Date,

@@ -13,7 +13,7 @@ export const createGroup = group => {
 };
 
 export const updateGroup = group => {
-   return axios.patch(`/api/groups/${group.id}`, group)
+   return axios.patch(`/api/groups/${group._id}`, group)
 };
 
 export const deleteGroup = groupId => {

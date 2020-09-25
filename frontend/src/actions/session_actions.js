@@ -6,6 +6,7 @@ export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
 export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 // Although there's only one function here so far, let's import the whole file since we will be adding more later
 
@@ -27,8 +28,9 @@ export const receiveCurrentUser = (currentUser) => ({
 });
 
 // This will be used to redirect the user to the login page upon signup
-export const receiveUserSignIn = () => ({
+export const receiveUserSignIn = (currentUser) => ({
   type: RECEIVE_USER_SIGN_IN,
+  currentUser
 });
 
 // We dispatch this one to show authentication errors on the frontend
@@ -36,6 +38,10 @@ export const receiveErrors = (errors) => ({
   type: RECEIVE_SESSION_ERRORS,
   errors,
 });
+
+export const clearErrors = () => ({
+  type: CLEAR_ERRORS
+})
 
 // When our user is logged out, we will dispatch this action to set isAuthenticated to false
 export const logoutUser = () => ({
@@ -46,9 +52,21 @@ export const logoutUser = () => ({
 export const signup = (user) => (dispatch) => {
   return (
     APIUtil.signup(user)
-        .then(() => dispatch(receiveUserSignIn())
-        .catch((err) => dispatch(receiveErrors(err.response.data)))
-      )
+        .then(res => { 
+          const { token } = res.data;
+          localStorage.setItem("jwtToken", token);
+          APIUtil.setAuthToken(token);
+          const decoded = jwt_decode(token);
+          dispatch(receiveUserSignIn(decoded)) 
+          } 
+        ) 
+        .catch(err => {
+          if (err.response.data.message) {
+            dispatch(receiveErrors(["username has been taken"]))
+          } else {
+            dispatch(receiveErrors(err.response.data))
+          }
+        })
   )
 }
 

@@ -21,13 +21,13 @@ export const removeGame = gameId => ({
 
 export const fetchGames = () => dispatch => {
     return GameAPIUtil.fetchGames()
-        .then(games => dispatch(receiveGames(games)))
+        .then(games => dispatch(receiveGames(games.data)))
         .catch(err => console.log(err))
 };
 
 export const fetchGame = gameId => dispatch => {
     return GameAPIUtil.fetchGame(gameId)
-        .then(game => dispatch(receiveGame(game)))
+        .then(game => dispatch(receiveGame(game.data)))
 };
 
 export const createGame = game => dispatch => {

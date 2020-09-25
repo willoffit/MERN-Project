@@ -1,10 +1,10 @@
 import React from 'react';
 import './category_index.css';
+import { Link } from 'react-router-dom';
 
 class CategoryIndex extends React.Component {
   constructor(props) {
     super(props);
-    
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -45,6 +45,9 @@ class CategoryIndex extends React.Component {
               </button>
             ))}
           </div>
+          <Link className="categories-update-group" to={`/group/${this.props.group._id}`}>
+            <i class="fas fa-arrow-left"></i> Return to Update Group
+          </Link>
         </div>
       );
    }

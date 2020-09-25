@@ -1,0 +1,57 @@
+.results-page {
+   font-family: 'Luckiest Guy', cursive;
+   text-align: center;
+}
+
+.results-header {
+   color: purple;
+   font-size: 50px;
+}
+
+.results-users {
+   color: teal;
+   font-size: 25px;
+}
+
+.results-winner {
+   color: gold;
+   font-size: 40px;
+}
+
+.results-options {
+   margin-top: 70px;
+}
+
+.results-play-again {
+   color: teal;
+   border: 1px solid black;
+   border-radius: 5px;
+   padding: 20px;
+   margin: 10px;
+   text-decoration: none;
+   background-color: whitesmoke;
+   font-size: 20px;
+   cursor: pointer;
+}
+
+.results-play-again:hover {
+   color: purple;
+   border: 1px solid yellow;
+}
+
+.results-end-game {
+   color: teal;
+   border: 1px solid black;
+   border-radius: 5px;
+   padding: 20px;
+   margin: 10px;
+   text-decoration: none;
+   background-color: whitesmoke;
+   font-size: 20px;
+   cursor: pointer;
+}
+
+.results-end-game:hover {
+   color: purple;
+   border: 1px solid yellow;
+}

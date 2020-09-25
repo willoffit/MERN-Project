@@ -10,6 +10,7 @@ const mapStateToProps = (state, ownProps) => {
       groups: state.entities.groups,
       currentUser: state.session.user,
       group: state.entities.groups[state.entities.users[state.session.user.id].group],
+      currentUserId: state.session.user.id
    };
 };
 

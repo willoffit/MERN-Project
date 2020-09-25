@@ -10,22 +10,14 @@ class SignupForm extends React.Component {
       username: "",
       password: "",
       password2: "",
-      errors: {},
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.clearedErrors = false;
-    this.handleDemoUser = this.handleDemoUser.bind(this);
-
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.signedIn === true) {
-  //     this.props.history.push("/group");
-  //   }
-
-  //   this.setState({ errors: nextProps.errors });
-  // }
+  componentWillUnmount() {
+      this.props.clearErrors()
+  }
 
   update(field) {
     return (e) =>
@@ -44,33 +36,35 @@ class SignupForm extends React.Component {
     };
 
     this.props.signup(user)
-      .then(() => this.props.closeModal())
+      .then(() => { 
+        if (this.props.errors.length === 0) this.props.closeModal() 
+      })
       .then(() => this.props.history.push('/'))
   }
 
   renderErrors() {
     return (
       <ul className="errors">
-        {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>{this.state.errors[error]}</li>
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>{error}</li>
         ))}
       </ul>
     );
   }
 
-  handleDemoUser(e) {
-    e.preventDefault();
-    let num = Math.floor(Math.random() * Math.floor(100000000000));
+  // handleDemoUser(e) {
+  //   e.preventDefault();
+  //   let num = Math.floor(Math.random() * Math.floor(100000000000));
 
-    this.props.signup({
-      username: `username${num}`,
-      email: `user${num}@username.com`,
-      password: '0123456789',
-      password2: '0123456789'
-    })
-    .then(() => this.props.history.push('/'))
-    .then(() => this.props.closeModal())
-  }
+  //   this.props.signup({
+  //     username: `username${num}`,
+  //     email: `user${num}@username.com`,
+  //     password: '0123456789',
+  //     password2: '0123456789'
+  //   })
+  //   .then(() => this.props.history.push('/'))
+  //   .then(() => this.props.closeModal())
+  // }
 
   render() {
     return (
@@ -119,11 +113,11 @@ class SignupForm extends React.Component {
                 className="form-submit-btn"
                 type="submit" 
                 value="SUBMIT" />
-              <button 
+              {/* <button 
                 className="form-submit-btn"
                 onClick={this.handleDemoUser}>
                 PLAY AS DEMO USER
-              </button>
+              </button> */}
             </div>
             <br />
             <div className="errors-container">

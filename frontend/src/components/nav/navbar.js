@@ -46,15 +46,49 @@ class NavBar extends React.Component {
             </div>
             <div className="Leah">
               <div>Leah de la Pena</div>
-              <i className="fab fa-github"></i>
-              <i className="fab fa-linkedin"></i>
-              <i className="fab fa-angellist"></i>
+              <i
+                className="fab fa-github"
+                onClick={() =>
+                  window.location.href = "https://github.com/leahdlp"
+                }
+              ></i>
+              <i
+                className="fab fa-linkedin"
+                onClick={() =>
+                  window.location.href = 
+                    "https://www.linkedin.com/in/leahdelapena/"
+                  
+                }
+              ></i>
+              <i
+                className="fab fa-angellist"
+                onClick={() =>
+                  window.location.href = "https://angel.co/u/leah-de-la-pena"
+                }
+              ></i>
             </div>
             <div className="Kevin">
               <div>Kevin Besenio</div>
-              <i className="fab fa-github"></i>
-              <i className="fab fa-linkedin"></i>
-              <i className="fab fa-angellist"></i>
+              <i
+                className="fab fa-github"
+                onClick={() =>
+                  window.location.href = "https://github.com/besenio"
+                }
+              ></i>
+              <i
+                className="fab fa-linkedin"
+                onClick={() =>
+                  window.location.href = 
+                    "https://www.linkedin.com/in/kevin-besenio-79905a1b7/"
+                    
+                }
+              ></i>
+              <i
+                className="fab fa-angellist"
+                onClick={() =>
+                  window.location.href = "https://angel.co/u/besenio"
+                }
+              ></i>
             </div>
           </div>
         </div>

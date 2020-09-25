@@ -15,7 +15,7 @@ function Modal({ modal, closeModal }) {
       case 'signup':
          component = <SignupFormContainer />;
          break;
-      case 'player_profile':
+      case 'profile':
          component = <ProfileContainer />;
          break;
       default:

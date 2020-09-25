@@ -17,6 +17,7 @@ class GroupForm extends React.Component {
         this.handleGroupNameInput = this.handleGroupNameInput.bind(this);
         this.previousPage = this.previousPage.bind(this);
         // this.handleFlip = this.handleFlip.bind(this);
+        this.bestCategory = this.bestCategory.bind(this);
     }
     
     componentDidMount(){
@@ -85,19 +86,61 @@ class GroupForm extends React.Component {
     //     console.log(this.state.flip);
     // }
 
+    bestCategory(id) {
+        let userScores = this.props.users[id].scores;
+        let highestAverage = 0;
+        let bestCat = "";
+
+        for (let category in userScores) {
+            let average = ((userScores[category].reduce((a,b) => a + b, 0)) / (userScores[category].length))
+            if (average > highestAverage) {
+                highestAverage = average;
+                bestCat = category;
+            }
+        }
+
+        return bestCat;
+    }
+
+    numGames(id) {
+        let userScores = this.props.users[id].scores;
+        let gameCount = 0;
+
+        for (let category in userScores) {
+            let length = userScores[category].length
+            gameCount += length;
+        }
+
+        return gameCount;
+    }
+
+    avgScore(id) {
+        let userScores = this.props.users[id].scores;
+        let totalPoints = 0;
+        let gameCount = this.numGames(id);
+
+        for (let category in userScores) {
+            let subTotal = userScores[category].reduce((a, b) => a + b, 0)
+            totalPoints += subTotal;
+        }
+
+        return Math.round(totalPoints / gameCount);
+    }
+
     render() {
         if (Object.values(this.props.users).length === 0){
             return null 
         }
 
         let memberList = this.state.selectedUsersId.map((userId, i) => {
+            
             return (this.props.currentUserId === userId ? (
                 <div className="member">
                     <div className="member-select-user">
                         <div className="selected-user">{this.props.users[userId].username}</div>
-                        <div className="member-select-user-stats">Best Category: Sports</div>
-                        <div className="member-select-user-stats">Games Played: 100</div>
-                        <div className="member-select-user-stats">Average Score: 3000</div>
+                        <div className="member-select-user-stats">Best Category: {this.bestCategory(userId)}</div>
+                        <div className="member-select-user-stats">Games Played: {this.numGames(userId)}</div>
+                        <div className="member-select-user-stats">Average Score: {this.avgScore(userId)}</div>
                     </div>
                     {/* <div>
                         <button className="remove-user" value={userId}>Player Stats</button>
@@ -107,9 +150,9 @@ class GroupForm extends React.Component {
                 <div className="member">
                     <div className="member-select-user">
                         <div className="selected-user">{this.props.users[userId].username}</div>
-                        <div className="member-select-user-stats">Best Category: Sports</div>
-                        <div className="member-select-user-stats">Games Played: 100</div>
-                        <div className="member-select-user-stats">Average Score: 3000</div>
+                        <div className="member-select-user-stats">Best Category: {this.bestCategory(userId)}</div>
+                        <div className="member-select-user-stats">Games Played: {this.numGames(userId)}</div>
+                        <div className="member-select-user-stats">Average Score: {this.avgScore(userId)}</div>
                     </div>
                     <div>
                         {/* <button className="remove-user" value={userId}>Player Stats</button> */}

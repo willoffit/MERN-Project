@@ -100,6 +100,7 @@ class Profile extends React.Component {
         if (Object.values(this.props.games).length === 0) return null;
         
         let user = this.props.user;
+        console.log(user)
         let scores = user.scores;
         let group = this.props.groups[user.group];
         let game = !group ? "" : this.props.games[group.game];
@@ -125,7 +126,7 @@ class Profile extends React.Component {
                 <h4>Opponents:</h4>
                 {group.members.map(userId => {
                   let opp = this.props.users[userId];
-                  let res = opp.inProgress ? ("waiting for user to finish game"
+                  let res = opp.inProgress || category === "" ? ("waiting for user to finish game"
                   ) : (
                     opp.scores[category][opp.scores[category].length - 1])
                   if (opp._id !== user._id) {

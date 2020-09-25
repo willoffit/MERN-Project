@@ -7,7 +7,11 @@ const GroupSchema = new Schema({
     required: true,
   },
   members: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
-  game: { type: mongoose.Schema.Types.ObjectId, ref: "Group" }
+  game: { type: mongoose.Schema.Types.ObjectId, ref: "Game" },
+  date: {
+    type: Date,
+    default: Date.now,
+  }
 });
 
 const Group = mongoose.model("Group", GroupSchema);

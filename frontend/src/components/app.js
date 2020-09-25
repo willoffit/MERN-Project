@@ -14,7 +14,7 @@ const App = () => (
     <Modal />
     <Switch>
       <Route exact path="/group/:groupId" component={GroupUpdateContainer}/>
-      <Route exact path="/profile" component={ProfileContainer} />
+      <ProtectedRoute exact path="/profile" component={ProfileContainer} />
       <PreSetupRoute exact path="/category" component={CategoryIndexContainer} />
       <ProtectedRoute exact path="/group" component={GroupFormContainer} /> 
       <PostSetupRoute exact path="/question" component={QuestionsContainer} />

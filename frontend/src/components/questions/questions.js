@@ -34,6 +34,17 @@ class Question extends React.Component {
         return arr;
     }
 
+    grabEntities() {
+        // go through and find Entities, keep track of indexes
+        // swap out Entity with helper function results
+    }
+
+    handleEntities(entity) {
+        // convert Entity to its equivalent
+        // return equivalent value
+        
+    }
+
     handleUserSelect(e) {
         e.preventDefault();
 

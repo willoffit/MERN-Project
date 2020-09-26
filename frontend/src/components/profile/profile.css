@@ -19,12 +19,14 @@
    margin-top: 30px;
 }
 
-.career-stats-section {
+.career-stats-section,
+.previous-game-stats-section {
    font-size: 30px;
    color: gold;
 }
 
-.career-stats {
+.career-stats,
+.previous-game-stats {
    display: flex;
    text-align: left;
    justify-content: center;
@@ -40,10 +42,26 @@
 
 .average-scores-stats-title,
 .highest-scores-stats-title,
-.best-most-played-stats-title {
+.best-most-played-stats-title,
+.previous-game-stats-cat,
+.previous-game-stats-score,
+.previous-game-stats-opp {
    color: rgb(172, 50, 172);
 }
 
 .best-most-played-stats-divide {
    margin-bottom: 30px;
+}
+
+.previous-game-stats-cat2,
+.previous-game-stats-score2 {
+   margin-bottom: 15px;
+}
+
+.previous-game-stats {
+   margin-top: 10px;
+}
+
+.previous-game-stats-out {
+   display: flex;
 }

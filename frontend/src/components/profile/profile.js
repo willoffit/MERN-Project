@@ -145,14 +145,22 @@ class Profile extends React.Component {
               </div>
               
               <div className="previous-game-stats-section">Previous Game Stats
+                
+                
                 <div className="previous-game-stats">
-                  
+                 
                   <div className="previous-game-stats1">
-                    <div>Category: {category}</div>
+                    <div className="previous-game-stats-cat-out">
+                      <div className="previous-game-stats-cat">Category: </div>
+                      <div className="previous-game-stats-cat2">{category}</div>
+                    </div>
+                    
+                    <div className="previous-game-stats-score-out">
+                      <div className="previous-game-stats-score">Score: </div>
+                      <div className="previous-game-stats-score2">{prev_score}</div>
+                    </div>
 
-                    <div>Score: {prev_score}</div>
-
-                    <div>Opponents:</div>
+                    <div className="previous-game-stats-opp">Opponents:</div>
                     {group.members.map(userId => {
                       let opp = this.props.users[userId];
                       let res = opp.inProgress || category === "" ? ("GAME IN PROGRESS"
@@ -165,15 +173,14 @@ class Profile extends React.Component {
                       )
                     })}
                   </div>
+                </div>
 
-                  <div className="previous-game-stats2">
-                    {this.renderGameBtn()}
+                <div className="previous-game-stats2">
+                  {this.renderGameBtn()}
 
-                    <button className="profile-page-logout" onClick={() => this.props.logout()}>
-                      Log Out
-                    </button>
-                  </div>
-
+                  <button className="profile-page-logout" onClick={() => this.props.logout()}>
+                    Log Out
+                  </button>
                 </div>
               </div>
 

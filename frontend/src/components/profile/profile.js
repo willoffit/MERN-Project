@@ -110,61 +110,71 @@ class Profile extends React.Component {
 
         return (
           <div className="profile-page">
-            <h1 className="profile-page-header">WILK TRIVIA</h1>
-            <h2>{user.username}'s Profile Page</h2>
+            <div className="profile-page-header1">WILK TRIVIA</div>
+            <div className="profile-page-header2">{user.username}'s Profile Page</div>
 
             <div className="profile-page-stats">
+              <div className="career-stats-section">Career Stats
+                <div className="career-stats">
 
-              <div className="career-stats">
-                <div>Career Stats</div>
+                  <div className="average-scores-stats">
+                    <div className="average-scores-stats-title">Average Scores by Category:</div>
 
-                <div>Average Scores by Category:</div>
+                    {this.turnToIterable(scores).map((score) => (
+                      <div>{score[0]}: {this.averageScore(score[1])}</div>
+                    ))}
+                  </div>
+                  
+                  <div className="highest-scores-stats">
+                    <div className="highest-scores-stats-title">Highest Scores by Category:</div>
 
-                {this.turnToIterable(scores).map((score) => (
-                  <div>{score[0]}: {this.averageScore(score[1])}</div>
-                ))}
+                    {this.turnToIterable(scores).map((score) => (
+                      <div>{score[0]}: {this.highestScore(score[1])}</div>
+                    ))}
+                  </div>
+                  
+                  <div className="best-most-played-stats">
+                    <div className="best-most-played-stats-title">Best Category:</div>
+                    <div className="best-most-played-stats-divide">{this.strongestCategory()}</div>
 
-                <div>Highest Scores by Category:</div>
+                    <div className="best-most-played-stats-title">Most Played Category:</div>
+                    <div>{this.mostPlayedCategory()}</div>
+                  </div>
 
-                {this.turnToIterable(scores).map((score) => (
-                  <div>{score[0]}: {this.highestScore(score[1])}</div>
-                ))}
-
-                <div>Best Category:</div>
-                <div>{this.strongestCategory()}</div>
-
-                <div>Most Played Category:</div>
-                <div>{this.mostPlayedCategory()}</div>
+                </div>
               </div>
+              
+              <div className="previous-game-stats-section">Previous Game Stats
+                <div className="previous-game-stats">
+                  
+                  <div className="previous-game-stats1">
+                    <div>Category: {category}</div>
 
-              <div className="previous-game-stats">
+                    <div>Score: {prev_score}</div>
 
-                <div>Previous Game Stats</div>
+                    <div>Opponents:</div>
+                    {group.members.map(userId => {
+                      let opp = this.props.users[userId];
+                      let res = opp.inProgress || category === "" ? ("GAME IN PROGRESS"
+                      ) : (
+                        opp.scores[category][opp.scores[category].length - 1])
+                        
+                      if (group.members.length === 1) return <div>SOLO GAME</div>
+                      return (
+                        <div>{opp.username}: {res}</div>
+                      )
+                    })}
+                  </div>
 
-                <div>Category:</div>
-                <div>{category}</div>
+                  <div className="previous-game-stats2">
+                    {this.renderGameBtn()}
 
-                <div>Score:</div>
-                <div>{prev_score}</div>
+                    <button className="profile-page-logout" onClick={() => this.props.logout()}>
+                      Log Out
+                    </button>
+                  </div>
 
-                <div>Opponents:</div>
-                {group.members.map(userId => {
-                  let opp = this.props.users[userId];
-                  let res = opp.inProgress || category === "" ? ("GAME IN PROGRESS"
-                  ) : (
-                    opp.scores[category][opp.scores[category].length - 1])
-                    
-                  if (group.members.length === 1) return <li>SOLO GAME</li>
-                  return (
-                    <li>{opp.username}: {res}</li>
-                  )
-                })}
-
-                <button className="profile-page-logout" onClick={() => this.props.logout()}>
-                  Log Out
-                </button>
-
-                {this.renderGameBtn()}
+                </div>
               </div>
 
             </div>

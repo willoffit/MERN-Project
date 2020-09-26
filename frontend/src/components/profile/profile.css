@@ -1,0 +1,49 @@
+.profile-page {
+   font-family: 'Luckiest Guy', cursive;
+   text-align: center;
+}
+
+.profile-page-header1 {
+   color: rgb(172, 50, 172);
+   font-size: 50px;
+   margin-top: 35px;
+}
+
+.profile-page-header2 {
+   color: white;
+   font-size: 40px;
+   margin-top: 30px;;
+}
+
+.profile-page-stats {
+   margin-top: 30px;
+}
+
+.career-stats-section {
+   font-size: 30px;
+   color: gold;
+}
+
+.career-stats {
+   display: flex;
+   text-align: left;
+   justify-content: center;
+   font-size: 23px;
+   color: white;
+}
+
+.average-scores-stats,
+.highest-scores-stats,
+.best-most-played-stats {
+   margin: 10px 25px 35px 25px;
+}
+
+.average-scores-stats-title,
+.highest-scores-stats-title,
+.best-most-played-stats-title {
+   color: rgb(172, 50, 172);
+}
+
+.best-most-played-stats-divide {
+   margin-bottom: 30px;
+}

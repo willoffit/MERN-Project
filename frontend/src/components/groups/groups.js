@@ -81,11 +81,6 @@ class GroupForm extends React.Component {
         this.props.history.push('/profile');
     };
 
-    // handleFlip() {
-    //     this.state.flip = !this.state.flip;
-    //     console.log(this.state.flip);
-    // }
-
     bestCategory(id) {
         let userScores = this.props.users[id].scores;
         let highestAverage = 0;

@@ -16,12 +16,8 @@ class Question extends React.Component {
         this.group = this.props.group;
         this.category = this.props.games[this.group.game].category;
 
-        console.log('-------CONST ALL-----------')
         this.questions = this.props.questions.slice();
-        console.log(this.questions)
-        console.log('-------------CONST CURR----------')
         this.question = this.questions.pop();
-        console.log(this.question)
 
         this.answers = [
             this.question.correct_answer, 
@@ -125,7 +121,7 @@ class Question extends React.Component {
                     value={idx}
                     onClick={this.handleUserSelect}
                     className="trivia-q">
-                        {answer}
+                        {this.decodeString(answer)}
                     </button>
                 ))}</p>
                 <div className="questions-footer">
@@ -148,12 +144,6 @@ class Question extends React.Component {
     }
 
     render() {
-        console.log('-----------ALL----------')
-        console.log(this.questions);
-        console.log('---------CURR-----------')
-        console.log(this.question)
-        console.log(this.question === "");
-        // this.question === ""
         return this.question === "" ? (
             <Results
                 category={this.category}

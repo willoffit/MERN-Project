@@ -98,6 +98,7 @@ class Profile extends React.Component {
         if (Object.values(this.props.users).length === 0) return null;
         if (Object.values(this.props.groups).length === 0) return null;
         if (Object.values(this.props.games).length === 0) return null;
+        if (!this.props.user) return null;
         
         let user = this.props.user;
         let scores = user.scores;
@@ -128,15 +129,11 @@ class Profile extends React.Component {
                   let res = opp.inProgress || category === "" ? ("waiting for user to finish game"
                   ) : (
                     opp.scores[category][opp.scores[category].length - 1])
-                  if (opp._id !== user._id) {
-                    return (
-                      <li>{opp.username}: {res}</li>
-                    )
-                  } else {
-                    return (
-                      <li>SOLO GAME</li>
-                    )
-                  }
+                    
+                  if (group.members.length === 1) return <li>SOLO GAME</li>
+                  return (
+                    <li>{opp.username}: {res}</li>
+                  )
                 })}
               </div>
 

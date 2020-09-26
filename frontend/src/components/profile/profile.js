@@ -144,39 +144,44 @@ class Profile extends React.Component {
                 </div>
               </div>
               
-              <div className="previous-game-stats-section">Previous Game Stats
-                
-                
-                <div className="previous-game-stats">
-                 
-                  <div className="previous-game-stats1">
-                    <div className="previous-game-stats-cat-out">
-                      <div className="previous-game-stats-cat">Category: </div>
-                      <div className="previous-game-stats-cat2">{category}</div>
-                    </div>
-                    
-                    <div className="previous-game-stats-score-out">
-                      <div className="previous-game-stats-score">Score: </div>
-                      <div className="previous-game-stats-score2">{prev_score}</div>
-                    </div>
+              <div className="previous-game-stats-section-out">
 
-                    <div className="previous-game-stats-opp">Opponents:</div>
-                    {group.members.map(userId => {
-                      let opp = this.props.users[userId];
-                      let res = opp.inProgress || category === "" ? ("GAME IN PROGRESS"
-                      ) : (
-                        opp.scores[category][opp.scores[category].length - 1])
-                        
-                      if (group.members.length === 1) return <div>SOLO GAME</div>
-                      return (
-                        <div>{opp.username}: {res}</div>
-                      )
-                    })}
+                <div className="previous-game-stats-section">Previous Game Stats
+                  
+                  <div className="previous-game-stats">
+                  
+                    <div className="previous-game-stats1">
+                      <div className="previous-game-stats-cat-out">
+                        <div className="previous-game-stats-cat">Category: </div>
+                        <div className="previous-game-stats-cat2">{category}</div>
+                      </div>
+                      
+                      <div className="previous-game-stats-score-out">
+                        <div className="previous-game-stats-score">Score: </div>
+                        <div className="previous-game-stats-score2">{prev_score}</div>
+                      </div>
+
+                      <div className="previous-game-stats-opp">Opponents:</div>
+                      {group.members.map(userId => {
+                        let opp = this.props.users[userId];
+                        let res = opp.inProgress || category === "" ? ("GAME IN PROGRESS"
+                        ) : (
+                          opp.scores[category][opp.scores[category].length - 1])
+                          
+                        if (group.members.length === 1) return <div>SOLO GAME</div>
+                        return (
+                          <div>{opp.username}: {res}</div>
+                        )
+                      })}
+                    </div>
                   </div>
+
                 </div>
 
                 <div className="previous-game-stats2">
-                  {this.renderGameBtn()}
+                  <div className="previous-game-stats2-game">
+                    {this.renderGameBtn()}
+                  </div>
 
                   <button className="profile-page-logout" onClick={() => this.props.logout()}>
                     Log Out

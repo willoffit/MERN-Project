@@ -62,6 +62,42 @@
    margin-top: 10px;
 }
 
-.previous-game-stats-out {
+.previous-game-stats-section-out {
    display: flex;
+   justify-content: center;
+}
+
+.previous-game-stats-section,
+.previous-game-stats2 {
+   margin: 0px 50px;
+}
+
+.previous-game-stats2 {
+   margin-top: 20px;
+}
+
+.previous-game-stats2-game {
+   margin-bottom: 15px;
+}
+
+.profile-page-join,
+.profile-page-start,
+.profile-page-logout {
+   font-size: 30px;
+   font-family: 'Luckiest Guy', cursive;
+   color:rgb(10, 161, 161);
+   background-color: white;
+   outline: none !important;
+   cursor: pointer;
+   padding: 25px;
+   border-radius: 10px;
+   border: 1px solid black;
+   box-shadow: 4px 6px grey;
+}
+
+.profile-page-join:hover,
+.profile-page-start:hover,
+.profile-page-logout:hover {
+   border: 2px solid yellow;
+   color: rgb(172, 50, 172);
 }

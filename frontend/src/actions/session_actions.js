@@ -61,6 +61,7 @@ export const signup = (user) => (dispatch) => {
           } 
         ) 
         .catch(err => {
+          console.log(err)
           if (err.response.data.message) {
             dispatch(receiveErrors(["username has been taken"]))
           } else {

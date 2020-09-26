@@ -31,7 +31,7 @@ class Answer extends React.Component {
                 result = this.handleIncorrect();
             }
 
-        if (this.props.questions.length === 1) this.finalTotal();
+        if (this.props.questions.length === 0) this.finalTotal();
 
         return result;
     }
@@ -88,7 +88,6 @@ class Answer extends React.Component {
 
     finalTotal() {
         let user = this.user;
-
         user.scores[this.props.category].push(this.total);
     }
 

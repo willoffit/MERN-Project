@@ -6,7 +6,19 @@ import { updateGroup } from '../../actions/group_actions';
 import { editUser } from '../../actions/user_actions';
 
 const mSTP = state => ({
-   categories: ["General Knowledge", "Sports", "Film", "Science", "Geography", "History"],
+   categories: [
+      "General Knowledge", 
+      "Sports", 
+      "Film", 
+      "Science", 
+      "Geography", 
+      "History",
+      "Politics",
+      "Art",
+      "Animals",
+      "Vehicles",
+      "Mythology"
+   ],
    group: state.entities.groups[state.entities.users[state.session.user.id].group],
    users: state.entities.users
 });

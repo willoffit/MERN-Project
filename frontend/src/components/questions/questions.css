@@ -30,7 +30,8 @@
 }
 
 .trivia-q {
-   width: 20%;
+   word-wrap: break-word;
+   width: 240px;
    height: 200px;
    margin: 20px 10px;
    border-radius: 20px;
@@ -58,9 +59,9 @@
 }
 
 .answer-footer {
+   word-wrap: break-word;
    margin-right: 10px;
-   width: 400px;
-   height: auto;
+   width: 350px;
    margin: 0px 10px;
    border-radius: 20px;
    border: 2px solid black;

@@ -69,14 +69,20 @@ class Question extends React.Component {
             document.getElementById("btn-3").removeAttribute("disabled");
         }
 
-        this.question = this.questions.pop()
-        this.answers = this.shuffle([
-            this.question.correct_answer,
-            ...this.question.incorrect_answers,
-        ]);
+        
+        if (this.questions.length === 0) {
+            this.question = "";
+        } else {
+            this.question = this.questions.pop()
+            this.answers = this.shuffle([
+                this.question.correct_answer,
+                ...this.question.incorrect_answers,
+            ]);
+        }
+
+        this.state.numQuestions = this.state.numQuestions + 1;
 
         this.setState({ userChoice: -1, done: true });
-        this.state.numQuestions = this.state.numQuestions + 1;
     }
 
     decodeString(str) {
@@ -138,7 +144,7 @@ class Question extends React.Component {
     }
 
     render() {
-        return this.questions.length === 0 ? (
+        return this.question === "" ? (
             <Results
                 category={this.category}
                 users={this.props.users}

@@ -121,7 +121,7 @@ class Profile extends React.Component {
                     <div className="average-scores-stats-title">Average Scores by Category:</div>
 
                     {this.turnToIterable(scores).map((score) => (
-                      <div>{score[0]}: {this.averageScore(score[1])}</div>
+                      <div>{score[0]}: {Math.round(this.averageScore(score[1]))}</div>
                     ))}
                   </div>
                   

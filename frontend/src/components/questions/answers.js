@@ -30,7 +30,7 @@ class Answer extends React.Component {
                 result = this.handleIncorrect();
             }
 
-        if (this.props.questions.length === 1) this.finalTotal();
+        if (this.props.questions.length === 0) this.finalTotal();
 
         return result;
     }

@@ -16,8 +16,12 @@ class Question extends React.Component {
         this.group = this.props.group;
         this.category = this.props.games[this.group.game].category;
 
+        console.log('-------CONST ALL-----------')
         this.questions = this.props.questions.slice();
+        console.log(this.questions)
+        console.log('-------------CONST CURR----------')
         this.question = this.questions.pop();
+        console.log(this.question)
 
         this.answers = [
             this.question.correct_answer, 
@@ -69,14 +73,20 @@ class Question extends React.Component {
             document.getElementById("btn-3").removeAttribute("disabled");
         }
 
-        this.question = this.questions.pop()
-        this.answers = this.shuffle([
-            this.question.correct_answer,
-            ...this.question.incorrect_answers,
-        ]);
+        
+        if (this.questions.length === 0) {
+            this.question = "";
+        } else {
+            this.question = this.questions.pop()
+            this.answers = this.shuffle([
+                this.question.correct_answer,
+                ...this.question.incorrect_answers,
+            ]);
+        }
+
+        this.state.numQuestions = this.state.numQuestions + 1;
 
         this.setState({ userChoice: -1, done: true });
-        this.state.numQuestions = this.state.numQuestions + 1;
     }
 
     decodeString(str) {
@@ -138,7 +148,13 @@ class Question extends React.Component {
     }
 
     render() {
-        return this.questions.length === 0 ? (
+        console.log('-----------ALL----------')
+        console.log(this.questions);
+        console.log('---------CURR-----------')
+        console.log(this.question)
+        console.log(this.question === "");
+        // this.question === ""
+        return this.question === "" ? (
             <Results
                 category={this.category}
                 users={this.props.users}

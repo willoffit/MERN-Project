@@ -3,7 +3,7 @@ const router = express.Router();
 const axios = require('axios');
 
 router.get("/:id", (req, res) => {
-    axios.post(`https://opentdb.com/api.php?amount=10&category=${req.params.id}&difficulty=medium&type=multiple`)
+    axios.post(`https://opentdb.com/api.php?amount=10&category=${req.params.id}`)
         .then(trivia => res.json(trivia.data))
 });
 

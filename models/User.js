@@ -23,7 +23,12 @@ const UserSchema = new Schema({
     "History": { type: Array }, 
     "Film": { type: Array },
     "General Knowledge": { type: Array },
-    "Science": { type: Array }
+    "Science": { type: Array },
+    "Politics": { type: Array },
+    "Art": { type: Array },
+    "Animals": { type: Array },
+    "Vehicles": { type: Array },
+    "Mythology": { type: Array }
   },
   group: { type: mongoose.Schema.Types.ObjectId, ref: 'Group' },
   inProgress: {

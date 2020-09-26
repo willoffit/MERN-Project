@@ -115,7 +115,7 @@ class Question extends React.Component {
                     value={idx}
                     onClick={this.handleUserSelect}
                     className="trivia-q">
-                        {answer}
+                        {this.decodeString(answer)}
                     </button>
                 ))}</p>
                 <div className="questions-footer">

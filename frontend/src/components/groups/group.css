@@ -1,6 +1,6 @@
 .create-group-form {
    font-family: 'Luckiest Guy', cursive;
-   color: purple;
+   color: rgb(172, 50, 172);
    text-align: center;
    padding: 0px 0px;
 }
@@ -13,7 +13,7 @@
    display: flex;
    align-items: center;
    justify-content: center;
-   color: purple;
+   color: rgb(172, 50, 172);
    margin-bottom: 20px;
 }
 
@@ -29,15 +29,15 @@
    font-size: 25px;
    width: 250px;
    border: 1px solid black;
-   background-color: whitesmoke;
+   background-color: white;
    font-family: 'Luckiest Guy', cursive;
-   color: teal;
+   color:  rgb(10, 161, 161);
 }
 
 .create-group-groupname-input:focus {
    outline: none !important;
    border-radius: 10px;
-   border: 1px solid yellow;
+   border: 2px solid yellow;
 }
 
 .create-group-select-members select {
@@ -45,9 +45,9 @@
    border-radius: 7px;
    width: 250px;
    height: 40px;
-   background-color: whitesmoke;
+   background-color: white;
    font-family: 'Luckiest Guy', cursive;
-   color: teal;
+   color: rgb(10, 161, 161);
    font-size: 20px;
    padding: 5px;
    border: 1px solid black;
@@ -59,9 +59,9 @@
    border-radius: 7px;
    width: 250px;
    height: 40px;
-   background-color: whitesmoke;
+   background-color: white;
    font-family: 'Luckiest Guy', cursive;
-   color: teal;
+   color: rgb(10, 161, 161);
    font-size: 20px;
    padding: 5px;
    border: 1px solid black;
@@ -70,8 +70,8 @@
 }
 
 .create-group-select-members button:hover {
-   border: 1px solid yellow;
-   color: purple;
+   border: 2px solid yellow;
+   color: rgb(172, 50, 172);
 }
 
 .limit {
@@ -89,23 +89,24 @@
 
 .member {
    margin: 20px;
-   border: 1px solid black;
+   border: 2px solid black;
    width: 33%;
    height: 200px;
    border-radius: 10px;
-   background-color: whitesmoke;
-   color: teal;
+   background-color: white;
+   color: rgb(172, 50, 172);
    display: flex;
    align-items: center;
    justify-content: center;
    flex-direction: column;
    padding: 10px;
+   box-shadow: 7px 12px grey;
 }
 
 .member:hover {
-   border: 1px solid yellow;
+   border: 2px solid yellow;
    border-radius: 10px;
-   background-color: whitesmoke;
+   background-color: white;
 }
 
 .member-select-user {
@@ -118,7 +119,7 @@
 
 .member-select-user-stats {
    font-size: 20px;
-   color: goldenrod;
+   color: rgb(10, 161, 161);
 }
 
 .member i {
@@ -135,35 +136,36 @@
    text-decoration: none;
    outline: none;
    color: white;
-   background-color: purple;
+   background-color: rgb(172, 50, 172);
    border: none;
    border-radius: 4px;
-   box-shadow: 0 5px #999;
    margin: 5px;
 }
 
-.remove-user:hover {background-color: purple}
+.remove-user:hover {
+   background-color: purple;
+}
 
 .remove-user:active {
-   background-color: teal;
+   background-color: rgb(10, 161, 161);
    box-shadow: 0 5px #999;
    transform: translateY(4px);
 }
 
 .return-previous-page {
    padding: 10px 20px;
-   background-color: whitesmoke;
+   background-color: white;
    border: 1px solid black;
    font-family: 'Luckiest Guy', cursive;
    font-size: 20px;
-   color: teal;
+   color: rgb(10, 161, 161);
    border-radius: 7px;
    cursor: pointer;
 }
 
 .return-previous-page:hover {
-   border: 1px solid yellow;
-   color: purple;
+   border: 2px solid yellow;
+   color: rgb(172, 50, 172);
 }
 
 .fas {

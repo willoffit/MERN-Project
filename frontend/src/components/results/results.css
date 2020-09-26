@@ -4,12 +4,12 @@
 }
 
 .results-header {
-   color: purple;
+   color: rgb(172, 50, 172);
    font-size: 50px;
 }
 
 .results-users {
-   color: teal;
+   color: white;
    font-size: 25px;
 }
 
@@ -23,35 +23,35 @@
 }
 
 .results-play-again {
-   color: teal;
+   color: rgb(10, 161, 161);
    border: 1px solid black;
    border-radius: 5px;
    padding: 20px;
    margin: 10px;
    text-decoration: none;
-   background-color: whitesmoke;
+   background-color: white;
    font-size: 20px;
    cursor: pointer;
 }
 
 .results-play-again:hover {
-   color: purple;
-   border: 1px solid yellow;
+   color: rgb(172, 50, 172);
+   border: 2px solid yellow;
 }
 
 .results-end-game {
-   color: teal;
+   color: rgb(10, 161, 161);
    border: 1px solid black;
    border-radius: 5px;
    padding: 20px;
    margin: 10px;
    text-decoration: none;
-   background-color: whitesmoke;
+   background-color: white;
    font-size: 20px;
    cursor: pointer;
 }
 
 .results-end-game:hover {
-   color: purple;
-   border: 1px solid yellow;
+   color: rgb(172, 50, 172);
+   border: 2px solid yellow;
 }

@@ -1,29 +1,22 @@
 .form-container {
-    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 50px 70px;
+    padding: 50px 60px;
     font-family: 'Luckiest Guy', cursive;
-
-    /* align-items: center; */
 }
 
 .form-header {
     display: block;
-    /* border: 1px solid aqua; */
     height: fit-content;
     width: fit-content;
     font-size: 40px;
-    color: purple;
+    color: rgb(172, 50, 172);
 }
 
 .form {
     display: block;
-    /* justify-content: center; */
-    /* border: 1px solid blue; */
-    /* padding: 30%; */
     width: 100%;
 }
 
@@ -33,7 +26,6 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    /* border: deeppink 1px solid; */
 }
 
 .user-input {
@@ -42,24 +34,26 @@
     margin: 1%;
     padding: 5%;
     font-size: 14px;
-    width: 77%;
-    border: 2px solid black;
+    width: 90%;
+    border: 1px solid black;
+    font-family: 'Luckiest Guy', cursive;
+    color: rgb(10, 161, 161);
 }
 
 .user-input:focus {
     outline: none !important;
     border-radius: 10px;
-    border: 2px solid yellow;
+    border: 1px solid yellow;
+    color: rgb(10, 161, 161);
 }
 
 ::placeholder {
     font-family: 'Luckiest Guy', cursive;
+    color: grey;
 }
 
 .btn-container {
     display: block;
-    /* justify-content: center; */
-    /* border: chartreuse 1px solid; */
     width: 100%;
     height: fit-content;
 }
@@ -67,7 +61,6 @@
 .form-submit-btn {
     display: block;
     background-color: whitesmoke;
-    /* border: coral 1px solid; */
     padding-top: 5%;
     padding-bottom: 5%;
     padding: 15px 20px 15px 20px;
@@ -78,13 +71,14 @@
     font-family: 'Luckiest Guy', cursive;
     margin: 10px 0px;
     border-radius: 10px;
-    color: teal;
-    border: 3px solid black;
+    color: rgb(10, 161, 161);
+    border: 1px solid black;
+    outline: none !important;
 }
 
 .form-submit-btn:hover {
-    border: 3px solid yellow;
-    color: purple;
+    border: 2px solid yellow;
+    color: rgb(172, 50, 172);
 }
 
 .errors-container {

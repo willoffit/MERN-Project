@@ -1,23 +1,23 @@
 .questions-category {
    font-size: 35px;
    font-family: 'Luckiest Guy', cursive;
-   color: purple;
+   color: rgb(172, 50, 172);
    text-align: center;
 }
 
 .questions-category-selected {
-   color: teal;
+   color: white;
 }
 
 .questions-question {
-   font-size: 55px;
+   font-size: 50px;
    font-family: 'Luckiest Guy', cursive;
-   color: purple;
+   color: rgb(172, 50, 172);
    text-align: center;
 }
 
 .questions-question-selected {
-   color: teal;
+   color: white;
 }
 
 .questions-answer {
@@ -34,20 +34,20 @@
    height: 200px;
    margin: 20px 10px;
    border-radius: 20px;
-   border: 4px solid black;
-   box-shadow: 10px 10px grey;
-   background-color: whitesmoke;
+   border: 2px solid black;
+   box-shadow: 7px 10px grey;
+   background-color: white;
    font-family: 'Luckiest Guy', cursive;
-   font-size: 35px;
-   color: teal;
+   font-size: 30px;
+   color:rgb(10, 161, 161);
    text-decoration: underline;
    outline: none !important;
    cursor: pointer;
 }
 
 .trivia-q:hover {
-   border: 4px solid yellow;
-   color: purple;
+   border: 2px solid yellow;
+   color: rgb(172, 50, 172);
 }
 
 .questions-footer {
@@ -58,19 +58,22 @@
 }
 
 .answer-footer {
-   margin-right: 100px;
-   width: 37%;
-   height: 280px;
+   margin-right: 10px;
+   width: 400px;
+   height: auto;
    margin: 0px 10px;
    border-radius: 20px;
-   border: 4px solid black;
-   box-shadow: 10px 10px grey;
-   background-color: whitesmoke;
+   border: 2px solid black;
+   box-shadow: 7px 10px grey;
    font-family: 'Luckiest Guy', cursive;
-   font-size: 25px;
-   color: teal;
+   font-size: 35px;
+   color: rgb(172, 50, 172);
    background-color: yellow;
    padding: 30px;
+}
+
+.answers-two div {
+   margin-bottom: 20px;
 }
 
 .next-button {
@@ -81,19 +84,19 @@
    height: 150px;
    margin: 0px 10px;
    border-radius: 20px;
-   border: 4px solid black;
-   box-shadow: 10px 10px grey;
-   background-color: whitesmoke;
+   border: 2px solid black;
+   box-shadow: 7px 10px grey;
+   background-color: white;
    font-family: 'Luckiest Guy', cursive;
    font-size: 30px;
-   color: teal;
+   color: rgb(10, 161, 161);
    outline: none !important;
    cursor: pointer;
 }
 
 .next-button:hover {
-   border: 4px solid yellow;
-   color: purple;
+   border: 2px solid yellow;
+   color: rgb(172, 50, 172);
 }
 
 .next-button i {

@@ -1,4 +1,5 @@
 import React from 'react';
+import './questions.css';
 
 class Answer extends React.Component {
     constructor(props) {
@@ -38,24 +39,22 @@ class Answer extends React.Component {
     handleCorrect() {
         this.awardPoints();
         return (
-          <div>
-            <h1>YOU ARE RIGHT!</h1>
-            <p>Points: {this.total}</p>
-            <p>Correct Answer: {this.props.correctAns}</p>
-          </div>
+            <div className="answers-two">
+                <div>YOU ARE RIGHT!</div>
+                <div>Total Points: {this.total}</div>
+                <div className="answers-last-div">Correct Answer: {this.props.correctAns}</div>
+            </div>
         );
     }
 
     handleIncorrect() {
         this.deductPoints();
         return (
-          <div>
-            <h1>
-              YOU ARE BAD AT THIS!
-            </h1>
-            <p>Points: {this.total}</p>
-            <p>Correct Answer: {this.props.correctAns}</p>
-          </div>
+            <div className="answers-two">
+                <div>YOU ARE BAD AT THIS!</div>
+                <div>Total Points: {this.total}</div>
+                <div className="answers-last-div">Correct Answer: {this.props.correctAns}</div>
+            </div>
         );
     }
 

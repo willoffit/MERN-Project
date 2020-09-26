@@ -1,7 +1,14 @@
+html {
+   width: 100%;
+   height: 100vh;
+   background-color: #20bf55;
+   background-image: linear-gradient(315deg, #20bf55 0%, #01baef 75%);
+}
+
 .splash-page-header {
    font-size: 90px;
    font-family: 'Luckiest Guy', cursive;
-   color: purple;
+   color: rgb(172, 50, 172);
    text-align: center;
 }
 
@@ -13,30 +20,23 @@
 
 .signup-button {
    text-decoration: none;
-   border: 5px solid black;
+   border: 2px solid black;
    width: 325px;
    height: 550px;
    text-align: center;
    font-size: 40px;
    font-family: 'Luckiest Guy', cursive;
-   color: teal;
-   margin: 10px 0px;
+   color: rgb(10, 161, 161);
+   margin: 10px 10px;
    border-radius: 25px;
    padding: 10px;
-   box-shadow: 5px 10px grey;
-   background-color: whitesmoke;
-}
-
-.signup-button.rotate_right {
-  float: left;
-  -ms-transform: rotate(8deg); /* IE 9 */
-  -webkit-transform: rotate(8deg); /* Safari */
-  transform: rotate(8deg);
+   box-shadow: 10px 15px grey;
+   background-color: white;
 }
 
 .signup-button:hover {
-   border: 5px solid yellow;
-   color: purple;
+   border: 3px solid yellow;
+   color: rgb(172, 50, 172);
 }
 
 .signup-button div {
@@ -50,30 +50,23 @@
 
 .login-button {
    text-decoration: none;
-   border: 5px solid black;
+   border: 2px solid black;
    width: 325px;
    height: 550px;
    text-align: center;
    font-size: 40px;
    font-family: 'Luckiest Guy', cursive;
-   color: teal;
-   margin: 10px 0px;
+   color:rgb(10, 161, 161);
+   margin: 10px 10px;
    border-radius: 25px;
    padding: 10px;
-   box-shadow: 5px 10px grey;
-   background-color: whitesmoke;
-}
-
-.login-button.rotate_left {
-  float: left;
-  -ms-transform: rotate(-15deg); /* IE 9 */
-  -webkit-transform: rotate(-15deg); /* Safari */
-  transform: rotate(-15deg);
+   box-shadow: 10px 15px grey;
+   background-color: white;
 }
 
 .login-button:hover {
-   border: 5px solid yellow;
-   color: purple;
+   border: 3px solid yellow;
+   color: rgb(172, 50, 172);
 }
 
 .login-button div {
@@ -88,7 +81,7 @@
 .splash-page-footer {
    text-align: center;
    font-family: Arial, Helvetica, sans-serif;
-   padding: 115px 0px 5px 0px;
+   padding: 145px 0px 0px 0px;
    font-size: 15px;
 }
 
@@ -100,7 +93,7 @@
 }
 
 .splash-page-team div {
-   padding: 10px 13px;
+   padding: 10px 10px;
    font-size: 15px;
    text-align: center;
 }
@@ -115,9 +108,9 @@
 }
 
 .logout, .profile-link {
-   border: 5px solid black;
+   border: 3px solid black;
    font-family: 'Luckiest Guy', cursive;
-   color: teal;
+   color: rgb(10, 161, 161);
    box-shadow: 5px 10px grey;
    border-radius: 25px;
    padding: 10px;
@@ -127,8 +120,7 @@
 }
 
 .logout:hover, .profile-link:hover {
-   border: 5px solid yellow;
-   color: purple;
+   border: 3px solid yellow;
+   color: rgb(172, 50, 172);
    background-color: whitesmoke;
-   
 }

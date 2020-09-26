@@ -1,7 +1,7 @@
 .category-page {
    font-size: 90px;
    font-family: 'Luckiest Guy', cursive;
-   color: purple;
+   color:  rgb(172, 50, 172);
    text-align: center;
    padding: 30px 75px;
 }
@@ -19,35 +19,35 @@
    height: 250px;
    margin: 20px 0px;
    border-radius: 20px;
-   border: 4px solid black;
-   box-shadow: 10px 10px grey;
-   background-color: whitesmoke;
+   border: 2px solid black;
+   box-shadow: 7px 10px grey;
+   background-color: white;
    font-family: 'Luckiest Guy', cursive;
    font-size: 40px;
-   color: teal;
+   color: rgb(10, 161, 161);
    text-decoration: underline;
    outline: none !important;
    cursor: pointer;
 }
 
 .category-buttons:hover {
-   border: 4px solid yellow;
-   color: purple;
+   border: 2px solid yellow;
+   color: rgb(172, 50, 172);
 }
 
 .categories-update-group {
    padding: 10px 20px;
-   background-color: whitesmoke;
+   background-color: white;
    border: 1px solid black;
    font-family: 'Luckiest Guy', cursive;
    font-size: 20px;
-   color: teal;
+   color: rgb(10, 161, 161);
    border-radius: 7px;
    cursor: pointer;
    text-decoration: none;
 }
 
 .categories-update-group:hover {
-   border: 1px solid yellow;
-   color: purple;
+   border: 2px solid yellow;
+   color: rgb(172, 50, 172);
 }

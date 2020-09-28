@@ -98,6 +98,6 @@
 .profile-page-join:hover,
 .profile-page-start:hover,
 .profile-page-logout:hover {
-   border: 2px solid yellow;
+   border: 2px solid yellowgreen;
    color: rgb(172, 50, 172);
 }

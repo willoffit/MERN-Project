@@ -9,6 +9,7 @@ class CategoryIndex extends React.Component {
   }
 
   handleClick(category) {
+    // event.preventDefault();
     let group = this.props.group;
 
     const game = { 

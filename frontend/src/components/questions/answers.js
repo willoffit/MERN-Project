@@ -42,7 +42,9 @@ class Answer extends React.Component {
             <div className="answers-two">
                 <div>YOU ARE RIGHT!</div>
                 <div>Total Points: {this.total}</div>
-                <div className="answers-last-div">Correct Answer: {this.props.correctAns}</div>
+                <div className="answers-last-div">
+                    Correct Answer: {this.props.decodeString(this.props.correctAns)}
+                </div>
             </div>
         );
     }
@@ -53,7 +55,9 @@ class Answer extends React.Component {
             <div className="answers-two">
                 <div>YOU ARE BAD AT THIS!</div>
                 <div>Total Points: {this.total}</div>
-                <div className="answers-last-div">Correct Answer: {this.props.correctAns}</div>
+                <div className="answers-last-div">
+                    Correct Answer: {this.props.decodeString(this.props.correctAns)}
+                </div>
             </div>
         );
     }

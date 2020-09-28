@@ -135,6 +135,7 @@ class Question extends React.Component {
                         category={this.category}
                         user={this.props.user}
                         editUser={this.props.editUser}
+                        decodeString={this.decodeString}
                     />
                     
                     <button className="next-button" onClick={() => this.handleNext()}>Next <i class="fas fa-arrow-right"></i></button>

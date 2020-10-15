@@ -79,7 +79,7 @@ class NavBar extends React.Component {
                 className="fab fa-linkedin"
                 onClick={() =>
                   window.location.href = 
-                    "https://www.linkedin.com/in/kevin-besenio-79905a1b7/"
+                    "https://www.linkedin.com/in/kevin-besenio/"
                     
                 }
               ></i>

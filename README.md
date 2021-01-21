@@ -16,7 +16,7 @@
 <div id="introduction"></div>
 
 # Introduction
-[WILK Trivia](https://kb-viewtube.herokuapp.com/)
+[WILK Trivia](https://wilk-trivia.herokuapp.com/#/)
 
 <div id="technologies"></div>
 

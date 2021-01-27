@@ -1,7 +1,7 @@
 <h1 align="center">WILK Trivia</h1>
 
 <div align="center">
-   <a href="https://wilk-trivia.herokuapp.com/#/">
+   <a href="https://trivia-wilk.herokuapp.com/#/">
       <img src="./frontend/public/wilk-trivia-splash-page.png">
    </a>
 </div>
@@ -16,7 +16,7 @@
 <div id="introduction"></div>
 
 # Introduction
-[WILK Trivia](https://wilk-trivia.herokuapp.com/#/)
+[WILK Trivia](https://trivia-wilk.herokuapp.com/#/)
 
 <div id="technologies"></div>
 
